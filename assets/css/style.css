@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Hiragino Sans'}
+    span.s1 {font: 12.0px 'Hiragino Sans'}
+    span.s2 {font: 12.0px Helvetica}
+  </style>
+</head>
+<body>
+<p class="p1">/* <span class="s1">ベース設定</span> */</p>
+<p class="p1">body {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-family: "Noto Sans JP", sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background: #fff;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/* <span class="s1">コンテナ</span> */</p>
+<p class="p1">.container {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>width: 90%;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>max-width: 1000px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin: auto;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/* <span class="s1">ヘッダー</span> */</p>
+<p class="p1">header {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background: #1A237E;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding: 10px 0;</p>
+<p class="p1">}</p>
+<p class="p1">header h1 {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size: 1.5rem;</p>
+<p class="p1">}</p>
+<p class="p1">nav ul {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>list-style: none;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>gap: 15px;</p>
+<p class="p1">}</p>
+<p class="p1">nav a {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>text-decoration: none;</p>
+<p class="p1">}</p>
+<p class="p1">nav a.active,</p>
+<p class="p1">nav a:hover {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>text-decoration: underline;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/* <span class="s1">ヒーロー</span> */</p>
+<p class="p1">.hero {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding: 60px 20px;</p>
+<p class="p1">}</p>
+<p class="p1">.hero h2 {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>font-size: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin-bottom: 10px;</p>
+<p class="p1">}</p>
+<p class="p1">.hero p {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin-bottom: 20px;</p>
+<p class="p1">}</p>
+<p class="p1">.btn {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background: #1A237E;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding: 10px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>border-radius: 5px;</p>
+<p class="p1">}</p>
+<p class="p1">.btn:hover {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background: #303F9F;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s2">/* </span>特徴セクション<span class="s2"> */</span></p>
+<p class="p1">.features {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>gap: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin: 40px 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>flex-wrap: wrap;</p>
+<p class="p1">}</p>
+<p class="p1">.feature {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>flex: 1;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>min-width: 250px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background: #f9f9f9;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>box-shadow: 0 2px 5px rgba(0,0,0,0.05);</p>
+<p class="p1">}</p>
+<p class="p1">.feature h3 {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin-top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>color: #1A237E;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/* <span class="s1">フッター</span> */</p>
+<p class="p1">footer {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background: #f2f2f2;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>margin-top: 40px;</p>
+<p class="p1">}</p>
+</body>
+</html>
