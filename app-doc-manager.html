@@ -11,7 +11,7 @@
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Document Manager | 合同会社カエルスパートナーズ</title>
+  <title>doc-manager | 合同会社カエルスパートナーズ</title>
   
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
       --text-color: #333;
       --bg-light: #f8fafc;
       --white: #ffffff;
-      --alert-color: #ef4444; /* キャンペーン強調用赤色 */
+      --alert-color: #ef4444;
     }
     body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
     a { text-decoration: none; color: inherit; transition: 0.3s; }
@@ -57,14 +57,14 @@
       max-width: 800px;
     }
     .screenshot-placeholder {
-      background: #e2e8f0;
+      background: #1e293b; /* ダークモードを意識した濃い色に変更 */
       height: 400px;
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      color: #94a3b8;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      color: #475569;
       font-size: 5rem;
     }
 
@@ -83,7 +83,7 @@
       top: 2px;
     }
 
-    /* キャンペーンエリア（ここが重要！） */
+    /* キャンペーンエリア */
     .campaign-box {
       border: 3px solid var(--alert-color);
       background: #fef2f2;
@@ -124,7 +124,7 @@
       align-items: center;
       gap: 10px;
       padding: 15px 40px;
-      background: var(--primary-color); /* お問い合わせなので少し落ち着いた色に */
+      background: var(--primary-color);
       color: white;
       border-radius: 50px;
       font-weight: bold;
@@ -151,9 +151,9 @@
 
 <div class="app-hero">
   <div class="container">
-    <span style="background:rgba(255,255,255,0.1); padding:5px 15px; border-radius:20px; font-size:0.9rem;">業務効率化</span>
-    <h2>Document Manager</h2>
-    <p>散らばったファイルを、ひとつに。</p>
+    <span style="background:rgba(255,255,255,0.1); padding:5px 15px; border-radius:20px; font-size:0.9rem;">バックオフィス支援</span>
+    <h2>doc-manager</h2>
+    <p>取引先・請求書・契約書を、これひとつで。</p>
   </div>
 </div>
 
@@ -161,22 +161,24 @@
   
   <div class="screenshot-area">
     <div class="screenshot-placeholder">
-      <i class="fa-solid fa-folder-open"></i>
+      <i class="fa-solid fa-file-invoice-dollar"></i>
     </div>
   </div>
 
   <div class="content-section container">
     <h3>概要</h3>
     <p>
-      Document Managerは、社内文書や契約書、マニュアルなどのあらゆるドキュメントをクラウド上で一元管理できるアプリケーションです。<br>
-      フォルダ階層の整理に時間を取られることなく、強力な検索機能で「今、必要なファイル」に瞬時にアクセスできます。
+      doc-managerは、フリーランスや中小企業経営者のために設計された統合管理アプリケーションです。<br>
+      取引先情報の管理から、請求書・契約書・領収書の作成までを一元化。
+      さらに売上推移をチャートで可視化することで、事務作業の効率化と経営状態の把握を同時にサポートします。
     </p>
 
     <h3 style="margin-top: 40px;">主な機能</h3>
     <ul class="feature-list">
-      <li><strong>クラウド保存:</strong> どこからでも安全にアクセス可能。</li>
-      <li><strong>タグ管理:</strong> 柔軟なタグ付けでファイルを整理。</li>
-      <li><strong>権限設定:</strong> 閲覧・編集権限をユーザーごとに細かく設定可能。</li>
+      <li><strong>一元管理 & PDF出力:</strong> 請求書や契約書をブラウザ上で作成し、即座にPDF化・印刷が可能。</li>
+      <li><strong>売上ダッシュボード:</strong> 売上の推移をグラフで直感的に把握。最近作成した書類も一覧表示。</li>
+      <li><strong>高いデザイン性と操作性:</strong> ダークモード対応のモダンなUI。編集作業もスムーズに行なえます。</li>
+      <li><strong>クラウド同期:</strong> 複数デバイスから常に最新データへアクセス。セキュリティも万全です。</li>
     </ul>
 
     <div class="campaign-box">
