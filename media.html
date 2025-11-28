@@ -1,75 +1,208 @@
-<!DOCTYPE html><html lang="ja"><head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>メディア | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="CLP media（YouTube）の最新動画。AI活用や学びの記録をシェアするメディアです。">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  gtag('config', 'G-7C96BB0F4M');
-</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>メディア | 合同会社カエルスパートナーズ</title>
-<link rel="stylesheet" href="assets/css/style.css">
-<meta name="description" content="CLP media（YouTube）の最新動画。AI活用や学びの記録をシェアするメディアです。">
-<!-- Favicon -->
-<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48.png">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <style>
+    /* 共通設定 */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-<!-- OGP / SNS共有 -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="合同会社カエルスパートナーズ">
-<meta property="og:title" content="合同会社カエルスパートナーズ">
-<meta property="og:description" content="不動産・投資・AI・教育で価値を創る。CLP media も運営しています。">
-<meta property="og:image" content="assets/img/ogp.png">
-<meta property="og:url" content="https://caelus20250613.github.io/">
-<meta name="twitter:card" content="summary_large_image">
-</head><body>
-<header><div class="container">
-  <h1>合同会社カエルスパートナーズ</h1>
-  <nav><ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">会社概要</a></li>
-    <li><a href="business.html">事業内容</a></li>
-    <li><a class="active" href="media.html">メディア</a></li>
-    <li><a href="contact.html">お問い合わせ</a></li>
-    <li><a href="news.html">お知らせ</a></li>
-  </ul></nav>
-</div></header>
+    /* ヘッダー */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* ページタイトルエリア */
+    .page-header { background: var(--primary-color); color: var(--white); text-align: center; padding: 60px 20px; margin-bottom: 60px; }
+    .page-header h2 { margin: 0; font-size: 2rem; }
+    .page-header p { opacity: 0.8; margin-top: 10px; }
+
+    /* 動画グリッド */
+    .media-intro { text-align: center; margin-bottom: 50px; }
+    
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /* 幅広に確保 */
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    @media (max-width: 600px) {
+      .video-grid { grid-template-columns: 1fr; } /* スマホは1列 */
+    }
+
+    .video-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    
+    /* レスポンシブな動画埋め込み枠 */
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 の比率を維持 */
+      background: #000;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .video-caption {
+      padding: 20px;
+      font-weight: bold;
+      color: var(--primary-color);
+      font-size: 1.1rem;
+    }
+
+    /* チャンネルリンクボタン */
+    .channel-link {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .btn-youtube {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ff0000;
+      color: white;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+    }
+    .btn-youtube:hover {
+      background: #cc0000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(255, 0, 0, 0.4);
+    }
+
+    /* フッター */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">会社概要</a></li>
+        <li><a href="business.html">事業内容</a></li>
+        <li><a href="apps.html">アプリ紹介</a></li>
+        <li><a href="media.html" style="color: var(--accent-color);">メディア</a></li> <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-header">
+  <div class="container">
+    <h2>CLP media</h2>
+    <p>YouTube Channel</p>
+  </div>
+</div>
 
 <main class="container">
-  <h2>CLP media</h2>
-  <p>調べたことをまとめてシェアし、視聴者と一緒に学ぶチャンネルです。</p>
+  
+  <div class="media-intro">
+    <p>「調べたことをまとめてシェアし、視聴者と一緒に学ぶ」をテーマに発信しています。</p>
+  </div>
 
   <div class="video-grid">
-    <div class="video">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/YgHKiBu5Vtc" title="YouTube video" frameborder="0" allowfullscreen></iframe>
-      <p class="caption">誰でも簡単！ChatGPTとNotebookLMで動画を作る方法</p>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/YgHKiBu5Vtc" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-caption">
+        誰でも簡単！ChatGPTとNotebookLMで動画を作る方法
+      </div>
     </div>
-    <div class="video">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/FN9ZVGgguJM" title="YouTube video" frameborder="0" allowfullscreen></iframe>
-      <p class="caption">今更聞けない、ChatGPTとNotebookLMってどう違うの？</p>
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/FN9ZVGgguJM" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-caption">
+        今更聞けない、ChatGPTとNotebookLMってどう違うの？
+      </div>
     </div>
   </div>
 
-  <p><a class="btn" href="https://www.youtube.com/@CLPmedia-p6m" target="_blank" rel="noopener">チャンネルを開く</a></p>
+  <div class="channel-link">
+    <a class="btn-youtube" href="https://www.youtube.com/@CLPmedia-p6m" target="_blank" rel="noopener">
+      <i class="fa-brands fa-youtube"></i> チャンネルを開く
+    </a>
+    <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+      チャンネル登録・高評価 よろしくお願いします！
+    </p>
+  </div>
+
 </main>
 
 <footer>
   <div class="container">
-    <p><strong>合同会社カエルスパートナーズ</strong></p>
-    <p>〒770-0944 徳島県徳島市南昭和町</p>
-    <p>メール：<a href="mailto:info@caeluslab-partners.com">info@caeluslab-partners.com</a></p>
-    <nav class="footer-nav">
-      <a href="about.html">会社概要</a> |
-      <a href="business.html">事業内容</a> |
-      <a href="contact.html">お問い合わせ</a> |
-      <a href="privacy.html">プライバシーポリシー</a>
-    </nav><p>公式X：<a href="https://x.com/caelus_partners" target="_blank" rel="noopener">@caelus_partners</a>　
-YouTube：<a href="https://www.youtube.com/@CLPmedia-p6m" target="_blank" rel="noopener">CLP media</a></p>
-    <p>&copy; 2025 合同会社カエルスパートナーズ</p>
+    <div class="footer-content">
+      <div>
+        <strong>合同会社カエルスパートナーズ</strong>
+        <p>〒770-0944 徳島県徳島市南昭和町</p>
+        <p>Email: info@caeluslab-partners.com</p>
+      </div>
+      <div>
+        <nav class="footer-nav">
+          <a href="about.html">会社概要</a>
+          <a href="business.html">事業内容</a>
+          <a href="apps.html">アプリ紹介</a>
+          <a href="contact.html">お問い合わせ</a>
+        </nav>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
   </div>
 </footer>
-</body></html>
+
+</body>
+</html>
