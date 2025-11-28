@@ -28,8 +28,8 @@
   <style>
     /* 基本設定 */
     :root {
-      --primary-color: #0f172a; /* 濃紺：信頼感 */
-      --accent-color: #3b82f6;  /* 明るい青：未来感 */
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
       --text-color: #333;
       --bg-light: #f8fafc;
       --white: #ffffff;
@@ -62,12 +62,13 @@
     }
     header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
     
-    header nav ul { display: flex; gap: 20px; }
-    header nav a { font-size: 0.95rem; font-weight: 500; color: var(--text-color); }
+    /* PC用メニュー */
+    header nav ul { display: flex; gap: 20px; flex-wrap: wrap; }
+    header nav a { font-size: 0.9rem; font-weight: 500; color: var(--text-color); }
     header nav a:hover { color: var(--accent-color); }
     
-    @media (max-width: 768px) {
-      header nav ul { display: none; } /* スマホメニューは別途実装が必要なら追加 */
+    @media (max-width: 900px) {
+      header nav ul { display: none; } /* スマホ・タブレットではメニュー非表示（必要ならハンバーガーメニュー等を追加） */
       header h1 { font-size: 1rem; }
     }
 
@@ -75,7 +76,7 @@
     .hero {
       height: 80vh;
       min-height: 500px;
-      /* 仮画像：ビル群 (お好みの画像に差し替えてください) */
+      /* 仮画像 */
       background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80');
       background-size: cover;
       background-position: center;
@@ -102,11 +103,12 @@
     }
     .btn:hover { background: #2563eb; transform: translateY(-2px); }
 
-    /* 事業内容セクション */
+    /* セクション共通 */
     .section { padding: 80px 0; }
     .section-title { text-align: center; font-size: 2rem; margin-bottom: 50px; color: var(--primary-color); }
     .bg-light { background: var(--bg-light); }
 
+    /* 事業内容カード */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -124,7 +126,18 @@
     .feature-icon { font-size: 3rem; color: var(--accent-color); margin-bottom: 20px; }
     .feature-card h3 { margin-bottom: 15px; color: var(--primary-color); }
 
-    /* メディア・お知らせ（ボタン修正版） */
+    /* アプリ紹介への誘導（追加） */
+    .app-teaser {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .app-teaser a {
+      color: var(--accent-color);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    /* メディア・お知らせボタン */
     .media-links { 
       display: flex;
       justify-content: center;
@@ -156,13 +169,13 @@
     footer strong { color: var(--white); font-size: 1.1rem; display: block; margin-bottom: 15px; }
     footer a { color: #cbd5e1; }
     footer a:hover { color: var(--white); }
-    .footer-nav { margin: 20px 0; }
-    .footer-nav a { margin: 0 10px; }
+    .footer-nav { margin: 20px 0; display: flex; flex-wrap: wrap; gap: 15px; }
     .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
 
     @media (max-width: 768px) {
       .hero h2 { font-size: 1.8rem; }
       .feature-card { padding: 20px; }
+      .footer-nav { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
@@ -175,7 +188,10 @@
       <ul>
         <li><a href="about.html">会社概要</a></li>
         <li><a href="business.html">事業内容</a></li>
-        <li><a href="apps.html">アプリ紹介</a></li> <li><a href="contact.html">お問い合わせ</a></li>
+        <li><a href="apps.html">アプリ紹介</a></li>
+        <li><a href="media.html">メディア</a></li>
+        <li><a href="news.html">お知らせ</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
       </ul>
     </nav>
   </div>
@@ -195,20 +211,30 @@
       <h2 class="section-title">Service</h2>
       <div class="features-grid">
         <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-building"></i></div>
-          <h3>不動産事業</h3>
-          <p>持続可能な資産形成をサポート。地域に根ざした不動産活用と管理を行います。</p>
+          <a href="business.html">
+            <div class="feature-icon"><i class="fa-solid fa-building"></i></div>
+            <h3>不動産事業</h3>
+            <p>持続可能な資産形成をサポート。地域に根ざした不動産活用と管理を行います。</p>
+          </a>
         </div>
         <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
-          <h3>投資・資産運用</h3>
-          <p>長期的な視点での投資戦略を提案。確かなリターンを目指した運用を支援します。</p>
+          <a href="business.html">
+            <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>投資・資産運用</h3>
+            <p>長期的な視点での投資戦略を提案。確かなリターンを目指した運用を支援します。</p>
+          </a>
         </div>
         <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
-          <h3>AI・教育事業</h3>
-          <p>CLP mediaを通じ、最新のAI技術と活用法を発信。次世代の学びを提供します。</p>
+          <a href="apps.html">
+            <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
+            <h3>AI・アプリ開発</h3>
+            <p>業務効率化ツールやAI活用アプリを開発。自社開発ソリューションを提供します。</p>
+          </a>
         </div>
+      </div>
+      
+      <div class="app-teaser">
+        <p>自社開発アプリケーションの詳細は <a href="apps.html">アプリ紹介ページ</a> をご覧ください。</p>
       </div>
     </div>
   </section>
@@ -217,20 +243,17 @@
     <div class="container">
       <h2 class="section-title">Media & News</h2>
       <div style="text-align: center;">
-        <p>最新情報は公式SNSやYouTubeで発信しています。</p>
+        <p>YouTubeチャンネル「CLP media」での発信や、最新のお知らせ。</p>
         
         <div class="media-links">
-          <a href="https://www.youtube.com/@CLPmedia-p6m" target="_blank" class="media-btn youtube">
-            <i class="fa-brands fa-youtube"></i> YouTube (CLP media)
+          <a href="media.html" class="media-btn youtube">
+            <i class="fa-brands fa-youtube"></i> メディア (動画一覧)
           </a>
-          <a href="https://x.com/caelus_partners" target="_blank" class="media-btn x">
-            <i class="fa-brands fa-x-twitter"></i> 公式X (Twitter)
+          <a href="news.html" class="media-btn x">
+            <i class="fa-regular fa-newspaper"></i> お知らせ一覧
           </a>
         </div>
 
-        <div style="margin-top: 30px;">
-          <a href="news.html" style="text-decoration: underline;">お知らせ一覧を見る &rarr;</a>
-        </div>
       </div>
     </div>
   </section>
@@ -245,10 +268,13 @@
         <p>Email: <a href="mailto:info@caeluslab-partners.com">info@caeluslab-partners.com</a></p>
       </div>
       <div>
-        <nav class="footer-nav" style="display: flex; flex-direction: column; gap: 10px;">
+        <nav class="footer-nav">
+          <a href="index.html">Home</a>
           <a href="about.html">会社概要</a>
           <a href="business.html">事業内容</a>
           <a href="apps.html">アプリ紹介</a>
+          <a href="media.html">メディア</a>
+          <a href="news.html">お知らせ</a>
           <a href="contact.html">お問い合わせ</a>
           <a href="privacy.html">プライバシーポリシー</a>
         </nav>
