@@ -14,11 +14,12 @@
   <title>自社開発アプリ | 合同会社カエルスパートナーズ</title>
   
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+  
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* 共通スタイル (index.htmlと同じものをベースにしています) */
+    /* 共通設定 (index.htmlと統一) */
     :root {
       --primary-color: #0f172a;
       --accent-color: #3b82f6;
@@ -37,20 +38,15 @@
     header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); }
     header nav ul { display: flex; gap: 20px; }
     header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } } /* 簡易スマホ対応 */
 
-    /* アプリ紹介ページ専用スタイル */
-    .page-header {
-      background: var(--primary-color);
-      color: var(--white);
-      text-align: center;
-      padding: 60px 20px;
-    }
+    /* アプリページ独自スタイル */
+    .page-header { background: var(--primary-color); color: var(--white); text-align: center; padding: 60px 20px; }
     .page-header h2 { margin: 0; font-size: 2rem; }
     .page-header p { opacity: 0.8; margin-top: 10px; }
 
     .app-section { padding: 60px 0; }
     
-    /* アプリカードのデザイン */
     .app-card {
       background: var(--white);
       border-radius: 15px;
@@ -58,35 +54,22 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.05);
       margin-bottom: 50px;
       display: flex;
-      flex-direction: column; /* スマホ向けデフォルト */
+      flex-direction: column;
     }
-    
-    @media (min-width: 768px) {
-      .app-card { flex-direction: row; } /* PCでは横並び */
-    }
+    @media (min-width: 768px) { .app-card { flex-direction: row; } }
 
     .app-image {
-      background: #e2e8f0; /* 画像がない場合のグレー背景 */
+      background: #e2e8f0;
       flex: 1;
-      min-height: 300px;
+      min-height: 250px;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
     }
-    .app-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* 画像を枠いっぱいにトリミング */
-    }
+    /* 画像のプレースホルダー用アイコン */
+    .app-image i { font-size: 5rem; color: #94a3b8; }
 
-    .app-content {
-      flex: 1;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    .app-content { flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
 
     .app-tag {
       display: inline-block;
@@ -103,22 +86,21 @@
     .app-content h3 { font-size: 1.8rem; margin: 0 0 15px 0; color: var(--primary-color); }
     .app-content p { color: #64748b; margin-bottom: 25px; }
 
-    /* ストアボタン */
-    .store-btns { display: flex; gap: 10px; flex-wrap: wrap; }
-    .store-btn {
+    /* アプリ起動ボタン */
+    .launch-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 30px;
+      background: var(--accent-color);
+      color: white;
       border-radius: 8px;
-      color: var(--white);
       font-weight: bold;
-      font-size: 0.9rem;
+      width: fit-content;
+      box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
     }
-    .btn-apple { background: #000; }
-    .btn-google { background: #34a853; } /* Google Play Green */
-    .btn-web { background: var(--accent-color); }
-    .store-btn:hover { opacity: 0.8; }
+    .launch-btn:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 6px 10px rgba(59, 130, 246, 0.4); }
 
     /* フッター */
     footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; text-align: center; font-size: 0.9rem; margin-top: auto; }
@@ -133,7 +115,9 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="apps.html" style="color: var(--accent-color);">Apps</a></li> <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">会社概要</a></li>
+        <li><a href="apps.html" style="color: var(--accent-color);">アプリ紹介</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
       </ul>
     </nav>
   </div>
@@ -142,7 +126,7 @@
 <div class="page-header">
   <div class="container">
     <h2>Applications</h2>
-    <p>私たちが開発したソリューションをご紹介します。</p>
+    <p>自社開発のWebアプリケーションをご紹介します。</p>
   </div>
 </div>
 
@@ -150,34 +134,38 @@
 
   <div class="app-card">
     <div class="app-image">
-      <i class="fa-solid fa-mobile-screen" style="font-size: 5rem; color: #cbd5e1;"></i> </div>
+      <i class="fa-solid fa-folder-open"></i>
+    </div>
     <div class="app-content">
-      <span class="app-tag">AI × 不動産</span>
-      <h3>AI 賃料査定シミュレーター</h3>
+      <span class="app-tag">業務効率化</span>
+      <h3>Document Manager</h3>
       <p>
-        物件情報を入力するだけで、AIが近隣相場や将来予測を加味した適正賃料を3秒で算出。
-        オーナー様の意思決定をデータで強力にサポートします。
+        ドキュメント管理をシンプルかつ安全に。
+        クラウド上でファイルを一元管理し、必要な情報へスムーズにアクセスできるWebアプリケーションです。
       </p>
-      <div class="store-btns">
-        <a href="#" class="store-btn btn-apple"><i class="fa-brands fa-apple"></i> App Store</a>
-        <a href="#" class="store-btn btn-web"><i class="fa-solid fa-globe"></i> Web版を使う</a>
+      <div>
+        <a href="https://doc-manager-20251124-a6754.web.app/" target="_blank" class="launch-btn">
+          <i class="fa-solid fa-up-right-from-square"></i> アプリを開く
+        </a>
       </div>
     </div>
   </div>
 
   <div class="app-card">
     <div class="app-image">
-      <i class="fa-solid fa-chart-pie" style="font-size: 5rem; color: #cbd5e1;"></i>
+      <i class="fa-solid fa-calculator"></i>
     </div>
     <div class="app-content">
-      <span class="app-tag">資産管理</span>
-      <h3>My Asset Manager</h3>
+      <span class="app-tag">人事・経理DX</span>
+      <h3>Bonus Calculator</h3>
       <p>
-        複数の不動産・金融資産を一元管理。収支フローを可視化し、次の投資判断に必要なデータをダッシュボードで提供します。
-        現在ベータ版を限定公開中。
+        賞与計算シミュレーター。
+        複雑な条件設定や評価係数を入力するだけで、支給額を瞬時に試算。人事評価や予算管理をサポートします。
       </p>
-      <div class="store-btns">
-        <a href="#" class="store-btn" style="background: #64748b; pointer-events: none;">Coming Soon</a>
+      <div>
+        <a href="https://bonus-calculater.web.app/" target="_blank" class="launch-btn">
+          <i class="fa-solid fa-up-right-from-square"></i> アプリを開く
+        </a>
       </div>
     </div>
   </div>
