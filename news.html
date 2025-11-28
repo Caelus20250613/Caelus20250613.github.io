@@ -1,69 +1,187 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>お知らせ | 合同会社カエルスパートナーズ</title>
   <meta name="description" content="合同会社カエルスパートナーズの最新情報・更新履歴。">
-  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定 */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* ページタイトルエリア */
+    .page-header { background: var(--primary-color); color: var(--white); text-align: center; padding: 60px 20px; margin-bottom: 60px; }
+    .page-header h2 { margin: 0; font-size: 2rem; }
+    .page-header p { opacity: 0.8; margin-top: 10px; }
+
+    /* ニュースリストスタイル */
+    .news-section {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      background: var(--white);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .news-list {
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .news-item {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-color);
+      transition: background 0.2s;
+    }
+    
+    /* PCでは横並びにする */
+    @media (min-width: 600px) {
+      .news-item { flex-direction: row; align-items: baseline; }
+    }
+
+    .news-date {
+      font-weight: bold;
+      color: var(--accent-color);
+      min-width: 140px;
+      margin-bottom: 5px;
+    }
+    
+    .news-content {
+      color: var(--text-color);
+      flex: 1;
+    }
+    
+    .news-content a {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+    .news-content a:hover { text-decoration: none; }
+
+    .note { font-size: 0.85rem; color: #94a3b8; text-align: right; margin-top: 20px; }
+
+    /* フッター */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
 </head>
 <body>
-  <!-- ヘッダー -->
-  <header>
-    <div class="container">
-      <h1>合同会社カエルスパートナーズ</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">会社概要</a></li>
-          <li><a href="business.html">事業内容</a></li>
-          <li><a href="media.html">メディア</a></li>
-          <li><a href="contact.html">お問い合わせ</a></li>
-          <li><a class="active" href="news.html">お知らせ</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <!-- メイン -->
-  <main class="container">
-    <h2>お知らせ</h2>
+<header>
+  <div class="container">
+    <h1><a href="index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">会社概要</a></li>
+        <li><a href="business.html">事業内容</a></li>
+        <li><a href="apps.html">アプリ紹介</a></li>
+        <li><a href="media.html">メディア</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+        <li><a href="news.html" style="color: var(--accent-color);">お知らせ</a></li> </ul>
+    </nav>
+  </div>
+</header>
 
+<div class="page-header">
+  <div class="container">
+    <h2>News</h2>
+    <p>最新情報・お知らせ</p>
+  </div>
+</div>
+
+<main class="container">
+  
+  <div class="news-section">
     <ul class="news-list">
-     <!-- <li>
-<time datetime="YYYY-MM-DD">YYYY/MM/DD</time>
-ここにお知らせ文。必要なら <a href="リンク">リンク</a> もOK。
-</li> -->
-      <!-- 新しい順に上へ追記してください -->
-      <li>
-        <time datetime="2025-09-28">2025/09/28</time>
-        公式サイトを公開し、<a href="contact.html">お問い合わせフォーム</a>を設置しました。
+      
+      <li class="news-item">
+        <time class="news-date" datetime="2025-11-28">2025/11/28</time>
+        <span class="news-content">
+          自社開発アプリ「<a href="apps.html">Document Manager</a>」「<a href="apps.html">Bonus Calculator</a>」を公開しました。
+        </span>
       </li>
-      <li>
-        <time datetime="2025-09-27">2025/09/27</time>
-        YouTube「<a href="https://www.youtube.com/@CLPmedia-p6m" target="_blank" rel="noopener">CLP media</a>」の新作動画を公開しました。
+
+      <li class="news-item">
+        <time class="news-date" datetime="2025-09-28">2025/09/28</time>
+        <span class="news-content">
+          コーポレートサイトをリニューアルし、<a href="contact.html">お問い合わせフォーム</a>を設置しました。
+        </span>
       </li>
-    </ul>
 
-    <p class="note">※ 掲載内容・日付は変更になる場合があります。</p>
-  </main>
+      <li class="news-item">
+        <time class="news-date" datetime="2025-09-27">2025/09/27</time>
+        <span class="news-content">
+          YouTubeチャンネル「<a href="https://www.youtube.com/@CLPmedia-p6m" target="_blank" rel="noopener">CLP media</a>」にて新作動画を公開しました。
+        </span>
+      </li>
+      
+      </ul>
+    <p class="note">※ 掲載内容は予告なく変更になる場合があります。</p>
+  </div>
 
-  <!-- フッター（共通） -->
-  <footer>
-    <div class="container">
-      <p><strong>合同会社カエルスパートナーズ</strong></p>
-      <p>〒770-0944 徳島県徳島市南昭和町</p>
-      <p>メール：<a href="mailto:info@caeluslab_partners.com">info@caeluslab_partners.com</a></p>
-      <p>公式X：<a href="https://x.com/caelus-partners" target="_blank" rel="noopener">@caelus-partners</a>　
-         YouTube：<a href="https://www.youtube.com/@CLPmedia-p6m" target="_blank" rel="noopener">CLP media</a></p>
-      <nav class="footer-nav">
-        <a href="about.html">会社概要</a> |
-        <a href="business.html">事業内容</a> |
-        <a href="contact.html">お問い合わせ</a> |
-        <a href="privacy.html">プライバシーポリシー</a>
-      </nav>
-      <p>&copy; 2025 合同会社カエルスパートナーズ</p>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong>合同会社カエルスパートナーズ</strong>
+        <p>〒770-0944 徳島県徳島市南昭和町</p>
+        <p>Email: info@caeluslab-partners.com</p>
+      </div>
+      <div>
+        <nav class="footer-nav">
+          <a href="about.html">会社概要</a>
+          <a href="business.html">事業内容</a>
+          <a href="apps.html">アプリ紹介</a>
+          <a href="contact.html">お問い合わせ</a>
+        </nav>
+      </div>
     </div>
-  </footer>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
