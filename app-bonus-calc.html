@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bonus Calculator | 合同会社カエルスパートナーズ</title>
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定 */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+
+    /* 詳細ページ独自 */
+    .app-hero {
+      background: var(--primary-color);
+      color: var(--white);
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .app-hero h2 { font-size: 2.5rem; margin-bottom: 20px; }
+    .app-hero p { font-size: 1.1rem; opacity: 0.9; }
+
+    .content-section { padding: 60px 0; background: var(--white); margin-bottom: 30px; border-radius: 10px; }
+    
+    .screenshot-area {
+      text-align: center;
+      margin: -50px auto 40px;
+      max-width: 800px;
+    }
+    .screenshot-placeholder {
+      background: #e2e8f0;
+      height: 400px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      color: #94a3b8;
+      font-size: 5rem;
+    }
+
+    .feature-list li {
+      margin-bottom: 15px;
+      padding-left: 25px;
+      position: relative;
+    }
+    .feature-list li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: var(--accent-color);
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+
+    /* アプリ起動ボタン */
+    .launch-area { text-align: center; margin-top: 40px; padding: 40px; background: #eff6ff; border-radius: 10px; }
+    .launch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 40px;
+      background: var(--accent-color);
+      color: white;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+    }
+    .launch-btn:hover { background: #2563eb; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4); }
+
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; text-align: center; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="apps.html"><i class="fa-solid fa-arrow-left"></i> アプリ一覧に戻る</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="app-hero">
+  <div class="container">
+    <span style="background:rgba(255,255,255,0.1); padding:5px 15px; border-radius:20px; font-size:0.9rem;">人事・経理DX</span>
+    <h2>Bonus Calculator</h2>
+    <p>複雑な賞与計算を、一瞬で。</p>
+  </div>
+</div>
+
+<main class="container">
+  
+  <div class="screenshot-area">
+    <div class="screenshot-placeholder">
+      <i class="fa-solid fa-calculator"></i>
+    </div>
+  </div>
+
+  <div class="content-section container">
+    <h3>概要</h3>
+    <p>
+      Bonus Calculatorは、煩雑になりがちな賞与（ボーナス）の計算を自動化するシミュレーターです。<br>
+      基本給、評価係数、会社業績などを入力するだけで、支給額の試算や予算シミュレーションが簡単に行えます。
+    </p>
+
+    <h3 style="margin-top: 40px;">主な機能</h3>
+    <ul class="feature-list">
+      <li><strong>リアルタイム試算:</strong> 数値を変更すると即座に計算結果に反映。</li>
+      <li><strong>評価係数設定:</strong> S評価、A評価などの係数をカスタマイズ可能。</li>
+      <li><strong>CSVエクスポート:</strong> 計算結果をデータとして出力可能。</li>
+    </ul>
+
+    <div class="launch-area">
+      <p style="margin-bottom: 20px; font-weight: bold;">今すぐ利用を開始する</p>
+      <a href="https://bonus-calculater.web.app/" target="_blank" class="launch-btn">
+        <i class="fa-solid fa-up-right-from-square"></i> アプリを開く
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Caelus Partners LLC.</p>
+  </div>
+</footer>
+
+</body>
+</html>
