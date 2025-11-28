@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* 共通設定 (index.htmlと統一) */
+    /* 共通設定 */
     :root {
       --primary-color: #0f172a;
       --accent-color: #3b82f6;
@@ -38,9 +38,9 @@
     header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); }
     header nav ul { display: flex; gap: 20px; }
     header nav a:hover { color: var(--accent-color); }
-    @media (max-width: 768px) { header nav ul { display: none; } } /* 簡易スマホ対応 */
+    @media (max-width: 768px) { header nav ul { display: none; } }
 
-    /* アプリページ独自スタイル */
+    /* アプリ一覧スタイル */
     .page-header { background: var(--primary-color); color: var(--white); text-align: center; padding: 60px 20px; }
     .page-header h2 { margin: 0; font-size: 2rem; }
     .page-header p { opacity: 0.8; margin-top: 10px; }
@@ -55,7 +55,9 @@
       margin-bottom: 50px;
       display: flex;
       flex-direction: column;
+      transition: transform 0.3s;
     }
+    .app-card:hover { transform: translateY(-5px); }
     @media (min-width: 768px) { .app-card { flex-direction: row; } }
 
     .app-image {
@@ -66,7 +68,6 @@
       align-items: center;
       justify-content: center;
     }
-    /* 画像のプレースホルダー用アイコン */
     .app-image i { font-size: 5rem; color: #94a3b8; }
 
     .app-content { flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
@@ -86,21 +87,21 @@
     .app-content h3 { font-size: 1.8rem; margin: 0 0 15px 0; color: var(--primary-color); }
     .app-content p { color: #64748b; margin-bottom: 25px; }
 
-    /* アプリ起動ボタン */
-    .launch-btn {
+    /* 詳細ボタン */
+    .detail-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       padding: 12px 30px;
-      background: var(--accent-color);
-      color: white;
+      background: var(--white);
+      color: var(--accent-color);
+      border: 2px solid var(--accent-color);
       border-radius: 8px;
       font-weight: bold;
       width: fit-content;
-      box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
     }
-    .launch-btn:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 6px 10px rgba(59, 130, 246, 0.4); }
+    .detail-btn:hover { background: var(--accent-color); color: var(--white); }
 
     /* フッター */
     footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; text-align: center; font-size: 0.9rem; margin-top: auto; }
@@ -126,7 +127,7 @@
 <div class="page-header">
   <div class="container">
     <h2>Applications</h2>
-    <p>自社開発のWebアプリケーションをご紹介します。</p>
+    <p>自社開発のWebアプリケーション一覧</p>
   </div>
 </div>
 
@@ -140,12 +141,12 @@
       <span class="app-tag">業務効率化</span>
       <h3>Document Manager</h3>
       <p>
-        ドキュメント管理をシンプルかつ安全に。
+        ドキュメント管理をシンプルかつ安全に。<br>
         クラウド上でファイルを一元管理し、必要な情報へスムーズにアクセスできるWebアプリケーションです。
       </p>
       <div>
-        <a href="https://doc-manager-20251124-a6754.web.app/" target="_blank" class="launch-btn">
-          <i class="fa-solid fa-up-right-from-square"></i> アプリを開く
+        <a href="app-doc-manager.html" class="detail-btn">
+          詳細・使い方を見る <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
     </div>
@@ -159,12 +160,12 @@
       <span class="app-tag">人事・経理DX</span>
       <h3>Bonus Calculator</h3>
       <p>
-        賞与計算シミュレーター。
+        賞与計算シミュレーター。<br>
         複雑な条件設定や評価係数を入力するだけで、支給額を瞬時に試算。人事評価や予算管理をサポートします。
       </p>
       <div>
-        <a href="https://bonus-calculater.web.app/" target="_blank" class="launch-btn">
-          <i class="fa-solid fa-up-right-from-square"></i> アプリを開く
+        <a href="app-bonus-calc.html" class="detail-btn">
+          詳細・使い方を見る <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
     </div>
