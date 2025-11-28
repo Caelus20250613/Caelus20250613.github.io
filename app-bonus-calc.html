@@ -55,7 +55,16 @@
       text-align: center;
       margin: -50px auto 40px;
       max-width: 800px;
+      padding: 0 10px;
     }
+    .app-screenshot-img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      border: 1px solid #cbd5e1;
+    }
+    /* 画像がない場合のプレースホルダー */
     .screenshot-placeholder {
       background: #e2e8f0;
       height: 400px;
@@ -67,6 +76,7 @@
       color: #94a3b8;
       font-size: 5rem;
     }
+
 
     .feature-list li {
       margin-bottom: 15px;
@@ -151,9 +161,9 @@
 
 <div class="app-hero">
   <div class="container">
-    <span style="background:rgba(255,255,255,0.1); padding:5px 15px; border-radius:20px; font-size:0.9rem;">人事・経理DX</span>
+    <span style="background:rgba(255,255,255,0.1); padding:5px 15px; border-radius:20px; font-size:0.9rem;">歯科・医療機関向け</span>
     <h2>Bonus Calculator</h2>
-    <p>複雑な賞与計算を、一瞬で。</p>
+    <p>簡単・正確・シミュレーション対応。<br>賞与計算をワンストップで。</p>
   </div>
 </div>
 
@@ -168,15 +178,17 @@
   <div class="content-section container">
     <h3>概要</h3>
     <p>
-      Bonus Calculatorは、煩雑になりがちな賞与（ボーナス）の計算を自動化するシミュレーターです。<br>
-      基本給、評価係数、会社業績などを入力するだけで、支給額の試算や予算シミュレーションが簡単に行えます。
+      Bonus Calculatorは、歯科医院や医療機関向けに設計された賞与計算Webアプリケーションです。<br>
+      複雑になりがちなスタッフごとの役割設定や実績入力を、「設定ウィザード」に従って進めるだけで完了。<br>
+      将来の売上予測に基づいたシミュレーション機能も搭載し、経営判断を強力にサポートします。
     </p>
 
     <h3 style="margin-top: 40px;">主な機能</h3>
     <ul class="feature-list">
-      <li><strong>リアルタイム試算:</strong> 数値を変更すると即座に計算結果に反映。</li>
-      <li><strong>評価係数設定:</strong> S評価、A評価などの係数をカスタマイズ可能。</li>
-      <li><strong>CSVエクスポート:</strong> 計算結果をデータとして出力可能。</li>
+      <li><strong>5段階の計算ウィザード:</strong> 「期間選択→売上入力→実績入力→プレビュー→出力」のフローに従うだけで、迷わず正確に計算できます。</li>
+      <li><strong>シミュレーション機能:</strong> 入力が70%以上あれば、未入力月の売上を自動予測。賞与額の着地見込みを瞬時に試算します。</li>
+      <li><strong>下書き保存:</strong> 作業途中でも「一時保存」が可能。忙しい診療の合間でも、ローカルに保存して後から再開できます。</li>
+      <li><strong>初期設定ガイド:</strong> クリニック情報、役割、スタッフ登録も専用ウィザードでスムーズにセットアップ可能です。</li>
     </ul>
 
     <div class="campaign-box">
