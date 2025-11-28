@@ -57,6 +57,8 @@
       max-width: 800px;
       padding: 0 10px;
     }
+    
+    /* 画像スタイル */
     .app-screenshot-img {
       width: 100%;
       height: auto;
@@ -64,19 +66,6 @@
       box-shadow: 0 15px 30px rgba(0,0,0,0.2);
       border: 1px solid #cbd5e1;
     }
-    /* 画像がない場合のプレースホルダー */
-    .screenshot-placeholder {
-      background: #e2e8f0;
-      height: 400px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      color: #94a3b8;
-      font-size: 5rem;
-    }
-
 
     .feature-list li {
       margin-bottom: 15px;
@@ -170,9 +159,7 @@
 <main class="container">
   
   <div class="screenshot-area">
-    <div class="screenshot-placeholder">
-      <i class="fa-solid fa-calculator"></i>
-    </div>
+    <img src="assets/img/bonus-calculatorimage.png" alt="Bonus Calculator 画面" class="app-screenshot-img">
   </div>
 
   <div class="content-section container">
