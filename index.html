@@ -66,17 +66,17 @@
     header nav a { font-size: 0.95rem; font-weight: 500; color: var(--text-color); }
     header nav a:hover { color: var(--accent-color); }
     
-    /* スマホ用簡易メニュー対応 */
     @media (max-width: 768px) {
-      header nav ul { display: none; } /* 今回は簡易化のためスマホメニュー非表示（必要なら追加します） */
+      header nav ul { display: none; } /* スマホメニューは別途実装が必要なら追加 */
       header h1 { font-size: 1rem; }
     }
 
     /* メインビジュアル (Hero) */
     .hero {
-      height: 80vh; /* 画面の80%の高さ */
+      height: 80vh;
       min-height: 500px;
-      background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80'); /* 仮画像：ビル群 */
+      /* 仮画像：ビル群 (お好みの画像に差し替えてください) */
+      background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80');
       background-size: cover;
       background-position: center;
       display: flex;
@@ -124,21 +124,32 @@
     .feature-icon { font-size: 3rem; color: var(--accent-color); margin-bottom: 20px; }
     .feature-card h3 { margin-bottom: 15px; color: var(--primary-color); }
 
-    /* メディア・お知らせ */
-    .media-links { text-align: center; margin-top: 30px; }
-    .media-btn {
-      display: inline-flex;
+    /* メディア・お知らせ（ボタン修正版） */
+    .media-links { 
+      display: flex;
+      justify-content: center;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px; 
+    }
+    .media-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       gap: 10px;
-      margin: 10px;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border: 1px solid #ddd;
       border-radius: 5px;
       font-weight: bold;
+      text-decoration: none;
+      min-width: 200px;
+      background: #fff;
+      transition: 0.3s;
     }
     .media-btn.youtube { color: #ff0000; border-color: #ff0000; }
     .media-btn.x { color: #000; border-color: #000; }
-    .media-btn:hover { background: #f9f9f9; }
+    .media-btn:hover { background: #f9f9f9; transform: translateY(-2px); }
 
     /* フッター */
     footer { background: var(--primary-color); color: #94a3b8; padding: 50px 0 20px; font-size: 0.9rem; }
@@ -164,7 +175,7 @@
       <ul>
         <li><a href="about.html">会社概要</a></li>
         <li><a href="business.html">事業内容</a></li>
-        <li><a href="contact.html">お問い合わせ</a></li>
+        <li><a href="apps.html">アプリ紹介</a></li> <li><a href="contact.html">お問い合わせ</a></li>
       </ul>
     </nav>
   </div>
@@ -207,6 +218,7 @@
       <h2 class="section-title">Media & News</h2>
       <div style="text-align: center;">
         <p>最新情報は公式SNSやYouTubeで発信しています。</p>
+        
         <div class="media-links">
           <a href="https://www.youtube.com/@CLPmedia-p6m" target="_blank" class="media-btn youtube">
             <i class="fa-brands fa-youtube"></i> YouTube (CLP media)
@@ -215,6 +227,7 @@
             <i class="fa-brands fa-x-twitter"></i> 公式X (Twitter)
           </a>
         </div>
+
         <div style="margin-top: 30px;">
           <a href="news.html" style="text-decoration: underline;">お知らせ一覧を見る &rarr;</a>
         </div>
@@ -235,6 +248,7 @@
         <nav class="footer-nav" style="display: flex; flex-direction: column; gap: 10px;">
           <a href="about.html">会社概要</a>
           <a href="business.html">事業内容</a>
+          <a href="apps.html">アプリ紹介</a>
           <a href="contact.html">お問い合わせ</a>
           <a href="privacy.html">プライバシーポリシー</a>
         </nav>
