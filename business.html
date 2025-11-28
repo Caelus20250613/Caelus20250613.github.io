@@ -1,102 +1,193 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7C96BB0F4M');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>事業内容 | 合同会社カエルスパートナーズ</title>
-  <meta name="description" content="合同会社カエルスパートナーズの事業内容。不動産投資・運用、投資活動、出版・メディア、AI・教育支援など。">
-  <link rel="stylesheet" href="assets/css/style.css">
-<!-- Favicon -->
-<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48.png">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta name="description" content="合同会社カエルスパートナーズの事業内容。不動産投資・運用、投資活動、メディア運営、AI・教育支援など。">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- OGP / SNS共有 -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="合同会社カエルスパートナーズ">
-<meta property="og:title" content="合同会社カエルスパートナーズ">
-<meta property="og:description" content="不動産・投資・AI・教育で価値を創る。CLP media も運営しています。">
-<meta property="og:image" content="assets/img/ogp.png">
-<meta property="og:url" content="https://caelus20250613.github.io/">
-<meta name="twitter:card" content="summary_large_image"></head>
+  <style>
+    /* 共通設定 */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* ページタイトルエリア */
+    .page-header { background: var(--primary-color); color: var(--white); text-align: center; padding: 60px 20px; margin-bottom: 60px; }
+    .page-header h2 { margin: 0; font-size: 2rem; }
+    .page-header p { opacity: 0.8; margin-top: 10px; }
+
+    /* 事業内容グリッド */
+    .business-intro { text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem; }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 幅に応じて自動で2列/1列に */
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      border-top: 4px solid var(--accent-color);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+    
+    .icon-box {
+      width: 60px;
+      height: 60px;
+      background: #eff6ff;
+      color: var(--accent-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .service-card h3 { margin: 0 0 15px; color: var(--primary-color); font-size: 1.4rem; }
+    .service-card p { color: #64748b; margin-bottom: 0; }
+
+    .note { font-size: 0.85rem; color: #94a3b8; text-align: right; margin-top: 20px; }
+
+    /* フッター */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
 <body>
-  <!-- ヘッダー -->
-  <header>
-    <div class="container">
-      <h1>合同会社カエルスパートナーズ</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">会社概要</a></li>
-          <li><a class="active" href="business.html">事業内容</a></li>
-          <li><a href="media.html">メディア</a></li>
-          <li><a href="contact.html">お問い合わせ</a></li>
-          <li><a href="news.html">お知らせ</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <!-- メイン -->
-  <main class="container">
-    <h2>事業内容</h2>
-    <p>合同会社カエルスパートナーズは、不動産・投資・教育・AIを軸に、持続可能な事業を展開しています。</p>
+<header>
+  <div class="container">
+    <h1><a href="index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">会社概要</a></li>
+        <li><a href="business.html" style="color: var(--accent-color);">事業内容</a></li> <li><a href="apps.html">アプリ紹介</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <div class="cards">
-      <section class="card">
-        <h3>不動産</h3>
-        <p>戸建・集合住宅の企画、新築、保有、運用。  
-        2026年以降、5棟10室規模の新築不動産プロジェクトを順次展開予定。</p>
-      </section>
+<div class="page-header">
+  <div class="container">
+    <h2>Our Business</h2>
+    <p>事業内容について</p>
+  </div>
+</div>
 
-      <section class="card">
-        <h3>投資</h3>
-        <p>国内外の株式、投資信託、暗号資産などの分散投資。  
-        また、企業やコンテンツへの投資機会も積極的に模索しています。</p>
-      </section>
+<main class="container">
+  <p class="business-intro">
+    合同会社カエルスパートナーズは、不動産・投資・教育・AIを軸に、<br>
+    変化の激しい時代においても持続可能な価値を提供する事業を展開しています。
+  </p>
 
-      <section class="card">
-        <h3>出版・メディア</h3>
-        <p>YouTubeチャンネル「CLP media」を中核に、情報をシェアしながら学びを深める活動を展開。  
-        将来的には出版やオンライン講座制作も予定しています。</p>
-      </section>
+  <div class="services-grid">
+    <section class="service-card">
+      <div class="icon-box"><i class="fa-solid fa-building"></i></div>
+      <h3>不動産事業</h3>
+      <p>
+        戸建・集合住宅の企画、新築、保有、運用までを一貫して行います。<br>
+        2026年以降、5棟10室規模の新築不動産プロジェクトを順次展開予定です。
+      </p>
+    </section>
 
-      <section class="card">
-        <h3>AI活用・教育支援</h3>
-        <p>AIツールの活用支援、教育移住に関する情報提供、学習プログラムの共同開発。  
-        次世代の学びと働き方に寄与します。</p>
-      </section>
-    </div>
+    <section class="service-card">
+      <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
+      <h3>投資・資産運用</h3>
+      <p>
+        国内外の株式、投資信託、暗号資産などへの分散投資を行い、強固な財務基盤を構築。<br>
+        また、有望なベンチャー企業やコンテンツへの直接投資機会も積極的に模索しています。
+      </p>
+    </section>
 
-    <p class="note">※ 上記は一部の計画を含みます。詳細は随時更新します。</p>
-  </main>
+    <section class="service-card">
+      <div class="icon-box"><i class="fa-brands fa-youtube"></i></div>
+      <h3>メディア・出版</h3>
+      <p>
+        YouTubeチャンネル「CLP media」を中核に、情報をオープンにシェアしながら学びを深める活動を展開。<br>
+        将来的には電子出版やオンライン講座の制作・配信も予定しています。
+      </p>
+    </section>
 
-  <!-- フッター -->
+    <section class="service-card">
+      <div class="icon-box"><i class="fa-solid fa-robot"></i></div>
+      <h3>AI活用・教育支援</h3>
+      <p>
+        業務効率化のためのAIツール導入支援や、教育移住に関する情報提供、学習プログラムの共同開発。<br>
+        テクノロジーを活用し、次世代の「学び」と「働き方」の改革に寄与します。
+      </p>
+    </section>
+  </div>
+
+  <p class="note">※ 上記は一部の計画を含みます。詳細は随時更新します。</p>
+</main>
+
 <footer>
   <div class="container">
-    <p><strong>合同会社カエルスパートナーズ</strong></p>
-    <p>〒770-0944 徳島県徳島市南昭和町</p>
-    <p>メール：<a href="mailto:info@caeluslab-partners.com">info@caeluslab-partners.com</a></p>
-    <nav class="footer-nav">
-      <a href="about.html">会社概要</a> |
-      <a href="business.html">事業内容</a> |
-      <a href="contact.html">お問い合わせ</a> |
-      <a href="privacy.html">プライバシーポリシー</a>
-    </nav>
-    <p>公式X：<a href="https://x.com/caelus_partners" target="_blank" rel="noopener">@caelus_partners</a>　
-YouTube：<a href="https://www.youtube.com/@CLPmedia-p6m" target="_blank" rel="noopener">CLP media</a></p>
-    <p>&copy; 2025 合同会社カエルスパートナーズ</p>
+    <div class="footer-content">
+      <div>
+        <strong>合同会社カエルスパートナーズ</strong>
+        <p>〒770-0944 徳島県徳島市南昭和町</p>
+        <p>Email: info@caeluslab-partners.com</p>
+      </div>
+      <div>
+        <nav class="footer-nav">
+          <a href="about.html">会社概要</a>
+          <a href="business.html">事業内容</a>
+          <a href="apps.html">アプリ紹介</a>
+          <a href="contact.html">お問い合わせ</a>
+        </nav>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
   </div>
 </footer>
+
 </body>
 </html>
