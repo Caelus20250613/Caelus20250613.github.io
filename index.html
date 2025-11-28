@@ -35,11 +35,16 @@
       --white: #ffffff;
     }
     
+    html {
+      scroll-behavior: smooth; /* スムーズスクロール */
+    }
+
     body {
       margin: 0;
       font-family: 'Noto Sans JP', sans-serif;
       color: var(--text-color);
       line-height: 1.6;
+      overflow-x: hidden; /* 横スクロール防止 */
     }
 
     a { text-decoration: none; color: inherit; transition: 0.3s; }
@@ -48,11 +53,13 @@
 
     /* ヘッダー */
     header {
-      background: var(--white);
+      background: rgba(255, 255, 255, 0.95); /* 少し透過 */
+      backdrop-filter: blur(10px); /* すりガラス効果 */
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       position: sticky;
       top: 0;
       z-index: 1000;
+      transition: all 0.3s ease;
     }
     header .container {
       display: flex;
@@ -64,35 +71,90 @@
     
     /* PC用メニュー */
     header nav ul { display: flex; gap: 20px; flex-wrap: wrap; }
-    header nav a { font-size: 0.9rem; font-weight: 500; color: var(--text-color); }
+    header nav a { 
+      font-size: 0.9rem; 
+      font-weight: 500; 
+      color: var(--text-color); 
+      position: relative;
+    }
+    /* メニューホバー時の下線アニメーション */
+    header nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--accent-color);
+      transition: width 0.3s ease;
+    }
     header nav a:hover { color: var(--accent-color); }
+    header nav a:hover::after { width: 100%; }
     
     @media (max-width: 900px) {
-      header nav ul { display: none; } /* スマホ・タブレットではメニュー非表示（必要ならハンバーガーメニュー等を追加） */
+      header nav ul { display: none; }
       header h1 { font-size: 1rem; }
     }
 
-    /* メインビジュアル (Hero) */
+    /* メインビジュアル (Hero) - 動きのある背景 */
     .hero {
       height: 80vh;
       min-height: 500px;
-      /* 仮画像 */
-      background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80');
-      background-size: cover;
-      background-position: center;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: var(--white);
       padding: 0 20px;
+      overflow: hidden;
     }
+
+    /* 背景画像を疑似要素にしてズームアニメーションさせる */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      animation: bgZoom 20s infinite alternate; /* ゆっくり拡大縮小 */
+    }
+
+    @keyframes bgZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+
+    /* Hero内のテキストアニメーション初期状態 */
+    .hero-content {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUpHero 1s ease-out forwards;
+    }
+    .hero-content p {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUpHero 1s ease-out 0.3s forwards; /* 0.3秒遅れ */
+    }
+    .hero-content .btn {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUpHero 1s ease-out 0.6s forwards; /* 0.6秒遅れ */
+    }
+
+    @keyframes fadeUpHero {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .hero h2 {
       font-size: 2.5rem;
       margin-bottom: 20px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
     .hero p { font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; }
+    
     .btn {
       display: inline-block;
       padding: 12px 30px;
@@ -100,13 +162,39 @@
       color: var(--white);
       border-radius: 50px;
       font-weight: bold;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); /* 光彩 */
+      transition: 0.3s;
     }
-    .btn:hover { background: #2563eb; transform: translateY(-2px); }
+    .btn:hover { 
+      background: #2563eb; 
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+    }
 
     /* セクション共通 */
     .section { padding: 80px 0; }
-    .section-title { text-align: center; font-size: 2rem; margin-bottom: 50px; color: var(--primary-color); }
+    .section-title { 
+      text-align: center; 
+      font-size: 2rem; 
+      margin-bottom: 50px; 
+      color: var(--primary-color);
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    
     .bg-light { background: var(--bg-light); }
+
+    /* スクロールアニメーション用クラス */
+    .js-scroll-trigger {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); /* 自然な慣性 */
+    }
+    .js-scroll-trigger.is-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* 事業内容カード */
     .features-grid {
@@ -120,13 +208,26 @@
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.05);
       text-align: center;
-      transition: 0.3s;
+      transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid transparent;
     }
-    .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
-    .feature-icon { font-size: 3rem; color: var(--accent-color); margin-bottom: 20px; }
+    .feature-card:hover { 
+      transform: translateY(-10px); 
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      border-color: rgba(59, 130, 246, 0.1);
+    }
+    .feature-icon { 
+      font-size: 3rem; 
+      color: var(--accent-color); 
+      margin-bottom: 20px;
+      transition: transform 0.4s;
+    }
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
     .feature-card h3 { margin-bottom: 15px; color: var(--primary-color); }
 
-    /* アプリ紹介への誘導（追加） */
+    /* アプリ紹介への誘導 */
     .app-teaser {
       text-align: center;
       margin-top: 50px;
@@ -135,6 +236,7 @@
       color: var(--accent-color);
       font-weight: bold;
       text-decoration: underline;
+      position: relative;
     }
 
     /* メディア・お知らせボタン */
@@ -162,13 +264,13 @@
     }
     .media-btn.youtube { color: #ff0000; border-color: #ff0000; }
     .media-btn.x { color: #000; border-color: #000; }
-    .media-btn:hover { background: #f9f9f9; transform: translateY(-2px); }
+    .media-btn:hover { background: #f9f9f9; transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 
     /* フッター */
     footer { background: var(--primary-color); color: #94a3b8; padding: 50px 0 20px; font-size: 0.9rem; }
     footer strong { color: var(--white); font-size: 1.1rem; display: block; margin-bottom: 15px; }
-    footer a { color: #cbd5e1; }
-    footer a:hover { color: var(--white); }
+    footer a { color: #cbd5e1; transition: color 0.3s; }
+    footer a:hover { color: var(--white); text-decoration: underline; }
     .footer-nav { margin: 20px 0; display: flex; flex-wrap: wrap; gap: 15px; }
     .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
 
@@ -199,7 +301,7 @@
 
 <main>
   <section class="hero">
-    <div class="container">
+    <div class="container hero-content">
       <h2>不動産 × 投資 × AIで<br>徳島から未来を創る</h2>
       <p>合同会社カエルスパートナーズは、テクノロジーと資産運用の力で<br>新しい教育と価値を提供します。</p>
       <a class="btn" href="about.html">私たちについて</a>
@@ -208,23 +310,23 @@
 
   <section class="section bg-light">
     <div class="container">
-      <h2 class="section-title">Service</h2>
+      <h2 class="section-title js-scroll-trigger">Service</h2>
       <div class="features-grid">
-        <div class="feature-card">
+        <div class="feature-card js-scroll-trigger">
           <a href="business.html">
             <div class="feature-icon"><i class="fa-solid fa-building"></i></div>
             <h3>不動産事業</h3>
             <p>持続可能な資産形成をサポート。地域に根ざした不動産活用と管理を行います。</p>
           </a>
         </div>
-        <div class="feature-card">
+        <div class="feature-card js-scroll-trigger" style="transition-delay: 0.1s;">
           <a href="business.html">
             <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
             <h3>投資・資産運用</h3>
             <p>長期的な視点での投資戦略を提案。確かなリターンを目指した運用を支援します。</p>
           </a>
         </div>
-        <div class="feature-card">
+        <div class="feature-card js-scroll-trigger" style="transition-delay: 0.2s;">
           <a href="apps.html">
             <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
             <h3>AI・アプリ開発</h3>
@@ -233,7 +335,7 @@
         </div>
       </div>
       
-      <div class="app-teaser">
+      <div class="app-teaser js-scroll-trigger">
         <p>自社開発アプリケーションの詳細は <a href="apps.html">アプリ紹介ページ</a> をご覧ください。</p>
       </div>
     </div>
@@ -241,15 +343,15 @@
 
   <section class="section">
     <div class="container">
-      <h2 class="section-title">Media & News</h2>
-      <div style="text-align: center;">
+      <h2 class="section-title js-scroll-trigger">Media & News</h2>
+      <div style="text-align: center;" class="js-scroll-trigger">
         <p>YouTubeチャンネル「CLP media」での発信や、最新のお知らせ。</p>
         
         <div class="media-links">
-          <a href="media.html" class="media-btn youtube">
+          <a href="media.html" class="media-btn youtube js-scroll-trigger" style="transition-delay: 0.1s;">
             <i class="fa-brands fa-youtube"></i> メディア (動画一覧)
           </a>
-          <a href="news.html" class="media-btn x">
+          <a href="news.html" class="media-btn x js-scroll-trigger" style="transition-delay: 0.2s;">
             <i class="fa-regular fa-newspaper"></i> お知らせ一覧
           </a>
         </div>
@@ -285,6 +387,37 @@
     </div>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // 監視ターゲットの取得
+    const targets = document.querySelectorAll('.js-scroll-trigger');
+
+    // オプション設定
+    const options = {
+      root: null, // ビューポートをルートとする
+      rootMargin: "0px", // マージンなし
+      threshold: 0.15 // 要素が15%見えたら発火
+    };
+
+    // Intersection Observerの定義
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // 画面内に入ったらクラスを付与
+          entry.target.classList.add('is-active');
+          // 一度発火したら監視をやめる（パフォーマンス向上）
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    // 各要素の監視を開始
+    targets.forEach(target => {
+      observer.observe(target);
+    });
+  });
+</script>
 
 </body>
 </html>
