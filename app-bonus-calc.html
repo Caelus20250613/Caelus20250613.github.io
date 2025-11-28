@@ -25,6 +25,7 @@
       --text-color: #333;
       --bg-light: #f8fafc;
       --white: #ffffff;
+      --alert-color: #ef4444;
     }
     body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
     a { text-decoration: none; color: inherit; transition: 0.3s; }
@@ -82,21 +83,55 @@
       top: 2px;
     }
 
-    /* アプリ起動ボタン */
-    .launch-area { text-align: center; margin-top: 40px; padding: 40px; background: #eff6ff; border-radius: 10px; }
+    /* キャンペーンエリア */
+    .campaign-box {
+      border: 3px solid var(--alert-color);
+      background: #fef2f2;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .campaign-badge {
+      background: var(--alert-color);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+    .campaign-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin: 15px 0;
+    }
+    .campaign-price span {
+      color: var(--alert-color);
+      font-size: 2rem;
+    }
+    .campaign-price .strike {
+      text-decoration: line-through;
+      font-size: 1rem;
+      color: #64748b;
+      margin-right: 10px;
+    }
+
+    /* お問い合わせボタン */
     .launch-btn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       padding: 15px 40px;
-      background: var(--accent-color);
+      background: var(--primary-color);
       color: white;
       border-radius: 50px;
       font-weight: bold;
-      font-size: 1.2rem;
-      box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0, 0.2);
     }
-    .launch-btn:hover { background: #2563eb; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4); }
+    .launch-btn:hover { background: #334155; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0, 0.3); }
 
     footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; text-align: center; font-size: 0.9rem; }
   </style>
@@ -144,12 +179,25 @@
       <li><strong>CSVエクスポート:</strong> 計算結果をデータとして出力可能。</li>
     </ul>
 
-    <div class="launch-area">
-      <p style="margin-bottom: 20px; font-weight: bold;">今すぐ利用を開始する</p>
-      <a href="https://bonus-calculater.web.app/" target="_blank" class="launch-btn">
-        <i class="fa-solid fa-up-right-from-square"></i> アプリを開く
+    <div class="campaign-box">
+      <div class="campaign-badge">現在 モニター募集中</div>
+      <h3>先着10名様限定キャンペーン</h3>
+      <p>モニターとしてご意見をいただける方に限り、以下の特別価格でご提供します。</p>
+      
+      <div class="campaign-price">
+        <div><span class="strike">初期登録料</span> <i class="fa-solid fa-arrow-right"></i> <span>0円</span></div>
+        <div style="margin-top:5px;"><span class="strike">月額管理費 5,000円</span> <i class="fa-solid fa-arrow-right"></i> <span>0円</span></div>
+      </div>
+
+      <p style="font-size: 0.9rem; margin-bottom: 25px;">
+        ※ 定員に達し次第、本キャンペーンは終了いたします。
+      </p>
+
+      <a href="contact.html" class="launch-btn">
+        <i class="fa-regular fa-envelope"></i> モニターに応募する
       </a>
     </div>
+
   </div>
 
 </main>
