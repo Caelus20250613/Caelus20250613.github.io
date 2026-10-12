@@ -45,32 +45,36 @@
     .page-header h2 { margin: 0; font-size: 2rem; }
     .page-header p { opacity: 0.8; margin-top: 10px; }
 
-    .app-section { padding: 60px 0; }
-    
+    .app-section { padding: 60px 20px; }
+
+    .app-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+    @media (min-width: 768px) { .app-grid { grid-template-columns: repeat(2, 1fr); } }
+
     .app-card {
       background: var(--white);
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-      margin-bottom: 50px;
       display: flex;
       flex-direction: column;
+      min-width: 0;
       transition: transform 0.3s;
     }
     .app-card:hover { transform: translateY(-5px); }
-    @media (min-width: 768px) { .app-card { flex-direction: row; } }
 
     .app-image {
       background: #e2e8f0;
-      flex: 1;
-      min-height: 250px;
+      height: 140px;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .app-image i { font-size: 5rem; color: #94a3b8; }
+    .app-image i { font-size: 3.5rem; color: #94a3b8; }
 
-    .app-content { flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+    .app-content { flex: 1; padding: 30px; display: flex; flex-direction: column; }
+
+    .app-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 15px; }
 
     .app-tag {
       display: inline-block;
@@ -80,12 +84,23 @@
       border-radius: 20px;
       font-size: 0.8rem;
       font-weight: bold;
-      margin-bottom: 15px;
-      align-self: flex-start;
     }
 
-    .app-content h3 { font-size: 1.8rem; margin: 0 0 15px 0; color: var(--primary-color); }
-    .app-content p { color: #64748b; margin-bottom: 25px; }
+    .app-badge {
+      display: inline-block;
+      background: var(--white);
+      color: #64748b;
+      border: 1px solid #cbd5e1;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .app-content h3 { font-size: 1.4rem; line-height: 1.4; margin: 0 0 12px 0; color: var(--primary-color); overflow-wrap: anywhere; }
+    .app-content p { color: #64748b; margin: 0 0 25px 0; overflow-wrap: anywhere; }
+
+    .app-action { margin-top: auto; }
 
     /* 詳細ボタン */
     .detail-btn {
@@ -100,8 +115,12 @@
       border-radius: 8px;
       font-weight: bold;
       width: fit-content;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     .detail-btn:hover { background: var(--accent-color); color: var(--white); }
+
+    .app-note { color: #64748b; font-size: 0.85rem; margin: 30px 0 0 0; }
 
     /* フッター */
     footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; text-align: center; font-size: 0.9rem; margin-top: auto; }
@@ -127,49 +146,144 @@
 <div class="page-header">
   <div class="container">
     <h2>Applications</h2>
-    <p>自社開発のWebアプリケーション一覧</p>
+    <p>自社開発のアプリケーション一覧</p>
   </div>
 </div>
 
 <main class="container app-section">
 
-  <div class="app-card">
-    <div class="app-image">
-      <i class="fa-solid fa-folder-open"></i>
-    </div>
-    <div class="app-content">
-      <span class="app-tag">業務効率化</span>
-      <h3>Document Manager</h3>
-      <p>
-        ドキュメント管理をシンプルかつ安全に。<br>
-        クラウド上でファイルを一元管理し、必要な情報へスムーズにアクセスできるWebアプリケーションです。
-      </p>
-      <div>
-        <a href="app-doc-manager.html" class="detail-btn">
-          詳細・使い方を見る <i class="fa-solid fa-arrow-right"></i>
-        </a>
+  <div class="app-grid">
+
+    <div class="app-card">
+      <div class="app-image">
+        <i class="fa-solid fa-folder-open"></i>
+      </div>
+      <div class="app-content">
+        <div class="app-meta">
+          <span class="app-tag">業務効率化</span>
+        </div>
+        <h3>Document Manager</h3>
+        <p>
+          ドキュメント管理をシンプルかつ安全に。<br>
+          クラウド上でファイルを一元管理し、必要な情報へスムーズにアクセスできるWebアプリケーションです。
+        </p>
+        <div class="app-action">
+          <a href="app-doc-manager.html" class="detail-btn">
+            詳細・使い方を見る <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
     </div>
+
+    <div class="app-card">
+      <div class="app-image">
+        <i class="fa-solid fa-calculator"></i>
+      </div>
+      <div class="app-content">
+        <div class="app-meta">
+          <span class="app-tag">人事・経理DX</span>
+        </div>
+        <h3>Bonus Calculator</h3>
+        <p>
+          賞与計算シミュレーター。<br>
+          複雑な条件設定や評価係数を入力するだけで、支給額を瞬時に試算。人事評価や予算管理をサポートします。
+        </p>
+        <div class="app-action">
+          <a href="app-bonus-calc.html" class="detail-btn">
+            詳細・使い方を見る <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-image">
+        <i class="fa-solid fa-route"></i>
+      </div>
+      <div class="app-content">
+        <div class="app-meta">
+          <span class="app-tag">人事・経理DX</span>
+        </div>
+        <h3>出張旅費計算</h3>
+        <p>
+          旅費規程に基づく出張費の計算と申請管理。<br>
+          ブラウザで使えます。
+        </p>
+        <div class="app-action">
+          <a href="contact.html" class="detail-btn">
+            お問い合わせ <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-image">
+        <i class="fa-solid fa-file-invoice"></i>
+      </div>
+      <div class="app-content">
+        <div class="app-meta">
+          <span class="app-tag">業務効率化</span>
+        </div>
+        <h3>テナント請求書</h3>
+        <p>
+          テナント向けの水道光熱費の請求書を作成・管理します。
+        </p>
+        <div class="app-action">
+          <a href="contact.html" class="detail-btn">
+            お問い合わせ <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-image">
+        <i class="fa-solid fa-boxes-stacked"></i>
+      </div>
+      <div class="app-content">
+        <div class="app-meta">
+          <span class="app-tag">歯科医院向け</span>
+          <span class="app-badge">開発中</span>
+        </div>
+        <h3>材料管理・発注・棚卸し</h3>
+        <p>
+          歯科医院の材料の在庫・発注・入荷・棚卸しを、院内のパソコンとブラウザで管理。<br>
+          患者情報は扱いません。
+        </p>
+        <div class="app-action">
+          <a href="contact.html" class="detail-btn">
+            お問い合わせ <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-image">
+        <i class="fa-solid fa-chair"></i>
+      </div>
+      <div class="app-content">
+        <div class="app-meta">
+          <span class="app-tag">歯科医院向け</span>
+          <span class="app-badge">開発中</span>
+        </div>
+        <h3>チェア状況ボード</h3>
+        <p>
+          院内のiPadでチェアの状況を共有し、スタッフへ通知。<br>
+          患者さんの情報は表示しません。
+        </p>
+        <div class="app-action">
+          <a href="contact.html" class="detail-btn">
+            お問い合わせ <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <div class="app-card">
-    <div class="app-image">
-      <i class="fa-solid fa-calculator"></i>
-    </div>
-    <div class="app-content">
-      <span class="app-tag">人事・経理DX</span>
-      <h3>Bonus Calculator</h3>
-      <p>
-        賞与計算シミュレーター。<br>
-        複雑な条件設定や評価係数を入力するだけで、支給額を瞬時に試算。人事評価や予算管理をサポートします。
-      </p>
-      <div>
-        <a href="app-bonus-calc.html" class="detail-btn">
-          詳細・使い方を見る <i class="fa-solid fa-arrow-right"></i>
-        </a>
-      </div>
-    </div>
-  </div>
+  <p class="app-note">「開発中」の表示があるものは、現在開発を進めているアプリです。内容は変更になる場合があります。</p>
 
 </main>
 
