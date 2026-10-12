@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>チェア状況ボード | 合同会社カエルスパートナーズ</title>
+
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定 */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+
+    /* 詳細ページ独自 */
+    .app-hero {
+      background: var(--primary-color);
+      color: var(--white);
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .app-hero h2 { font-size: 2.5rem; margin-bottom: 20px; }
+    .app-hero p { font-size: 1.1rem; opacity: 0.9; }
+
+    main.container { padding-top: 40px; }
+
+    .content-section { padding: 60px 0; background: var(--white); margin-bottom: 30px; border-radius: 10px; }
+
+    .feature-list li {
+      margin-bottom: 15px;
+      padding-left: 25px;
+      position: relative;
+    }
+    .feature-list li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: var(--accent-color);
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+
+    /* お問い合わせエリア */
+    .contact-area {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .dev-note {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin: 0 0 20px;
+    }
+
+
+    /* お問い合わせボタン */
+    .launch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 40px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0, 0.2);
+    }
+    .launch-btn:hover { background: #334155; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0, 0.3); }
+
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; text-align: center; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="apps.html"><i class="fa-solid fa-arrow-left"></i> アプリ一覧に戻る</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="app-hero">
+  <div class="container">
+    <span style="background:rgba(255,255,255,0.1); padding:5px 15px; border-radius:20px; font-size:0.9rem;">歯科医院向け</span>
+    <h2>チェア状況ボード</h2>
+    <p>「確認をお願いします」を、院内のiPadへ一斉に。</p>
+  </div>
+</div>
+
+<main class="container">
+
+  <div class="content-section container">
+    <h3>概要</h3>
+    <p>
+      チェア状況ボードは、診療室からの確認の依頼を院内のiPadへ一斉に知らせ、対応待ちのチェアを一覧で見られるiPadアプリです。<br>
+      口頭で探して回らなくても、どのチェアがどれだけ待っているかがわかります。
+    </p>
+
+    <h3 style="margin-top: 40px;">主な機能</h3>
+    <ul class="feature-list">
+      <li><strong>2タップで依頼:</strong> 依頼ボタンを押してチェアを選ぶだけで、確認の依頼を出せます。</li>
+      <li><strong>院内のiPadへ一斉に通知:</strong> 依頼は登録済みのすべてのiPadへ通知を送り、画面がロックされていても通知でお知らせします。</li>
+      <li><strong>対応待ちの一覧:</strong> 対応待ちのチェアを、待ち時間の長い順に経過時間つきで表示。設定した時間を超えると赤く表示します。</li>
+      <li><strong>「向かいます」で対応中を共有:</strong> 対応する人がボタンを押すと、どの端末が対応中かがすべてのiPadに表示されます。</li>
+      <li><strong>完了で一覧から外れる:</strong> 対応が終わったら「完了」を押すと、一覧から外れます。</li>
+    </ul>
+
+    <h3 style="margin-top: 40px;">ご利用環境</h3>
+    <ul class="feature-list">
+      <li>iPadと、院内に置く中継用のMac 1台で動きます。</li>
+      <li>画面がロックされているiPadへの通知には、インターネット接続が必要です。</li>
+      <li>院内のネットワークの中で使うアプリで、院外からの閲覧や操作には対応していません。</li>
+      <li>患者さんの氏名やカルテ番号などの患者情報は、扱いません。保存も送信もしません。</li>
+    </ul>
+
+    <div class="contact-area">
+      <p class="dev-note">このアプリは現在開発中です。内容は変更になる場合があります。</p>
+      <a href="contact.html" class="launch-btn">
+        <i class="fa-regular fa-envelope"></i> お問い合わせ
+      </a>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Caelus Partners LLC.</p>
+  </div>
+</footer>
+
+</body>
+</html>

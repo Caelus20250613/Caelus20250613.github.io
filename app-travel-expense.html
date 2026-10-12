@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>出張旅費計算 | 合同会社カエルスパートナーズ</title>
+
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定 */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+
+    /* 詳細ページ独自 */
+    .app-hero {
+      background: var(--primary-color);
+      color: var(--white);
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .app-hero h2 { font-size: 2.5rem; margin-bottom: 20px; }
+    .app-hero p { font-size: 1.1rem; opacity: 0.9; }
+
+    main.container { padding-top: 40px; }
+
+    .content-section { padding: 60px 0; background: var(--white); margin-bottom: 30px; border-radius: 10px; }
+
+    .feature-list li {
+      margin-bottom: 15px;
+      padding-left: 25px;
+      position: relative;
+    }
+    .feature-list li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: var(--accent-color);
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+
+    /* お問い合わせエリア */
+    .contact-area {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    /* お問い合わせボタン */
+    .launch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 40px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0, 0.2);
+    }
+    .launch-btn:hover { background: #334155; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0, 0.3); }
+
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; text-align: center; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="apps.html"><i class="fa-solid fa-arrow-left"></i> アプリ一覧に戻る</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="app-hero">
+  <div class="container">
+    <span style="background:rgba(255,255,255,0.1); padding:5px 15px; border-radius:20px; font-size:0.9rem;">人事・経理DX</span>
+    <h2>出張旅費計算</h2>
+    <p>旅費規程どおりの計算を、入力するだけで。</p>
+  </div>
+</div>
+
+<main class="container">
+
+  <div class="content-section container">
+    <h3>概要</h3>
+    <p>
+      出張旅費計算は、旅費規程に基づいて出張費を計算し、申請の履歴を管理するブラウザアプリです。<br>
+      国内出張と海外出張の両方に対応し、日当・宿泊料を規程の区分とレートに沿って計算し、交通費とあわせて集計します。<br>
+      日当・宿泊料などのレートは、あらかじめ組み込んだ規程の値を使います。
+    </p>
+
+    <h3 style="margin-top: 40px;">主な機能</h3>
+    <ul class="feature-list">
+      <li><strong>海外出張の計算:</strong> 地域区分に応じた日当・宿泊料を自動計算。国名から地域区分を自動で判定します（未登録の国は手動で選びます）。</li>
+      <li><strong>国内出張の計算:</strong> 日帰り・宿泊の出張区分と、役職別の日当・宿泊料レートで計算します。</li>
+      <li><strong>公私混在の按分:</strong> 業務にあたる日数を入力すると、交通費と支度料を業務の割合で按分します。</li>
+      <li><strong>複数の参加者:</strong> 1件の申請に複数名を追加でき、参加者ごとの費用と全員分の合計を集計します。</li>
+      <li><strong>履歴の保存と再利用:</strong> 計算結果を保存し、過去の申請を読み込んだり複製したりできます。</li>
+      <li><strong>出張報告書のドラフト:</strong> 計算結果から印刷用の出張報告書を作成。ブラウザの印刷機能でPDFに保存できます。</li>
+      <li><strong>CSV・JSON出力:</strong> 申請の内容をCSVまたはJSONで書き出せます。</li>
+    </ul>
+
+    <div class="contact-area">
+      <a href="contact.html" class="launch-btn">
+        <i class="fa-regular fa-envelope"></i> お問い合わせ
+      </a>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Caelus Partners LLC.</p>
+  </div>
+</footer>
+
+</body>
+</html>
