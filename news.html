@@ -86,7 +86,7 @@
       flex: 1;
     }
     
-    .news-content a {
+    .news-content a, .app-update a {
       color: var(--accent-color);
       text-decoration: underline;
     }
@@ -131,12 +131,28 @@
 <main class="container">
   
   <div class="news-section">
+    <section class="app-update" aria-labelledby="app-update-title">
+      <h3 id="app-update-title">アプリ紹介のご案内</h3>
+      <p>
+        <a href="apps.html">アプリ紹介ページ</a>では、Document Manager・Bonus Calculator に加え、
+        <a href="app-travel-expense.html">出張旅費計算</a>、
+        <a href="app-tenant-billing.html">テナント請求書</a>、
+        <a href="app-wps-converter.html">WPS Converter</a>をご紹介しています。
+        WPS Converter は .wps 文書の Markdown・Word・PDF への一括変換に対応しています。
+      </p>
+      <p>
+        歯科医院向けの<a href="app-dental-stock.html">材料管理・発注・棚卸し</a>と
+        <a href="app-chair-board.html">チェア状況ボード</a>は現在開発中です。内容は変更になる場合があります。
+        材料管理・発注・棚卸しの紹介ページには導入ガイド動画も掲載しています。
+      </p>
+    </section>
+
     <ul class="news-list">
       
       <li class="news-item">
         <time class="news-date" datetime="2025-11-28">2025/11/28</time>
         <span class="news-content">
-          自社開発アプリ「<a href="apps.html">Document Manager</a>」「<a href="apps.html">Bonus Calculator</a>」を公開しました。
+          自社開発アプリ「<a href="app-doc-manager.html">Document Manager</a>」「<a href="app-bonus-calc.html">Bonus Calculator</a>」を公開しました。
         </span>
       </li>
 
