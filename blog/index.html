@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ブログ | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="合同会社カエルスパートナーズのブログ。AI・アプリ開発・投資のニュースを、現場の目線で解説します。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="ブログ | 合同会社カエルスパートナーズ">
+  <meta property="og:description" content="AI・アプリ開発・投資のニュースを、現場の目線で解説します。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;   /* サイト共通の紺（デザインv3の紺 #121E33 と同系） */
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;         /* スカイ（v3パレット） */
+      --chip-text: #075985;
+      --cream: #faf6ee;           /* クリーム（v3パレット） */
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* ページタイトルエリア */
+    .page-header { background: var(--primary-color); color: var(--white); text-align: center; padding: 60px 20px; margin-bottom: 60px; }
+    .page-header h2 { margin: 0; font-size: 2rem; }
+    .page-header p { opacity: 0.8; margin-top: 10px; }
+
+    /* 記事カード一覧 */
+    .post-list { max-width: 800px; margin: 0 auto 60px; display: flex; flex-direction: column; gap: 24px; }
+    .post-card {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      padding: 32px 36px;
+      display: block;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .post-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .post-card h3 { margin: 0 0 10px; font-size: 1.35rem; line-height: 1.5; color: var(--primary-color); }
+    .post-summary { margin: 0 0 14px; color: #475569; font-size: 0.95rem; }
+    .post-more { color: var(--accent-color); font-weight: 700; font-size: 0.9rem; }
+    @media (max-width: 600px) { .post-card { padding: 24px 22px; } .post-card h3 { font-size: 1.15rem; } }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-header">
+  <div class="container">
+    <h2>ブログ</h2>
+    <p>AI・アプリ開発・投資のニュースを、現場の目線で解説します。</p>
+  </div>
+</div>
+
+<main class="container">
+  <div class="post-list">
+
+    <!-- ▼ 記事カード：新しい記事はこのブロックを複製して先頭に追加する ▼ -->
+    <a class="post-card" href="2026-11-10-gemini-omni-video-ai.html">
+      <div class="post-meta">
+        <span class="post-date">2026.11.10</span>
+        <span class="cat-chip">AIニュース</span>
+      </div>
+      <h3>動画AIは「15秒・3割安」に — Google「Gemini Omni 1.2 Flash」一般提供開始</h3>
+      <p class="post-summary">Googleの動画生成・編集AI「Gemini Omni 1.2 Flash」が一般提供を開始しました。最長15秒への延長と、前モデル比3割安の料金が示す「動画づくりのコスト変化」と、現場にとっての意味を整理します。</p>
+      <span class="post-more">記事を読む <i class="fa-solid fa-angle-right"></i></span>
+    </a>
+    <!-- ▲ 記事カードここまで ▲ -->
+
+    <!-- ▼ 次の記事のカード雛形（公開時にコメントを外して使う）
+    <a class="post-card" href="YYYY-MM-DD-slug.html">
+      <div class="post-meta">
+        <span class="post-date">YYYY.MM.DD</span>
+        <span class="cat-chip">カテゴリ</span>
+      </div>
+      <h3>記事タイトル</h3>
+      <p class="post-summary">概要文（1〜2文）。</p>
+      <span class="post-more">記事を読む <i class="fa-solid fa-angle-right"></i></span>
+    </a>
+    ▲ 雛形ここまで ▲ -->
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

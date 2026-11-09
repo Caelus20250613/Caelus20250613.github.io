@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>動画AIは「15秒・3割安」に — Google「Gemini Omni 1.2 Flash」一般提供開始 | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Googleの動画生成・編集AI「Gemini Omni 1.2 Flash」が一般提供を開始しました。最長15秒への延長と、前モデル比3割安の料金が示す「動画づくりのコスト変化」と、現場にとっての意味を整理します。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="動画AIは「15秒・3割安」に — Google「Gemini Omni 1.2 Flash」一般提供開始">
+  <meta property="og:description" content="Googleの動画生成・編集AI「Gemini Omni 1.2 Flash」が一般提供を開始しました。最長15秒への延長と、前モデル比3割安の料金が示す「動画づくりのコスト変化」と、現場にとっての意味を整理します。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-10-gemini-omni-video-ai.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.10</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>動画AIは「15秒・3割安」に — Google「Gemini Omni 1.2 Flash」一般提供開始</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>「動画づくりは、専門の会社に頼むもの」。多くの現場では、今もそれが前提です。撮影して、編集して、修正をやり取りして。1本作るだけでも時間と費用がかかるため、商品紹介やSNSの素材は「作りたいけれど後回し」になりがちでした。とくに中小の事業者にとって、動画は効果が見えにくい割に最初の一歩が重い分野でした。その前提を動かす発表が、11月5日にGoogleからありました。</p>
+
+      <h2>何が変わったか</h2>
+      <p>Googleは、動画生成・編集AI「Gemini Omni 1.2 Flash」の一般提供を開始しました。作れる動画の最長は15秒です。前モデル「Gemini Omni 1.1」の10秒から伸び、3秒から15秒まで、1秒刻みで長さを指定できるようになりました。提供はGemini APIと企業向けサービスが中心で、あわせてGoogle Vidsでは、追加料金なしで15秒の動画生成が使えるようになっています。動画編集ツールのFlowや広告のGoogle Adsなど、既存のサービスへの組み込みも進んでいます。開発者向けの道具だった動画生成が、ふだん使うツールの側へ広がってきた、という点も今回の発表の特徴です。</p>
+
+      <h2>数字の前提を確認する</h2>
+      <p>見出しの「3割安」には、前提があります。比較の対象は前モデル「1.1」で、下がったのはGemini APIの料金です。720pの動画で1秒あたり0.07ドル、前モデルと比べて30％の引き下げとされています。他の解像度でも同程度の引き下げです。「安くなった」という言葉だけで判断せず、何と比べて、どの料金が下がったのかを確認しておくことが大切です。</p>
+
+      <h2>中小の現場にとっての意味</h2>
+      <p>15秒あれば、商品紹介やSNSの広告が、1回の生成で作れます。作るコストが下がれば、これまで外注していた紹介動画やSNS素材を、自社で試しながら作るという選択肢が生まれます。1本あたりの負担が小さいということは、試せる回数が増えるということです。まずは小さく作って反応を見て、直していく。そんな回し方が、中小の現場でも現実的になってきました。もちろん、出来上がりの品質にはばらつきがあり、「作れる」ことと「そのまま使える」ことは別です。それでも、たたき台を自社で用意できるかどうかは、制作会社とのやり取りの進み方も変えていきます。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、動画づくりの担い手が「専門の制作会社」から「現場の担当者」へ、少しずつ移っていくと考えています。ただし、生成した動画の品質を見極めることや、著作権・権利面の確認は、引き続き人の仕事です。AIの道具を現場で「使える形」に整え、その線引きまで含めて届けることが、私たちCLPの仕事です。</p>
+
+      <h2>まとめ</h2>
+      <p>最長15秒への延長と、前モデル比で3割安の料金。今回の発表は、動画AIの性能の競い合いというより、「作るコスト」の変化を示すニュースでした。動画は外注するものから、自社で作れるものへ。その流れの中で、確認すべきことを確認しながら、現場に合った使い方を一緒に考えていきます。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。特定のサービスや銘柄の推奨ではありません。</p>
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Google公式ブログ「Gemini Omni 1.2 Flash: 15-second video and lower pricing」（2026年11月5日）<br>
+      <a href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/" target="_blank" rel="noopener">https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/</a></div>
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
