@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>最強モデルは、チームで使う — Googleが「Gemini 4 Carbon」を一般提供、Antigravityに「/swarm」 | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Googleが最上位モデル「Gemini 4 Carbon」の一般提供を開始しました。同時にプレビューが始まった開発基盤Antigravityの「/swarm」は、1つの指示からAIエージェントのチームを編成する仕組みです。発表の内容と、開発の現場にとっての意味を整理します。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="最強モデルは、チームで使う — Googleが「Gemini 4 Carbon」を一般提供、Antigravityに「/swarm」">
+  <meta property="og:description" content="Googleが最上位モデル「Gemini 4 Carbon」の一般提供を開始しました。同時にプレビューが始まった開発基盤Antigravityの「/swarm」は、1つの指示からAIエージェントのチームを編成する仕組みです。発表の内容と、開発の現場にとっての意味を整理します。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-13-gemini-4-carbon.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.13</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>最強モデルは、チームで使う — Googleが「Gemini 4 Carbon」を一般提供、Antigravityに「/swarm」</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>AIへの仕事の頼み方が、「ひとつの窓口に聞く」から「チームに任せる」へ変わり始めています。その転換を象徴する発表が、11月10日にGoogleからありました。</p>
+
+      <h2>何が発表されたか</h2>
+      <p>Googleは11月10日、同社の最上位モデル「Gemini 4 Carbon」の一般提供を開始しました。位置づけは「Googleで最も強力なモデル」で、サイバーセキュリティ、複雑なナレッジワークやソフトウェア開発、科学的推論といった、時間のかかるエージェント作業に強みを持つと説明されています。提供は、開発者・企業向けに Google AI Studio のAPIと Gemini for Business で始まり、料金は前モデルのArgonと同じ導入価格、100万トークンあたり入力2ドル／出力10ドルです。個人向けにも、Google AI Ultra の加入者を対象に、開発基盤のAntigravity、Geminiアプリ、検索のAIモードへ順次展開されています。</p>
+
+      <h2>「/swarm」— AIのチーム編成</h2>
+      <p>同時にプレビューが始まったのが、開発支援基盤「Antigravity」の新コマンド「/swarm」です。1つの指示を受けると、会話そのものが「コーディネーター」となり、作業を重ならない単位に分けて、名前付きのエージェント（ワーカー）を割り当てます。各ワーカーの担当や進捗は共有ボードに公開され、変更内容をテストで確かめる「検証役」のエージェントも加わります。設計や監査のような深い推論が要る役割には Carbon を、並行する作業には軽いモデルを、といった役割分担も提案されています。待機中のメンバーはトークンを消費せずに眠る設計で、ムダを抑えながら大きな仕事を並行して進める発想です。</p>
+
+      <h2>数字の前提を確認する</h2>
+      <p>Googleは、Carbonが実務系の外部ベンチマーク複数で首位に立ち、次点の外部モデルと比べてタスクあたりのコストが半分以下だったと発表しています。ただし、これはGoogleが公表した比較であり、ベンチマークごとに条件は異なります。「最も強力」という表現も含め、発表の主張として受け止め、自分の仕事で試して比べるのが現実的です。</p>
+
+      <h2>中小の現場にとっての意味</h2>
+      <p>開発の現場で効いてくるのは、モデルの賢さそのものより「大きな仕事をどう分けて任せるか」です。/swarm が示したのは、AIへの頼み方が「聞いて、答えてもらう」から、「分担させ、検証役まで付けて、進捗を見ながら任せる」へ移る流れです。これは人のチームの運営に近づいているということでもあります。任せ方を設計できるかどうかが、これからのAI活用の差になります。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、この「チームで使う」発想に注目しています。CLPの開発でも、設計・実装・レビューを分けて進めるやり方を取っており、エージェントの編成はその延長にあります。一方で、同時に動くエージェントが増えれば、利用枠の消費も速くなります。任せる範囲とコストの見極めはセットで考える必要があります。道具の進化に合わせて、現場に合った「任せ方の設計」まで整えることが、私たちCLPの仕事です。</p>
+
+      <h2>まとめ</h2>
+      <p>今回の発表は、最上位モデルの更新であると同時に、「AIはチームで使うもの」という新しい前提の提示でした。モデル選びだけでなく、任せ方の設計が問われる時代に入っています。便利さの前提を確認しながら、現場に合った付き合い方を一緒に考えていきます。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。特定のサービスや銘柄の推奨ではありません。</p>
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Google公式ブログ「Gemini 4 Carbon is now available」（2026年11月10日）<br>
+      <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" target="_blank" rel="noopener">https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/</a></div>
+      <div style="margin-top: 10px;">Google Antigravity 公式ドキュメント「Swarm (/swarm)」<br>
+      <a href="https://antigravity.google/docs/swarm" target="_blank" rel="noopener">https://antigravity.google/docs/swarm</a></div>
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
