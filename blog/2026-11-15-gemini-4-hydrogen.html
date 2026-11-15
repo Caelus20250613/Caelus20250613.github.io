@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>速さが主役の新モデル — Googleが「Gemini 4 Hydrogen」を公開、Gemini 4が「全員のもの」に | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Googleが11月12日、速さと効率を主役にした「Gemini 4 Hydrogen」を公開しました。前世代より2.5倍速く、価格は100万トークンあたり入力1.5ドル／出力7.5ドル。最上位モデルとは逆の方向から、日常の仕事を変える発表です。内容と、現場にとっての意味を整理します。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="速さが主役の新モデル — Googleが「Gemini 4 Hydrogen」を公開、Gemini 4が「全員のもの」に">
+  <meta property="og:description" content="Googleが11月12日、速さと効率を主役にした「Gemini 4 Hydrogen」を公開しました。前世代より2.5倍速く、価格は100万トークンあたり入力1.5ドル／出力7.5ドル。最上位モデルとは逆の方向から、日常の仕事を変える発表です。内容と、現場にとっての意味を整理します。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-15-gemini-4-hydrogen.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.15</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>速さが主役の新モデル — Googleが「Gemini 4 Hydrogen」を公開、Gemini 4が「全員のもの」に</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>先日の記事では、Googleの最上位モデル「Gemini 4 Carbon」を取り上げました。今日紹介するのは、その対極にあるモデルです。賢さの頂点を競うのではなく、速さと効率で日常の仕事を取りにいく「Gemini 4 Hydrogen」。11月12日に公開されました。</p>
+
+      <h2>何が発表されたか</h2>
+      <p>Hydrogenの位置づけは、「日常のコーディングとエージェント作業のための、速さと効率のモデル」です。今回の発表で、Gemini 4 世代が全員に開かれました。提供先は、開発者向けの Google AI Studio（全プラン）と Gemini API、企業向けの Gemini for Business、一般向けの Gemini アプリと Google 検索、そして開発基盤 Antigravity（Google AI Pro / Ultra 加入者）です。検索では、すべてのユーザーが対象になります。</p>
+
+      <h2>数字で見る変化</h2>
+      <p>Googleの発表によれば、Hydrogenは前世代の 3.8 Flash と比べて、タスクの完了が2.5倍速くなりました（考える深さ「high」の設定）。開発作業のベンチマーク Terminal-Bench 4.1 では57%対18.2%と、正確さも大きく伸びています。もっともらしい作り話をしてしまう頻度は、5分の1以下に減ったとされています。</p>
+      <p>価格は、100万トークンあたり入力1.5ドル／出力7.5ドル。100万トークンまでの文脈長を通して一律で、長く読み込ませても単価が上がりません。最上位の Carbon（導入価格で入力2ドル／出力10ドル）と比べても、日常使いのコストはさらに下がります。</p>
+
+      <h2>「考える深さ」を選べる</h2>
+      <p>Hydrogenには、考える深さ（思考レベル）が4段階あります。low、medium、high（既定）、そして新しい xhigh です。軽い仕事は浅く速く、重い仕事は深く。待つ時間と払う金額を、仕事の重さに合わせて選ぶ設計です。第三者指標の Artificial Analysis Intelligence Index では、high で51と、上位モデルの Argon（50）を上回り、xhigh では54に達したとされています（いずれもGoogle発表）。</p>
+      <p>モデルの使い分けを自動化する仕掛けも出ました。開発基盤 Antigravity の新機能「Orchestrator」は、1つの作業セッションの中で Carbon と Hydrogen を動的に切り替えます。Googleによれば、最上位モデルに近いタスク成功率を保ちながら、利用枠の消費は平均24%少なく、完了は19%速かったといいます（Terminal-Bench 4.0 での結果）。</p>
+
+      <h2>中小の現場にとっての意味</h2>
+      <p>日常のAI利用の大半は、文章の下書き、要約、小さなコード修正、調べものです。ここで効くのは「世界で一番賢い」ことより、「速く返ってくること」と「気兼ねなく何度も使える価格」です。今回の発表は、その日常の側を正面から取りにきたものです。加えて、考える深さを選べるということは、「AIにどれだけ考えさせるか」が、使う側の設計項目になったということでもあります。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、この「使い分け」の流れに注目しています。CLPの開発でも、設計の判断は上位モデル、実装と検証は高速モデルという分担が現実解です。Hydrogenのような速くて安いモデルが賢くなるほど、その分担の下側が広がり、全体のコストは下がります。一方で、ベンチマークの数字はいずれもGoogleの発表に基づくものです。自分の仕事でどれだけ速く、どれだけ正確かは、自分たちのタスクで測って確かめる。それが前提であることは、最上位モデルのときと変わりません。</p>
+
+      <h2>まとめ</h2>
+      <p>Carbonが「最強モデルの更新」だったのに対し、Hydrogenは「日常の標準の更新」です。AIの競争は、賢さの頂点だけでなく、速さ・価格・使い分けの設計へ広がっています。毎日使う道具ほど、この下側の進化が効いてきます。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。特定のサービスや銘柄の推奨ではありません。</p>
+
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Google公式ブログ「Introducing Gemini 4 Hydrogen for Agentic Workflows」（2026年11月12日、11月13日更新）<br>
+      <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/" target="_blank" rel="noopener">https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/</a></div>
+
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
