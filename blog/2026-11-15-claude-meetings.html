@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIが会議に「参加」する時代へ — Anthropicが「Claude Meetings」をベータ公開 | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Anthropicが11月12日、AIがビデオ会議に参加者として加わる「Claude Meetings」のベータ提供を始めました。議事録を取るだけでなく、会議中に質問へ答え、資料やホワイトボードをその場で作ります。発表の内容と、中小の現場にとっての意味を整理します。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="AIが会議に「参加」する時代へ — Anthropicが「Claude Meetings」をベータ公開">
+  <meta property="og:description" content="Anthropicが11月12日、AIがビデオ会議に参加者として加わる「Claude Meetings」のベータ提供を始めました。議事録を取るだけでなく、会議中に質問へ答え、資料やホワイトボードをその場で作ります。発表の内容と、中小の現場にとっての意味を整理します。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-15-claude-meetings.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.15</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>AIが会議に「参加」する時代へ — Anthropicが「Claude Meetings」をベータ公開</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>会議が終わったあとの議事録づくりと、宿題の整理。地味ですが、確実に時間を取られる仕事です。これまでのAI議事録は「会議の後」を助ける道具でした。その前提が、変わり始めています。</p>
+
+      <h2>何が発表されたか</h2>
+      <p>Anthropicは11月12日、「Claude Meetings」のベータ提供を開始しました。AIのClaudeが、参加者の一人としてビデオ会議に加わります。会議中、声やチャットで質問すると答え（既定では文章で回答）、議事録と宿題（アクションアイテム）はClaudeが書くので、参加者の誰もメモに追われません。</p>
+      <p>さらに、「Claude、この計画の資料を作って」と頼めば、その場でドキュメントやホワイトボードを作り始めます。参加者は話し合いを続けながら、できていく資料を一緒に直せます。会議が終わると要約がチームへ共有され、議事録・文字起こし・成果物は会議ごとのページに残ります。後から過去の会議についてClaudeに聞き返すこともできます。</p>
+
+      <h2>対応範囲と前提</h2>
+      <p>対象は Team プランと Enterprise プランです。対応する会議サービスは現時点で Google Meet のみで、他のサービスは順次とされています。ベータの期間中、議事録と文字起こしは無料で、会議中に作る資料も2027年2月10日まで無料です。ただし、接続したツールを使う回答はプランの利用枠を消費します。</p>
+      <p>プライバシー面の設計も明記されています。Claudeが参加すると、会議のチャットにその旨の通知が出ます。保存されるのは文字起こしと要約、画面の説明で、音声そのものは保存されません。組織の外のゲストが招待されている会議には、既定では参加しない設定で、管理者が許可した場合のみ加わります。文字起こしを始める前に、参加者全員の了承を確認することが前提とされています。</p>
+
+      <h2>中小の現場にとっての意味</h2>
+      <p>議事録の自動化は一巡しました。次の分かれ目は、「会議中に生まれる宿題や資料を、その場で形にできるか」です。打ち合わせ→議事録→資料作成→再確認という往復が、1回の会議の中に圧縮されるからです。少人数の現場ほど、会議の後の事務作業が一人に寄りがちで、この圧縮の効果は大きくなります。一方で、有料プラン限定で、対応もGoogle Meetのみという前提は、導入を考える際に先に押さえておく点です。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、この「会議の中にAIがいる」形に注目しています。CLPの仕事でも、打ち合わせで決まったことが資料になるまでの速さが、そのまま開発の進み具合を左右します。AIが会議に参加する前提になると、「会議で何を決めて、AIに何を作らせるか」という会議の設計そのものが仕事になります。同時に、文字起こしへの同意や、外部の相手がいる場での扱いのルールは、道具を入れる側が先に決めておくべきことです。便利さと前提をセットで見る姿勢は、ここでも変わりません。</p>
+
+      <h2>まとめ</h2>
+      <p>今回の発表は、AIの居場所が「会議の後」から「会議の中」へ移る転換点です。議事録を取るAIから、会議で一緒に働くAIへ。まずは対象プランと対応サービスの前提を確認したうえで、自分たちの会議にどう効くかを試す価値があります。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。特定のサービスや銘柄の推奨ではありません。</p>
+
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Anthropic公式「Introducing Claude Meetings, now in beta」（2026年11月12日）<br>
+      <a href="https://claude.com/resources/articles/claude-meetings" target="_blank" rel="noopener">https://claude.com/resources/articles/claude-meetings</a></div>
+
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
