@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>成果だけでなく、使い方まで公開する — OpenAIが科学ブログを開始、最初の寄稿は50年越しの物理の難題 | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="OpenAIが11月15日、科学研究に特化した新しいブログを開始しました。研究成果だけでなく、AIをどう使ったか、どこに限界があるかまで研究者自身が語る場です。最初の寄稿は、物理学者とGPT-6 Astraが取り組んだ50年越しの難題でした。発表の内容と、現場にとっての意味を整理します。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="成果だけでなく、使い方まで公開する — OpenAIが科学ブログを開始、最初の寄稿は50年越しの物理の難題">
+  <meta property="og:description" content="OpenAIが11月15日、科学研究に特化した新しいブログを開始しました。研究成果だけでなく、AIをどう使ったか、どこに限界があるかまで研究者自身が語る場です。最初の寄稿は、物理学者とGPT-6 Astraが取り組んだ50年越しの難題でした。発表の内容と、現場にとっての意味を整理します。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-16-openai-science-blog.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.16</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>成果だけでなく、使い方まで公開する — OpenAIが科学ブログを開始、最初の寄稿は50年越しの物理の難題</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>AIのニュースというと、新しいモデルの性能競争が中心になりがちです。今回の発表は少し違います。OpenAIが11月15日に始めたのは、科学研究のための新しいブログです。主役はモデルではなく、「AIを使って研究している科学者たち」と、その使い方そのものです。</p>
+
+      <h2>何が発表されたか</h2>
+      <p>新しい科学ブログで扱うのは、大きく3つです。1つ目は研究成果と進行中の研究の報告。2つ目は方法と実践的な手引きで、科学計算やデータ分析、文献の探索、実験計画などにモデルをどう使うか、そして「仕事をどう確認するか」「その方法がどこで通用しないか」まで含めて共有するとしています。3つ目は、研究者自身の視点です。</p>
+      <p>つまり、成果だけでなく、たどり着くまでの手順と限界も公開する、という設計です。OpenAIは背景として、9月に社内システムが流体の方程式に関する長年の問題への証明を出したこと、10月に数学の成果をまとめて公開したことなど、ここ数か月で扱える科学の問題の幅が広がってきたことを挙げています。</p>
+      <p>生物学の事例も紹介されています。OpenAIによれば、PerturbAIとScripps Researchとの取り組みでは、GPT-Rosalindを搭載した数千のエージェントが、数百万個のマウスの脳細胞の実験データを32分で分析し、実験で確かめるべき生物学的な仕組みの候補を挙げたといいます。また、抗生物質の候補分子を探すアルゴリズムをChatGPTとCodexで作り、実際に合成して実験で確かめている研究チームの例も挙げられています。いずれもOpenAIの発表に基づく内容で、候補はあくまで「確かめるべき候補」として扱われています。</p>
+
+      <h2>最初の寄稿は、50年越しの難題への「候補」</h2>
+      <p>ブログ開始と同時に公開された最初の寄稿は、物理学者のNathaniel Craig氏によるものです。テーマは、素粒子物理学の基礎である「標準模型」を、時空を格子状に区切って厳密に定義するという、50年以上未解決だった問題です。</p>
+      <p>Craig氏によれば、解き方の戦略は自身が立てたものの、必要なすべての場合に成り立つことの証明までは届いていませんでした。そこでGPT-6 Astraが戦略を具体的な構成へ落とし込み、詳細な証明の主導役を担ったといいます。基になった論文は10月6日にプレプリントとして公開済みで、格子場の理論の専門家3名が証明に目を通し、鋭い質問を投げかけたことも明かされています。</p>
+      <p>そしてCraig氏は、この結果をはっきり「候補」と呼んでいます。現実的なシミュレーションに使えるようになるには、まだ多くの仕事が残る。「原理としての答え」であって「実務としての答え」ではない、と自分で線を引いています。反射正値性という条件を満たすかどうかも、検討中の課題として残されています。</p>
+
+      <h2>中小の現場にとっての意味</h2>
+      <p>物理の話は遠く聞こえるかもしれませんが、ここにはAI活用全般に通じる型があります。</p>
+      <p>1つ目は、「どう使ったか」を残すことです。誰が戦略を立て、AIがどこを担い、誰がどう検証したか。この記録があるから、後から別の人が同じやり方を試したり、弱点を見つけたりできます。</p>
+      <p>2つ目は、「候補は候補」と正直に言うことです。AIの出す答えは、多くの場合「確かめるべき候補」です。候補と確定を分けて伝える姿勢は、科学の場だけでなく、業務でAIを使うときの信頼の土台になります。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、この「やり方まで公開する」という姿勢に注目しています。AIを現場に入れるときに本当に効くのは、派手な成果の数字より、再現できる手順と、検証の記録です。CLPの開発でも、AIに任せた部分と人間が確認した部分を分けて残すことを大切にしています。</p>
+      <p>一方で、今回紹介された成果や数字は、いずれもOpenAIと研究者自身の発表に基づくものです。証明や候補が最終的にどう評価されるかは、今後の専門家の議論で決まります。その留保を付けて読むこと自体が、このブログの設計が意図している読み方なのだと考えています。</p>
+
+      <h2>まとめ</h2>
+      <p>OpenAIの科学ブログは、AIの競争が「性能」だけでなく、「使い方と検証の共有」へ広がっていることを示す動きです。成果の出し方そのものを公開し、候補は候補と言う。その積み重ねが、AIを使う側の技術と信頼を底上げしていきます。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。特定のサービスや銘柄の推奨ではありません。</p>
+
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>OpenAI公式「Our new blog for science」（2026年11月15日）<br>
+      <a href="https://openai.com/index/our-new-blog-for-science" target="_blank" rel="noopener">https://openai.com/index/our-new-blog-for-science</a></div>
+      <div style="margin-top: 10px;">Nathaniel Craig「A step toward defining the Standard Model on a lattice」OpenAI（2026年11月15日）<br>
+      <a href="https://openai.com/index/step-toward-defining-the-standard-model/" target="_blank" rel="noopener">https://openai.com/index/step-toward-defining-the-standard-model/</a></div>
+
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
