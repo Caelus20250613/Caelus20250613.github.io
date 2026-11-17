@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>お客さんは、人だけじゃなくなった — Microsoft Clarityが「AIエージェントの来訪」を見える化 | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Microsoftが11月4日、無料のアクセス解析ツール「Clarity」に、AIエージェントが自社サイトで何をしたかを見える化する機能を追加しました。エージェントの週間セッションは3週間でほぼ倍増し、約200万に達したという自社分析もあわせて公表されています。発表の内容と、サイトを持つ現場にとっての意味を整理します。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="お客さんは、人だけじゃなくなった — Microsoft Clarityが「AIエージェントの来訪」を見える化">
+  <meta property="og:description" content="Microsoftが11月4日、無料のアクセス解析ツール「Clarity」に、AIエージェントが自社サイトで何をしたかを見える化する機能を追加しました。エージェントの週間セッションは3週間でほぼ倍増し、約200万に達したという自社分析もあわせて公表されています。発表の内容と、サイトを持つ現場にとっての意味を整理します。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-17-microsoft-clarity-agents.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.17</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>お客さんは、人だけじゃなくなった — Microsoft Clarityが「AIエージェントの来訪」を見える化</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>ウェブサイトの訪問者といえば、これまでは「人」でした。ところが今、買い物や予約、フォーム入力を人の代わりに行うAIエージェントが、サイトを訪れるようになっています。Microsoftが11月4日に無料のアクセス解析ツール「Clarity（クラリティ）」へ追加したのは、そのエージェントの動きを見える化する機能です。サイト運営者にとって「お客さんは人だけじゃなくなった」ことを、数字で示す発表でした。</p>
+
+      <h2>何が発表されたか</h2>
+      <p>追加されたのは、大きく3つの機能です。いずれも世界中のClarity利用者が使える形で案内されています（Ask Clarityは小売向けに限定ベータと明記されています）。</p>
+      <p>1つ目は「Agentic Analytics（エージェンティック分析）」です。中核の「Agent Activity」ダッシュボードでは、エージェントの来訪が時間とともにどう変わるか、どのエージェントが来たか、来てから何をしたかが見えます。行動の範囲は、検索、フォーム送信、ログイン、ダウンロード、予約、購入手続き（チェックアウト）までです。あわせて「シミュレーション」機能では、実際の来訪の前に、エージェントが自社サイトの重要な手続きを最後までやり切れるかを試せます。結果として、完了できたか、どれくらい時間がかかったか、何回の操作が必要だったか、どこを直せばよいかが出ます。対象はまず買い物と旅行の場面からで、今後広げていく計画です。</p>
+      <p>2つ目は「Brand Agents」です。自社の商品カタログや配送・返品の条件、ブランドの語り口をもとに答えるAIの買い物アシスタントで、今回、対象のWooCommerceやShopifyの店舗は、自社サイトの外でも商品が見つかるようになりました。買い物客がAIに相談したとき、Microsoft CopilotやBing、MSNなどに商品が表示され、購入は自社のサイトで完了する形です。地域のお店向けの展開も始まり、予約や予定管理の道具（Square、Jobber、HubSpot、Calendly、Housecall Pro、Salesforce）とつないで、見込み客の取り込みや予約まで進められるとしています。</p>
+      <p>3つ目は「Ask Clarity」です。サイトの使われ方について言葉で質問すると、Clarityが分析担当者のようにデータを調べ、考えられる説明を実際の記録で確かめ、次にやるべきことを提案し、根拠になるセッション録画へのリンクまで出す、というものです。現在は小売向けの限定ベータで、順番待ちの受付中と案内されています。</p>
+
+      <h2>数字の読み方 — いずれもMicrosoft自身の分析です</h2>
+      <p>ここからの数字は、Microsoft Clarity自身の分析に基づく発表です。独立した第三者が測り直した結果ではない点に、注意が必要です。</p>
+      <p>Microsoftによれば、AIエージェントによる週間セッションは、3週間でほぼ倍増して約200万に達しました。その土台になった分析は、2026年8月13日から9月9日にかけて記録された523万件のエージェント関連セッションで、対象は230,511件のClarityプロジェクトです。この期間に検出されたのは、OpenAI、Google、Anthropicのエージェントでした。</p>
+      <p>注意点も公式ブログに明記されています。今回の分析機能が対応するエージェントは、今のところGoogle、OpenAI、Anthropicの運営するものに限られます。つまり、ダッシュボードに出てこないエージェントが存在しない、という意味ではありません。</p>
+      <p>Ask Clarityについても、初期利用者への調査で88％が「自社やサイトについて新しい発見があった」と答えたと紹介されていますが、調査の対象は16人と小さく（2026年7〜8月、早期アクセス利用者）、受け止め方には幅を持たせる必要があります。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、今回の発表を「ウェブサイトの作り方の前提が変わり始めた」合図として見ています。</p>
+      <p>これまでのサイトは、人の目と人の操作のために作られてきました。ところがエージェントは、商品を見つけてもキャンペーンを見落としたり、購入手続きの途中で止まったりすることがある、とMicrosoft自身が書いています。エージェントが途中で止まれば、お店側には理由も分からないまま、お客さんを1人失うことになります。「なぜ売れなかったのか分からない」が、これからは「エージェントがどこで止まったのかを見れば分かる」に変わっていきます。</p>
+      <p>中小の現場で、まず効くのは順番です。いきなりサイトを作り替えるのではなく、（1）エージェントが実際に来ているか、来て何をしているかを測る、（2）予約や購入など一番大事な手続きを、エージェントが最後まで進めるか試す、（3）止まる場所が分かったら、そこから直す。この順番なら、小さく始められます。Clarity自体が無料の道具である点も、試しやすさにつながります。</p>
+      <p>もう1点、AIに相談して買い物をする人が増えるほど、「AIの答えの中に自社の商品やサービスが出てくるか」が、新しい集客の条件になります。商品情報や料金、予約の条件が、AIに読み取れる形で整っているかどうか。サイトの中身の整え方が、そのまま見つけてもらえるかどうかに直結する時代です。</p>
+      <p>一方で、対応エージェントは3社に限られ、数字もMicrosoft自身の分析です。自社サイトにどれだけ当てはまるかは、自社のデータで確かめる必要があります。その前提を付けて読むのが、この発表との正しい付き合い方だと考えています。</p>
+
+      <h2>まとめ</h2>
+      <p>Microsoft Clarityの今回の追加は、AIエージェントの来訪と行動を測り、大事な手続きを事前に試し、AIの答えの中に自社が出てくる手助けをする、という3点セットでした。サイトの訪問者にエージェントが加わった以上、サイト作りも「人だけ」を前提にはできなくなります。まず測ることから始める。それが今回の発表が現場に残した宿題です。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。特定のサービスや銘柄の推奨ではありません。セッション数などの数字は、いずれもMicrosoft自身の分析に基づく発表です。</p>
+    
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Microsoft Clarity公式ブログ「Agents act, LLMs recommend, People browse: Clarity connects all three.」（2026年11月4日）<br>
+      <a href="https://clarity.microsoft.com/blog/clarity-connects-agents-llms-people/" target="_blank" rel="noopener">https://clarity.microsoft.com/blog/clarity-connects-agents-llms-people/</a></div>
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
