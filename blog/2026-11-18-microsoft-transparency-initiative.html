@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>任せるほど、見えるように — Microsoftが「AI Transparency Initiative」を発表、40を超える団体と共通の物差しづくりへ | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Microsoftが11月17日、年次イベントIgniteで「AI Transparency Initiative」を発表しました。AIエージェントが何を見て、何をしたかを会社が確認し、独立に検証し、許可の範囲を管理できるようにするための、業界共通の開かれた基準づくりです。40を超える団体が参加し、米国国立標準技術研究所（NIST）の取り組みとも連携します。発表の内容と、小さな現場にとっての意味を整理します。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="任せるほど、見えるように — Microsoftが「AI Transparency Initiative」を発表、40を超える団体と共通の物差しづくりへ">
+  <meta property="og:description" content="Microsoftが11月17日、年次イベントIgniteで「AI Transparency Initiative」を発表しました。AIエージェントが何を見て、何をしたかを会社が確認し、独立に検証し、許可の範囲を管理できるようにするための、業界共通の開かれた基準づくりです。40を超える団体が参加し、米国国立標準技術研究所（NIST）の取り組みとも連携します。発表の内容と、小さな現場にとっての意味を整理します。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-18-microsoft-transparency-initiative.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.18</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>任せるほど、見えるように — Microsoftが「AI Transparency Initiative」を発表、40を超える団体と共通の物差しづくりへ</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>AIエージェントに仕事を任せる範囲が広がっています。データを見に行き、道具を使い、承認を逐一待たずに作業を進める。便利な一方で、後から「何を見て、何をしたのか」をたどれないと、問題が起きたときに確かめようがありません。Microsoftが11月17日に年次イベントIgniteで発表した「AI Transparency Initiative」は、この確かめ方を業界共通の基準にしようという取り組みです。原則は一文で、「自律性が上がるほど、透明性も上げる」です。</p>
+
+      <h2>何が発表されたか</h2>
+      <p>発表は3つの柱でできています。</p>
+      <p>1つ目は、標準づくりへの参加拡大です。Microsoftは、米国国立標準技術研究所（NIST）の「SI Agent Standards Initiative」への関わりを広げ、その研究を土台に、AIの透明性・セキュリティ・ガバナンスについて業界共通の開かれた基準づくりを主導するとしています。</p>
+      <p>2つ目は、業界全体での取り組みです。Accenture、Adobe、KPMG、Mastercard、Volvo Carsなど、40を超える団体がMicrosoftと一緒に基準の定義と適用に取り組んでいます。目指すのは、モデルや提供元がどこであっても、説明責任があり、独立に検証でき、安全に設計されたAIです。参加団体数はMicrosoftの発表に基づきます。</p>
+      <p>3つ目は、自社製品への組み込みです。できあがった基準は、Microsoft AI、Microsoft Foundry、Microsoft Copilotに取り込まれ、利用する会社は、その根拠となる記録を、自社のセキュリティやコンプライアンスの道具（Microsoft製でなくてもよい）で使えるようになるとされています。</p>
+      <p>背景にあるのは「証拠の不足」です。今の管理の仕組みは、AIモデルの周りで起きる動きの多くは観察できても、依頼から結果までの間にモデル内部で何が起きたかを再現できず、モデル自身の説明を独立に確かめることもできません。データや道具、認証情報に触れるエージェントは、権限の強い内部者と同じようなリスクを持ちながら、機械の速さと規模で動きます。だからこそ独立した監督が要る、というのが発表の立場です。</p>
+
+      <h2>「見る・確かめる・管理する」の中身</h2>
+      <p>発表は、会社が持つべき力を3つの言葉でまとめています。</p>
+      <p>「見る」は、何を頼まれ、何を許可され、どのモデルと実行環境が使われ、どのデータと道具に触れ、何をしたかを知ることです。エージェントの動きとリスクの兆候を、方針やしきい値に照らして継続的に見ます。</p>
+      <p>「確かめる」は、エージェント自身の報告だけを真実にしないことです。エージェントの身元、委任された意図、実際の行動についての記録は、その出所（モデルか、周りの実行環境か、身元や方針を扱う独立した仕組みか）が分かる形にし、モデルが報告した内容を、独立に観察された記録と突き合わせられるようにします。会社は、モデル提供元の説明だけに頼らず、自社の仕組みでAIの動きを検証できるべきだ、とされています。</p>
+      <p>「管理する」は、AIに何を許可するかを会社が握り続けることです。各作業の目的、責任者、扱うデータ、委任された権限がはっきりしていれば、重大な行動の前に方針を適用でき、調査や封じ込め、復旧、監査のときに何が起きたかを再現できます。この記録は、モデルや提供元を変えても会社側に残るべきだとされています。対象は、公開されていないモデルも、重みが公開されたモデルも含みます。</p>
+      <p>なお、責任の所在も明記されています。何か重大なことが起きたとき、答えるのは会社自身で、「AIのせい」は答えにならず、「モデルを信じる」は管理にはならない、と発表は述べています。関心のある団体向けに、参加や進捗確認のための案内ページも用意されています。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、今回の発表を「任せる技術の次は、確かめる技術」という順番の確認として見ています。</p>
+      <p>エージェントの導入が進むほど、現場で問われるのは性能の数字よりも、「その作業、誰が頼んで、どこまで許して、何をしたのか」を後から説明できるかどうかです。小さな現場でも同じで、AIに下書きを作らせるだけなら影響は小さいですが、送信や登録、金額に関わる操作を任せる段階では、記録と権限の線引きが先に要ります。任せる範囲と、見える範囲はセットで決める。これが私たちの基本の考え方で、今回の3つの言葉（見る・確かめる・管理する）は、そのまま点検の項目として使えます。</p>
+      <p>もう1点、基準が「モデルや提供元を問わない」形で作られる点に注目しました。道具を替えると記録の形式まで変わってしまうと、過去の作業をたどれなくなります。記録が会社側に残り、提供元を変えても監査が続けられる設計は、特定の製品に縛られないための条件です。</p>
+      <p>一方で、これは基準づくりの開始の発表です。基準そのものが固まったわけではなく、いつ、どの形で製品や現場の道具に届くかは、これからの進み具合を見ていく必要があります。数字や参加団体についても、現時点ではMicrosoftの発表に基づく情報として受け取るのが正確です。</p>
+
+      <h2>まとめ</h2>
+      <p>Microsoftの「AI Transparency Initiative」は、AIエージェントが何を見て何をしたかを会社が把握し、独立に検証し、許可の範囲を管理できるようにするための、業界共通の基準づくりでした。NISTの取り組みとの連携、40を超える団体の参加、自社製品への組み込みという3つの柱で進みます。AIに任せる範囲を広げる前に、確かめる仕組みがそろっているか。導入を考える現場にとって、良い点検の機会になる発表です。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。特定のサービスや銘柄の推奨ではありません。参加団体数などの数字は、いずれもMicrosoftの発表に基づきます。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Microsoft公式発表「Microsoft and organizations across industries launch AI Transparency Initiative to strengthen enterprise trust in AI models and agents」（2026年11月17日）<br>
+      <a href="https://news.microsoft.com/source/2026/11/17/microsoft-and-organizations-across-industries-launch-ai-transparency-initiative-to-strengthen-enterprise-trust-in-ai-models-and-agents/" target="_blank" rel="noopener">https://news.microsoft.com/source/2026/11/17/microsoft-and-organizations-across-industries-launch-ai-transparency-initiative-to-strengthen-enterprise-trust-in-ai-models-and-agents/</a><br>
+      Microsoft公式ブログ「Ignite 2026: Building the frontier ecosystem」（2026年11月17日）<br>
+      <a href="https://blogs.microsoft.com/blog/2026/11/17/ignite-2026-building-the-frontier-ecosystem/" target="_blank" rel="noopener">https://blogs.microsoft.com/blog/2026/11/17/ignite-2026-building-the-frontier-ecosystem/</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
