@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>研究専用のAIを、自分たちで育てる — NVIDIAが「Nemotron for Science」を発表、科学向けの道具一式をオープンに | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="NVIDIAが11月16日、科学研究向けの「Nemotron for Science」を発表しました。完成した答えを返すサービスではなく、オープンモデルと約5万問の化学データセット、追加学習の手順をセットで渡し、研究者自身が専門分野専用のAIエージェントを育てるための発表です。内容と、現場にとっての意味を整理します。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="研究専用のAIを、自分たちで育てる — NVIDIAが「Nemotron for Science」を発表、科学向けの道具一式をオープンに">
+  <meta property="og:description" content="NVIDIAが11月16日、科学研究向けの「Nemotron for Science」を発表しました。完成した答えを返すサービスではなく、オープンモデルと約5万問の化学データセット、追加学習の手順をセットで渡し、研究者自身が専門分野専用のAIエージェントを育てるための発表です。内容と、現場にとっての意味を整理します。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-17-nvidia-nemotron-science.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.17</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>研究専用のAIを、自分たちで育てる — NVIDIAが「Nemotron for Science」を発表、科学向けの道具一式をオープンに</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>AIの発表というと、新しいモデルの賢さを競う話が中心になりがちです。NVIDIAが11月16日にスーパーコンピューティングの国際会議SC26で発表した「Nemotron for Science」は、少し毛色が違います。完成したAIをそのまま渡すのではなく、研究者が自分の分野専用のAIエージェントを育てるための材料と手順を、まとめてオープンに渡す発表でした。</p>
+
+      <h2>何が発表されたか</h2>
+      <p>中身は3点セットです。土台になるオープンモデル「Nemotron 3.5 Super VL」、化学の推論を学ばせ、測るためのデータセット「LitmusBench v0.2」、そしてモデルを追加学習させるための手順（レシピ）です。</p>
+      <p>狙いは、科学の問題を考え、専門の計算道具を使いこなすエージェントを、各研究チームが自分たちで作れるようにすることです。追加学習したモデルは、科学情報を読み取り、コードを書き、NVIDIAのCUDA-Xという高速計算の道具を呼び出す流れに組み込めるとしています。</p>
+      <p>LitmusBench v0.2は、約5万問の化学の問題集です。分子の性質や、創薬の実験データをもとに作られていて、分子がどう振る舞うか、水に溶けやすいか、体の中でどう処理されるかといった予測を、学ばせて測るために使います。</p>
+      <p>モデルとデータセットは、どちらもHugging Faceで公開済みです。モデルは、メモリ128GBのNVIDIA DGX Sparkというデスクトップ型の計算機でも動くように最適化されていて、大きな計算センターだけでなく、研究者の手元でも扱えることがうたわれています。</p>
+
+      <h2>数字の読み方 — いずれも発表元と利用機関の報告です</h2>
+      <p>ここからの数字は、NVIDIAの発表と、利用機関側の報告に基づくものです。独立した第三者が同じ条件で測り直した結果ではない点に、注意が必要です。</p>
+      <p>スウェーデンのKTH王立工科大学では、分子の動きを計算するソフトGROMACSの設定の壊れを、自分で直すエージェントが作られました。DGX Spark 1台で一晩回した実行では、テスト事例の81％を直し、修正はすべてGROMACS自身で確認されたと報告されています。</p>
+      <p>創薬の現場でも報告が並びます。Lila Sciencesでは、実験室のフィードバックで追加学習した結果、量子ドットという小さな結晶を作る課題の正確さが61％までほぼ倍増し、GPT-6 Astraの54％を上回ったとされています。Terray Therapeuticsでは、科学の図から反応の材料や条件を読み取る課題で、RxnScribeという評価のテストで約76％を復元したと報告されています。Thernaでは、mRNA治療薬の設計で、たんぱく質の発現量の範囲を予測する正確さがほぼ倍になったとされています。</p>
+      <p>米国のアルゴンヌ国立研究所は、がんなどの治療候補になる、たんぱく質ベースの薬を設計・評価する複数エージェントの仕組みにNemotronを組み込んでいます。理化学研究所（RIKEN）は、AIスーパーコンピューティング基盤の入り口を通じて、研究者がNemotronを使えるようにしたと発表の中で紹介されています。</p>
+
+      <h2>「育て方」までが発表の本体</h2>
+      <p>NVIDIAの公式技術ブログでは、育て方の具体例として、薬の代謝を予測する課題が手順つきで公開されています。</p>
+      <p>やり方は、実験記録を「問題と正解」の組に直し、モデルの答えを自動で採点する仕組みを用意して、強化学習で鍛える、というものです。化学の例では、予測した分子と正解の分子の似具合を数値で測って、その点数を手がかりに学習させます。人の好みを都度教えるのではなく、正解データそのものが採点者になる設計です。</p>
+      <p>この例では、教師あり学習で正確さが12％上がり、その後の強化学習でさらに17％上がったと、技術ブログは報告しています。強いモデルの正しい考え方だけを集めて先に学ばせる「下準備」の方法も、あわせて紹介されています。</p>
+      <p>私たちが注目したのは、この手順の考え方です。合っているかどうかを数値で確かめられる課題に絞り、採点の仕組みを先に作ってから、モデルを育てる。発表の最後でも、狭い課題から始め、採点方法を確かめ、根拠が積み上がる範囲で広げる、という進め方が勧められています。</p>
+
+      <h2>CLPの見方</h2>
+      <p>今回の発表を、私たちは「汎用モデルをそのまま使う時代から、自分のデータで育てる時代へ」という流れで見ています。</p>
+      <p>中小の現場でも、事情はよく似ています。汎用AIは便利ですが、本当に効くのは、自社の書類、自社の手順、自社の確認基準を覚えた道具です。そのときに決め手になるのは、モデルの大きさよりも「何をもって正解とするか」を決めて、自動で確かめられる形にできるかどうかです。今回の技術ブログが、モデル本体と同じくらい「採点の設計」を大事に扱っているのは、その表れだと考えています。</p>
+      <p>もう1点、手元で動くことも見逃せません。外部に出せないデータを扱う現場では、モデルを自分たちの管理する計算機で動かせるかどうかが、導入の分かれ目になります。デスクトップ型の計算機で動く形で出してきた点は、現場目線でも意味のある選択です。</p>
+      <p>一方で、利用機関の成果の数字は、いずれも発表元と各機関の報告です。自分の分野、自分のデータで同じ効果が出るかは、試して測るまで分かりません。その前提を付けて読むのが、この発表との正しい付き合い方だと考えています。</p>
+
+      <h2>まとめ</h2>
+      <p>Nemotron for Scienceは、賢いモデルを1つ出す発表ではなく、オープンモデルと約5万問の化学データセット、育てる手順をセットで渡す発表でした。AIを「買って使うもの」から「自分の仕事に合わせて育てるもの」へ。その流れが、科学の現場からまた一歩進みました。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。特定のサービスや銘柄の推奨ではありません。成果や性能の数字は、いずれも発表元と利用機関の報告に基づくものです。</p>
+    
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>NVIDIA公式プレスリリース「NVIDIA Introduces Nemotron for Science to Accelerate Discoveries With Agents」（2026年11月16日、SC26）／ NVIDIA公式技術ブログ「Post-Training NVIDIA Nemotron to Increase Accuracy in Your Scientific Domain」（2026年11月16日）<br>
+      <a href="https://developer.nvidia.com/blog/post-training-nvidia-nemotron-to-increase-accuracy-in-your-scientific-domain/" target="_blank" rel="noopener">https://developer.nvidia.com/blog/post-training-nvidia-nemotron-to-increase-accuracy-in-your-scientific-domain/</a></div>
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
