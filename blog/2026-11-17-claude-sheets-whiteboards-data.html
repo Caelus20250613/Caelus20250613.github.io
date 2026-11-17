@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>表もボードも、AIと一緒に — AnthropicがClaude SheetsとWhiteboardsをベータ公開、Claude Dataは正式版に | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Anthropicが11月10日、Claudeの中で表計算とホワイトボードをチームと一緒に作れる新機能を発表しました。SheetsとWhiteboardsはベータ、データのダッシュボードだったClaude Dataは正式版です。会話の外へ移す手間を減らす発表の内容と、小さな現場にとっての意味を整理します。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="表もボードも、AIと一緒に — AnthropicがClaude SheetsとWhiteboardsをベータ公開、Claude Dataは正式版に">
+  <meta property="og:description" content="Anthropicが11月10日、Claudeの中で表計算とホワイトボードをチームと一緒に作れる新機能を発表しました。SheetsとWhiteboardsはベータ、データのダッシュボードだったClaude Dataは正式版です。会話の外へ移す手間を減らす発表の内容と、小さな現場にとっての意味を整理します。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-17-claude-sheets-whiteboards-data.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.17</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>表もボードも、AIと一緒に — AnthropicがClaude SheetsとWhiteboardsをベータ公開、Claude Dataは正式版に</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>AIとの会話で考えがまとまっても、その先が面倒でした。表は表計算ソフトへ、計画はホワイトボードの道具へ、数字は集計の画面へ移し替える。そのたびに、AIは途中の経緯を知らない状態に戻ってしまいます。Anthropicが11月10日に発表したのは、その移し替えを減らすための3つの道具です。表もボードもダッシュボードも、Claudeの中に置いたまま、チームとAIが一緒に直していけるようにしました。</p>
+
+      <h2>何が発表されたか</h2>
+      <p>発表されたのは、大きく3つです。いずれも有料プランで使え、ウェブ、パソコン、モバイルで動きます。</p>
+      <p>1つ目は「Claude Sheets」です。Claudeが、タブや数式、書式、選択肢のリストを持つ表を作り、セルを直接直します。たとえば「キャンペーンの進捗表を作って」「採用の予算を作って」と頼む形が例として示されています。直した場所は分かるように示され、チームで共有して一緒に編集できます。Anthropic自身が、今のところ表の機能は基本的なものにとどまると明記しています。本格的な機能が必要なときは、Excel形式やCSVへ書き出すか、Claude for Excelを使う案内です。</p>
+      <p>2つ目は「Claude Whiteboards」です。散らかった計画を言葉で話すと、Claudeが担当者と日付入りの流れ図のようなボードに整えます。振り返りの会議では、全員がメモを出し、Claudeが話題ごとにまとめ、担当ごとの次の行動の下書きまで作ります。終わったら、ボードを文書やスライドに変えることも、LucidやMiroなどの道具へ移して続けることもできます。</p>
+      <p>3つ目は「Claude Data」です。10月にベータで始まった「Claude Dashboards」が名前を変え、正式版になりました。会社のデータにつないで、グラフや、数字の背景を語る読み物、短い解説動画まで作れます。今回の目玉は2つで、1つは「認証済みの問い合わせ」です。データ担当が正しい集計の仕方を決めておくと、その集計で作ったグラフに認証の印が付き、部署ごとに数字が食い違う事態を減らせます。もう1つは「ライブ共有」で、共有された画面を開くと最新の数字が見え、見る側が元のデータへ勝手に触ることはできません。なお、この認証済みの問い合わせとライブ共有は、正式版の中でもまだベータと明記されています。Claude Dataを使うには、データ倉庫や顧客管理などの道具との接続が必要です。</p>
+      <p>あわせて「対話型コネクタ」も強化されました。AdobeやAtlassian、Box、Notionなどのアプリが、Claudeの画面の隣や全画面で開けるようになり、タブを行き来せずに作業したり、Claudeに変更を頼んだりできます。公式記事によれば、Claude Marketplaceには9,000を超えるコネクタとプラグインが並んでいます。これはAnthropicの発表に基づく数字です。</p>
+
+      <h2>進み具合の読み方 — ベータと正式版が混ざっています</h2>
+      <p>今回の発表で大切なのは、3つが同じ進み具合ではないことです。SheetsとWhiteboardsはベータ、Claude Dataは正式版ですが、その中の一部の機能はベータのままです。</p>
+      <p>管理の面でも違いがあります。公式記事によれば、Teamプランでは3つとも最初から有効です。一方、EnterpriseプランではWhiteboardsとSheetsは最初は無効で、Claude Dataは2026年11月20日から有効になる予定と書かれています。設定は組織の設定画面でいつでも変えられます。</p>
+      <p>Anthropic社内の例も紹介されています。法務チームは、社内の決め事をもとに自動で直し案を出す仕組みをClaudeと作り、マーケティング資料の確認が3日から24時間になったとしています。財務チームは、経営層向けの長い業務報告を、チーム全員で更新できる対話型のページに変えたそうです。これらはいずれもAnthropic自身が紹介している社内の事例で、外部の第三者が同じ条件で確かめた結果ではありません。その前提で読む必要があります。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、今回の発表を「AIが答える場所から、仕事が残る場所へ広がった」合図として見ています。</p>
+      <p>これまでのAI活用は、答えをもらうところまでが中心でした。でも実際の仕事はその先にあります。表に落とす、担当と期限を決める、数字の決め方をそろえる。今回の3つは、その後片付けの部分をAIと一緒にやるための道具です。とくに小さな現場では、立派な仕組みよりも「会議で話したことが、そのまま表と担当表になる」ことの方が効きます。</p>
+      <p>もう1点、数字の決め方をそろえる仕組みに注目しました。AIがグラフを速く作れるようになるほど、「どの数字が正なのか」が曖昧だと、速さがそのまま混乱になります。認証済みの問い合わせのように、正しい集計を先に決めて印を付ける考え方は、AI以前に、現場の数字の扱い方そのものへの提案です。</p>
+      <p>一方で、注意も必要です。Sheetsはまだ基本機能のベータで、既存の表計算ソフトの代わりになるとはAnthropic自身も言っていません。Dataは接続先のデータが整っていて初めて意味を持ちます。新しい道具を増やす前に、今ある表や数字の置き場所を1つに決める。その順番を間違えないことが、導入を失敗させないコツだと考えています。</p>
+
+      <h2>まとめ</h2>
+      <p>Anthropicの今回の発表は、表計算のSheets、計画を整えるWhiteboards、数字を共有するClaude Dataという3点セットでした。会話の中で考え、同じ場所で形にし、チームで直し続ける。AIの使い道が「聞く」から「一緒に作る」へ移る流れが、また1つ具体的になりました。小さく試すなら、まず会議のメモをボードと担当表に変えるような、身近な仕事からがおすすめです。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。特定のサービスや銘柄の推奨ではありません。コネクタ数や社内事例の数字は、いずれもAnthropicの発表に基づきます。</p>
+    
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Anthropic（Claude）公式記事「Introducing Claude Whiteboards, Claude Sheets, and Claude Data」（2026年11月10日）<br>
+      <a href="https://claude.com/resources/articles/sheets-whiteboards-data" target="_blank" rel="noopener">https://claude.com/resources/articles/sheets-whiteboards-data</a><br>あわせて確認：公式記事「More ways to work with Claude: Sheets, Whiteboards, and Interactive Connectors」（2026年11月10日）</div>
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
