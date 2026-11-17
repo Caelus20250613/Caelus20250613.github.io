@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>お店の情報は、AIの中でも自分で持つ — OpenAIが「Businesses in ChatGPT」をベータ公開、会社専用の窓口「Business Agents」も | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="OpenAIが11月10日、企業がChatGPTの中での自社の見え方を自分で管理できる「Businesses in ChatGPT」をベータで発表しました。Business Hubで自社情報を登録・更新し、言及された回数やサイトへのクリックなどの集計も見られます。あわせて、条件を満たす米国の事業者向けに、自社の情報をもとに質問へ答える「Business Agents」も始まります。発表の内容と、小さな現場にとっての意味を整理します。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="お店の情報は、AIの中でも自分で持つ — OpenAIが「Businesses in ChatGPT」をベータ公開、会社専用の窓口「Business Agents」も">
+  <meta property="og:description" content="OpenAIが11月10日、企業がChatGPTの中での自社の見え方を自分で管理できる「Businesses in ChatGPT」をベータで発表しました。Business Hubで自社情報を登録・更新し、言及された回数やサイトへのクリックなどの集計も見られます。あわせて、条件を満たす米国の事業者向けに、自社の情報をもとに質問へ答える「Business Agents」も始まります。発表の内容と、小さな現場にとっての意味を整理します。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-18-openai-businesses-chatgpt.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.18</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>お店の情報は、AIの中でも自分で持つ — OpenAIが「Businesses in ChatGPT」をベータ公開、会社専用の窓口「Business Agents」も</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>お客さんがお店や会社を探すとき、まずAIに聞く場面が増えています。そのときAIが口にする自社の情報は、古いままかもしれないし、間違っているかもしれません。これまでは、直したくても直す場所がありませんでした。OpenAIが11月10日にベータで発表した「Businesses in ChatGPT」は、その直す場所を会社自身に渡す仕組みです。</p>
+
+      <h2>何が発表されたか</h2>
+      <p>中心は「Business Hub」です。会社はここで自社を登録し、本人確認が済めば、基本情報を更新したり、価格と在庫を持つ商品情報の一覧を自分で登録したりできます。ChatGPTが利用できる地域にある、条件を満たす事業者なら登録できるとされています。すでにOpenAIの法人向けサービスや広告を使っている会社は、担当者を通して登録できます。Shopifyを使うお店は、Business HubやShopifyの管理画面から店をつないで確認を進められ、対象の商品はShopifyのカタログを通じてChatGPTにすでに組み込まれていると説明されています。</p>
+      <p>もう1つが「Business Agents」です。登録を済ませた会社のうち条件を満たすところが、自社の情報をもとに質問へ答える専用の窓口を作り、試して、公開できます。会社がAIの答えの中に現れたとき、人はその会社のプロフィールを開けます。窓口がある会社なら、そこから会社との会話を始めて、商品やサービスの違いや、自分に合う特徴を聞けます。この会話は、会社専用であることが分かるように表示され、お客さん自身のChatGPTとの会話や、ChatGPT自身の独立した答えとは区別されると明記されています。会社はこの窓口をChatGPT広告の受け皿としてスポンサー表示することもでき、その場合も広告であることが分かる表示で、ChatGPTの答えとは分けられます。</p>
+      <p>進み具合には差があります。全体はベータで、Business Agentsの対象は今のところ米国の、条件を満たすネット販売とオンラインサービスの事業者です。OpenAIは今後、対象の地域と業種を広げていく計画だとしています。</p>
+
+      <h2>見える化の中身と、プライバシーの線引き</h2>
+      <p>Business Hubでは、自社がChatGPTの中でどう扱われているかの集計も見られます。言及された回数、自社サイトへのクリック数、そして自社サイトが引用された会話に共通するテーマである「発見のテーマ」です。自分たちがどんな文脈で紹介されているかを知り、出す情報を改善する手がかりにできます。</p>
+      <p>線引きもはっきり書かれています。利用者個人の会話や、Business Agentとのやり取りの内容が会社へ渡ることはありません。集計は、会話や利用が一定のしきい値に達したときだけ、まとめた形で表示されます。つまり会社が見られるのは「自社がどう紹介されているか」であって、「誰が何を聞いたか」ではありません。</p>
+      <p>なお、週あたりのChatGPT利用者は12億人とOpenAIは発表しています。これはOpenAI自身の発表に基づく数字です。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、今回の発表を「探され方が、検索からAIの答えへ移る」流れの具体化として見ています。</p>
+      <p>これまでも、地図や口コミサイトの自社情報は会社自身が整えるのが当たり前でした。同じことが、AIの答えの中でも始まったということです。AIが自社を紹介するときの材料は、会社が出した情報の正確さに左右されます。料金や営業時間、できることとできないことが古いままなら、AIは古いまま答えます。まず自社の情報を1か所にそろえ、最新に保つ。その地味な作業が、AI時代の集客の土台になります。</p>
+      <p>もう1点、窓口の作り方に注目しました。Business Agentの会話は「会社専用」と表示され、ChatGPT自身の答えとは区別されます。広告も広告と分かる形です。誰の言葉なのかをはっきりさせる設計は、お客さんの信頼を守るうえで大切です。問い合わせの窓口を増やすことと、窓口の中身に責任を持つことはセットだと考えています。</p>
+      <p>一方で、対象はまだ限られています。日本を含む地域や業種への広がりはこれからで、Business Agentsは米国の一部事業者だけです。今すぐ全ての会社が使える話ではありません。ただ、方向は見えました。使えるようになったときに慌てないよう、自社の情報が今どこにどう載っているかを、一度点検しておく価値はあります。</p>
+
+      <h2>まとめ</h2>
+      <p>OpenAIの「Businesses in ChatGPT」は、会社がChatGPTの中の自社情報を自分で持ち、言及のされ方を集計で知り、条件が合えば自社専用の質問窓口まで持てる仕組みでした。AIに探される時代に、会社の側にも「整える場所」が用意され始めた、というのが今回の要点です。小さな現場ほど、情報の正確さがそのまま信用になります。まずは自社の基本情報の点検からがおすすめです。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。特定のサービスや銘柄の推奨ではありません。利用者数などの数字は、いずれもOpenAIの発表に基づきます。</p>
+    
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>OpenAI公式記事「Introducing Businesses in ChatGPT」（2026年11月10日）<br>
+      <a href="https://openai.com/index/introducing-businesses-chatgpt/" target="_blank" rel="noopener">https://openai.com/index/introducing-businesses-chatgpt/</a></div>
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
