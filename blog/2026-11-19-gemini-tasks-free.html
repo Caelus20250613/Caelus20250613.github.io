@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>答えるだけじゃなく、終わらせる — Geminiの「Tasks」が日本を含む6カ国で無料に、電話や支払いの代行は米国から | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Googleが2026年11月17日、Geminiアプリの「Tasks」を日本を含む6カ国で無料で順次提供すると公式ブログで発表しました。頼んだ仕事を裏側で進めて終わらせる仕組みで、使うモデルはGemini 4 Hydrogenです。お店への電話や支払いの代行といった先行機能は米国から始まります。何が無料になり、何がまだ米国だけなのかを、公式発表の範囲で整理します。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="答えるだけじゃなく、終わらせる — Geminiの「Tasks」が日本を含む6カ国で無料に、電話や支払いの代行は米国から">
+  <meta property="og:description" content="Googleが2026年11月17日、Geminiアプリの「Tasks」を日本を含む6カ国で無料で順次提供すると公式ブログで発表しました。頼んだ仕事を裏側で進めて終わらせる仕組みで、使うモデルはGemini 4 Hydrogenです。お店への電話や支払いの代行といった先行機能は米国から始まります。何が無料になり、何がまだ米国だけなのかを、公式発表の範囲で整理します。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-19-gemini-tasks-free.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.18</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>答えるだけじゃなく、終わらせる — Geminiの「Tasks」が日本を含む6カ国で無料に、電話や支払いの代行は米国から</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>AIへの頼み方は、「質問して、答えをもらう」から「仕事を頼んで、終わらせてもらう」へ移りつつあります。Googleは2026年11月17日、Geminiアプリの「Tasks」を、日本を含む6カ国で無料で順次提供すると公式ブログで発表しました。Tasksは、頼んだ仕事をGeminiが裏側で進め、終わったら知らせる仕組みです。発表の見出しは「Gemini can now make the calls, pay the bills, and finish your tasks（Geminiが電話をかけ、支払いを済ませ、あなたの仕事を終わらせる）」でした。</p>
+
+      <h2>何が発表されたか</h2>
+      <p>無料提供が始まるのは、米国、日本、韓国、カナダ、オーストラリア、インドの6カ国で、対象は数億人規模とGoogleは述べています。使うモデルはGemini 4 Hydrogenです。</p>
+      <p>使い方はシンプルで、Geminiのホーム画面で切り替えを「Chat」から「Task」に変えて、やってほしいことを伝えます。発表で紹介された日常の例は、車の点検予約です。近くの販売店2軒にGeminiが同時に電話をかけ、待ち時間の電話を代わりに聞き、Googleカレンダーの空きを見て金曜朝の予約を入れるところまでを、5分足らずで終えたという筆者自身の体験です。買い物では、条件を聞き返しながら候補を比べ、割引コードまで見つけた例も紹介されています。</p>
+      <p>つながるアプリは60以上とされ、買い物の支払いはAgent Payments Protocol（AP2）を使い、MastercardとVisaのデジタルトークンで安全に処理する設計だと説明されています（American Expressは近日対応）。支出の上限を先に決めておくこともでき、領収書や配送情報はGoogle Walletに集まります。</p>
+
+      <h2>米国から始まる先行機能</h2>
+      <p>注意したいのは、目立つ機能のいくつかは「米国から始まる先行機能」だという点です。お店への電話の代行や支払いの代行、メールを gemini@google.com へ転送して仕事を頼む方法、テキストメッセージで頼む方法は、発表では米国の利用者から順に広がる位置づけです。日本で無料提供が始まるのはTasksそのもので、電話や支払いまで今日から日本で使える、とは発表は言っていません。ここを取り違えると、期待と実際の差が大きくなります。</p>
+
+      <h2>安全と確認の仕組み</h2>
+      <p>仕事を任せるAIで大事なのは、勝手に進めない仕組みです。Googleの説明では、Tasksはアカウントごとに分けられたハードウェア隔離の仮想マシン（Google CloudのAgent Compute Engine）の上で動き、作業の途中でも利用者が割り込んで指示を足せます。大事な段階では止まって確認し、「Buy（購入）」ボタンを押す前には確認か事前承認を求める設計だとされています。逆に、買い物かごへの追加のような日常の操作は「Always allow（常に許可）」に設定して確認を省くこともできます。</p>
+      <p>同時にGoogleは、仕事が最後まで終わらないことや、狙いを外すことがあり得ることも正直に書いています。一部のサイトでは最後のボタンを押すところで画面が利用者に戻ってくる、という現状も明かされています。任せられる範囲は広がっていますが、万能ではない、という前提で読むのが正確です。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、今回の発表を「AIが答える道具から、仕事を引き受ける相手へ変わる節目」として見ています。</p>
+      <p>ポイントは、無料の対象に日本が最初から入ったことです。英語圏の発表を眺めるだけの段階ではなく、手元のGeminiで「頼んで終わらせてもらう」体験を試せる側に日本も入りました。ただし、先行機能は米国からです。日本で試せる範囲と、発表の大きな見出しの範囲は分けて受け取る必要があります。</p>
+      <p>小さな事業者の現場で考えるなら、任せ始めは「失敗しても取り返せる仕事」からが現実的です。毎朝のメールと予定の要約、繰り返しの調べもの、旅行や出張の下調べのような、結果を確認してから使う仕事です。支払い上限を先に決める、購入前に確認を求める、といった歯止めの設計は、AIに仕事を任せる側の作法として、そのまま参考になります。任せる範囲を広げるほど、確認の置き場所を先に決めておくことが効いてきます。</p>
+
+      <h2>まとめ</h2>
+      <p>GeminiのTasksは、日本を含む6カ国で無料提供が始まりました。頼んだ仕事を裏側で進める形が、料金の壁なく試せるようになります。一方で、電話や支払いの代行は米国からの先行機能で、仕事が必ず終わる保証もありません。「何が、どこで、どこまで任せられるのか」を発表の範囲で切り分けて使うことが、この手のAIと付き合う第一歩です。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。提供は順次進むため、アカウントによって使える時期は異なります。電話・支払い等の先行機能は米国から始まると発表されています。対象国・対象人数・連携アプリ数などは、いずれもGoogleの発表に基づきます。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Google公式ブログ「How to use Tasks in Gemini for personal assistance」（2026年11月17日）<br>
+      <a href="https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/" target="_blank" rel="noopener">https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
