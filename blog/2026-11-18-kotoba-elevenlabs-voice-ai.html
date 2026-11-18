@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>日本語の声は、日本のチームが磨く — KotobaがElevenLabsに加わり、東京から音声AIを世界へ | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="日本の音声AIスタートアップKotoba Technologiesが、音声AIの世界的企業ElevenLabsに加わることが発表されました。Kotobaは2023年7月に2人のAI研究者が設立し、音声基盤モデルKotoを核に、日本語の音声エージェントや同時通訳の技術を製品にしてきました。主語を言わない話し方や敬語の使い分けなど、日本語の会話の難しさを正面から扱ってきたチームが、世界の研究資源と組む意味を整理します。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="日本語の声は、日本のチームが磨く — KotobaがElevenLabsに加わり、東京から音声AIを世界へ">
+  <meta property="og:description" content="日本の音声AIスタートアップKotoba Technologiesが、音声AIの世界的企業ElevenLabsに加わることが発表されました。Kotobaは2023年7月に2人のAI研究者が設立し、音声基盤モデルKotoを核に、日本語の音声エージェントや同時通訳の技術を製品にしてきました。主語を言わない話し方や敬語の使い分けなど、日本語の会話の難しさを正面から扱ってきたチームが、世界の研究資源と組む意味を整理します。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-18-kotoba-elevenlabs-voice-ai.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.18</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>日本語の声は、日本のチームが磨く — KotobaがElevenLabsに加わり、東京から音声AIを世界へ</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>AIと声で話す場面が増えています。電話の自動応答、同時通訳、読み上げ。どれも、言葉が日本語になった途端に難しくなります。主語を言わない、相手によって敬語が変わる、短い相づちや間にも意味がある。こうした日本語の会話の癖を正面から扱ってきたのが、日本の音声AIスタートアップKotoba Technologiesです。そのKotobaが、音声AIの世界的企業ElevenLabsに加わることが発表されました。</p>
+
+      <h2>何が発表されたか</h2>
+      <p>Kotobaは2023年7月、AI研究者の小島紀之氏と笠井淳吾氏の2人が設立しました。核にあるのは音声基盤モデル「Koto」です。これまでに、Salesforceの「Agentforce Voice」向けの日本語音声エージェント、日本と米国の大手企業の製品を支える音声AI、アーティストのYOASOBIを支えた同時通訳の技術、そして同時通訳アプリ「Kotoba」などを手がけてきました。研究を、実際に使われる製品に変えてきたチームです。</p>
+      <p>ElevenLabsは2022年にポーランド出身の起業家2人が設立し、音声生成と会話AIの分野で世界的な企業に育ちました。今回の組み合わせで、Kotobaの東アジア言語の研究と製品づくりの力に、ElevenLabsの研究力、計算資源、世界規模の事業基盤が加わります。進めるのは、日本語を皮切りに韓国語など東アジアの言語の音声AIの改善と、製品やサービスへの広がりです。Kotobaのチームは、日本の言葉と文化、顧客の要望への理解をもとに、研究、製品開発、導入の支援を続けるとしています。</p>
+      <p>なお、買収の完了は2026年第4四半期の後半になる見込みで、通常の規制当局の承認などが条件です。発表では買収額などの条件は示されていません。</p>
+
+      <h2>日本語の会話の、何が難しいのか</h2>
+      <p>発表の中で、私たちが特に注目したのは、日本語の会話の難しさの挙げ方です。</p>
+      <p>会話では主語がしばしば言われません。敬語の水準は、誰が誰に話しているかで変わります。短い相づちや間も、意味を持ちます。だから音声AIが日常や仕事で自然に感じられるためには、正確に聞き取り、正確に発声するだけでは足りず、文脈を理解し、会話の流れについていき、いつ応答すべきかを知る必要がある、と発表は述べています。</p>
+      <p>これは、文字のAIでも同じ壁です。日本語の現場の言葉は、省略と気遣いに満ちています。その土地の言葉と文化を理解するチームが研究の中心にいるかどうかが、使い心地を大きく左右します。今回の発表は、その「土地の理解」を持つチームに、世界の規模の資源を掛け合わせる組み合わせでした。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、今回の発表を「得意な土地で磨いた技術が、世界の土台と組む」事例として見ています。</p>
+      <p>音声は、これからのAIの入り口です。画面を見ずに、手を止めずに頼める声の窓口は、受付や案内、通訳のような現場の仕事と相性が良い。ただし、その窓口が日本語の省略や敬語を外すと、お客さんはすぐに違和感に気づきます。声のAIこそ、言葉の細部への理解が品質そのものになります。</p>
+      <p>もう1点、発表が示した道筋にも注目しました。日本を拠点にするAIスタートアップが、独自の技術を磨き、世界の先頭企業に加わって、より大きな規模で研究と製品開発を続ける。日本の研究者や起業家にとって、成長の1つの形を示す事例だと、発表自身も位置づけています。</p>
+      <p>一方で、これは始まりの発表です。買収の完了はこれからで、日本語の音声AIが製品の中でどう良くなっていくかは、今後の進み具合を見ていく必要があります。数字や効果についても、現時点の発表に書かれていないことは、書かれていないものとして受け取るのが正確です。</p>
+
+      <h2>まとめ</h2>
+      <p>KotobaがElevenLabsに加わる発表は、日本語の会話の難しさを研究の中心に置いてきたチームと、世界の音声AIの土台が組む話でした。日本語を皮切りに、東アジアの言語の音声AIを良くしていく計画です。AIと声で話す時代に、その声が自分の言葉の癖を分かってくれるかどうか。身近なところから、試して確かめていきたいテーマです。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。特定のサービスや銘柄の推奨ではありません。買収額などの条件は公式発表では示されておらず、本記事にも載せていません。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Kotoba Technologies公式発表「Kotoba Is Joining ElevenLabs」（2026年11月16日）<br>
+      <a href="https://site.kotoba.tech/news/kotoba-is-joining-elevenlabs" target="_blank" rel="noopener">https://site.kotoba.tech/news/kotoba-is-joining-elevenlabs</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
