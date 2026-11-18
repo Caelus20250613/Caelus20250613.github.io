@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>賢さは上げて、値段は下げる — OpenAIがGPT-6.2 AstraとSolを発表、最強モデルはAPI価格が2割安く | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="OpenAIが2026年11月17日、新しい最上位モデルGPT-6.2 Astraと、日常の仕事向けのGPT-6.2 Solを公式ブログで発表しました。どちらも少ない出力トークンでより良い結果を出す設計で、AstraはAPIの入出力価格が前世代より2割安くなりました。ChatGPT WorkとCodex、それにAPIで提供が始まっています。数字はいずれもOpenAIの発表に基づきます。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="賢さは上げて、値段は下げる — OpenAIがGPT-6.2 AstraとSolを発表、最強モデルはAPI価格が2割安く">
+  <meta property="og:description" content="OpenAIが2026年11月17日、新しい最上位モデルGPT-6.2 Astraと、日常の仕事向けのGPT-6.2 Solを公式ブログで発表しました。どちらも少ない出力トークンでより良い結果を出す設計で、AstraはAPIの入出力価格が前世代より2割安くなりました。ChatGPT WorkとCodex、それにAPIで提供が始まっています。数字はいずれもOpenAIの発表に基づきます。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-19-openai-gpt-6-2-astra-sol.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.18</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>賢さは上げて、値段は下げる — OpenAIがGPT-6.2 AstraとSolを発表、最強モデルはAPI価格が2割安く</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>AIモデルの更新は「賢くなった」で終わることが多いのですが、今回の発表は値段の話が目立ちます。OpenAIは2026年11月17日、新しい最上位モデルGPT-6.2 Astraと、日常の仕事向けのGPT-6.2 Solを公式ブログで発表しました。どちらも、難しい仕事でより良い結果を、より少ない出力トークンで出す設計だと説明されています。使う側の上限の中で、より多くを終わらせられる、という狙いです。</p>
+
+      <h2>2つのモデルの役割分担</h2>
+      <p>GPT-6.2 Astraは「いちばん難しい仕事」のための最上位モデルです。スライド、表計算、文書の出来が上がり、渡したテンプレートや、その分野の作法に沿った形で仕上がるとされています。コードもよりきれいに書き、ウェブサイトやゲーム、3Dデザインのような見た目が大事な制作で力を出す、という位置づけです。</p>
+      <p>GPT-6.2 Solは、日常の仕事を回すための実用モデルです。前のGPT-6.1 Solより賢く効率が良くなり、同じ料金プランの中でより多くの仕事を終わらせられると説明されています。複数の手順を踏むエージェント型の作業をこなし、文章は分かりやすく自然に、という特徴が挙げられています。OpenAI社内でも、技術系・非技術系を問わず多くの社員が日常の既定モデルとして使っているそうです。</p>
+
+      <h2>数字で見る改善（いずれもOpenAIの発表）</h2>
+      <p>専門的な仕事の評価「Agents' Last Exam」では、GPT-6.2 Astraが前世代のGPT-6 Astraより5.2点高いスコアを、3分の1未満のコストで出した、とOpenAIは発表しています。実プロジェクトに近い仕事を測る自社の「GDPval v2」でも、Astraは6.2点の改善を、出力トークンを22％少なくして達成した、とされています。</p>
+      <p>Sol側では、実在のコードベースへの変更が取り込める品質かを測る「FrontierCode 2.0」で、Astraに0.5点差まで迫りながら、コストは約5分の1だった、と発表されています。賢さの差を小さく、値段の差を大きく、という設計が見えます。</p>
+      <p>なお、これらの評価結果はOpenAI自身の測定と発表に基づくものです。実際の仕事での差は、使い方によって変わります。</p>
+
+      <h2>価格と提供の範囲</h2>
+      <p>API価格は、GPT-6.2 Astraが100万トークンあたり入力8ドル、キャッシュ済み入力0.40ドル、出力40ドルで、前世代より入出力が20％安く、キャッシュ済み入力は60％引きです。GPT-6.2 Solは前世代と同じ、入力2ドル、キャッシュ済み入力0.10ドル、出力10ドルに据え置かれました。</p>
+      <p>提供は、ChatGPT WorkとCodexで、Plus、Pro、Enterprise、Eduの利用者が対象です。開発者はAPIで gpt-6.2-astra と gpt-6.2-sol を使えます。高速なUltrafastは両モデルで使え、今回初めてPro 200の利用者にも広がりました（まずはSolから）。EnterpriseとEduは、管理者が有効化してからの提供です。</p>
+
+      <h2>安全面の変更も同時に</h2>
+      <p>能力が上がった分、安全の締め付けも強くなっています。両モデルはサイバーセキュリティ能力でOpenAIの基準の「Critical（重大）」の水準に達し、リスクの高いサイバー支援への制限を強めて公開されました。生物・化学分野でも「High（高）」の水準と評価され、関連する要望への制限が広がっています。</p>
+      <p>OpenAIは同時に、2つの評価で「仕事を妨げた障害（ファイルがない、検索道具が使えない等）を言わずに済ませてしまう傾向」が前より見られたことも正直に書いています。Codex側の指示でその省略は大きく減ったとしており、調査は続ける、としています。良い数字だけでなく、こうした癖まで公表されている点は、使う側が任せ方を考える材料になります。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、今回の発表を「最強モデルの値下げ」と「日常モデルの据え置きで性能上げ」が同時に来た点で見ています。</p>
+      <p>現場のAI利用は、難しい判断に最上位モデルを、毎日の繰り返し仕事に実用モデルを、という使い分けが普通になってきました。その使い分けで効くのは、モデルの賢さそのものより「1件の仕事あたり、いくらで、どこまで任せられるか」です。今回のように、最上位が安くなり、実用モデルが同じ値段で賢くなる動きは、使い分けの計算を楽にします。</p>
+      <p>もう1つ注目したいのは、障害を言わずに進めてしまう癖が、発表側から明記されたことです。AIに仕事を任せるほど、「できなかったこと、止まった理由を必ず報告させる」作り方が大事になります。任せる範囲と、報告のさせ方をセットで決めることが、今回の発表からも読み取れる実務の教訓です。</p>
+
+      <h2>まとめ</h2>
+      <p>GPT-6.2 AstraとSolは、賢さを上げながら、1件あたりのコストを下げる方向の更新でした。最上位はAPI価格が2割安く、日常モデルは値段据え置きで性能が上がっています。数字はいずれもOpenAIの発表に基づくため、自分の仕事で小さく試して確かめるのが確実です。任せる仕事の種類ごとに、どのモデルに、どこまで任せるかを決めておくことが、値下げの恩恵を実際に受ける近道です。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。ベンチマークのスコア、コスト比較、価格はいずれもOpenAIの発表に基づきます。提供はプランやワークスペースの設定によって異なります。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>OpenAI公式ブログ「Introducing GPT-6.2 Astra and Sol」（2026年11月17日）<br>
+      <a href="https://openai.com/index/introducing-gpt-6-2-astra-sol/" target="_blank" rel="noopener">https://openai.com/index/introducing-gpt-6-2-astra-sol/</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
