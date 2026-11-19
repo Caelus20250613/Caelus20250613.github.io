@@ -403,6 +403,27 @@
       border-color: transparent;
     }
 
+    /* --- 動画セクション --- */
+    .movie-section {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .movie-frame {
+      max-width: 960px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px -12px rgba(0,0,0,0.18);
+      line-height: 0;
+    }
+    .movie-frame video { width: 100%; height: auto; display: block; }
+    .movie-caption {
+      text-align: center;
+      margin-top: 30px;
+      color: #64748b;
+    }
+    .movie-caption a { color: var(--accent-color); font-weight: bold; }
+
     /* --- フッター --- */
     footer { 
       background: #0f172a; 
@@ -560,6 +581,23 @@
           </div>
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- アプリ紹介動画 -->
+  <section class="movie-section">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <span class="section-subtitle">Movie</span>
+        <h2 class="section-title">アプリ紹介動画</h2>
+      </div>
+      <div class="movie-frame reveal">
+        <video controls preload="metadata" playsinline poster="assets/video/clp-apps-showcase-poster.png">
+          <source src="assets/video/clp-apps-showcase-light.mp4" type="video/mp4">
+          お使いのブラウザは動画の再生に対応していません。
+        </video>
+      </div>
+      <p class="movie-caption">自社開発アプリ7本を、47秒で一気にご紹介します。各アプリの詳細は<a href="apps.html">アプリ紹介ページ</a>へ。</p>
     </div>
   </section>
 </main>
