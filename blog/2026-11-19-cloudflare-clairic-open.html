@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>書類は、専用AIに読ませる — Cloudflareが読み取り専用モデル「Clairic」をオープン公開、軽量版も同時発表 | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Cloudflareが2026年11月18日、書類や画像、PDFから必要な項目を抜き出す専用モデル「Clairic」の更新版と、軽量版「Clairic-flash」を公式ブログで発表し、モデルの重みをオープンに公開しました。大きな汎用モデルに何でも任せるのではなく、読み取りのような決まった仕事は小さく速く安い専用モデルに任せる、という考え方です。料金や速度、正確さの数字はいずれもCloudflareの発表に基づきます。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="書類は、専用AIに読ませる — Cloudflareが読み取り専用モデル「Clairic」をオープン公開、軽量版も同時発表">
+  <meta property="og:description" content="Cloudflareが2026年11月18日、書類や画像、PDFから必要な項目を抜き出す専用モデル「Clairic」の更新版と、軽量版「Clairic-flash」を公式ブログで発表し、モデルの重みをオープンに公開しました。大きな汎用モデルに何でも任せるのではなく、読み取りのような決まった仕事は小さく速く安い専用モデルに任せる、という考え方です。料金や速度、正確さの数字はいずれもCloudflareの発表に基づきます。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-19-cloudflare-clairic-open.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.18</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>書類は、専用AIに読ませる — Cloudflareが読み取り専用モデル「Clairic」をオープン公開、軽量版も同時発表</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>請求書、領収書、契約書。現場の書類仕事の多くは、紙やPDFから「会社名」「日付」「金額」「明細」といった項目を抜き出して、別の場所へ移す作業です。地味ですが件数が多く、間違えると後が大変な仕事でもあります。Cloudflareは2026年11月18日、この「抜き出し」だけに特化したAIモデル「Clairic」の更新版と、軽くて速い版「Clairic-flash」を公式ブログで発表し、両モデルの重みをオープンに公開しました。</p>
+
+      <h2>何をするモデルか</h2>
+      <p>Clairicは、決まった項目を書類から抜き出すための専用モデルです。今回の更新で、画像に加えてPDFも読めるようになり、表やリスト、日付の扱いと、答えを元の資料にひも付ける精度が上がったと説明されています。領収書の写真から項目を取る、問い合わせチケットから値を読む、といった使い方が、利用者からの声として挙げられています。</p>
+      <p>1回の依頼では、画像かPDFのページを合わせて最大4枚まで渡せます。請求書のように項目が複数ページに散らばっていても、販売元、明細、合計を1回で聞け、明細は説明・数量・価格をそろえた行の形で返ってくる、とされています。</p>
+
+      <h2>答えと一緒に、根拠も返ってくる</h2>
+      <p>実務で大事なのが、抜き出した値が「元のどこに書いてあったか」です。Clairicは、答えと一緒に、確からしさのスコア、元の文字の位置、確率を毎回返す作りを保っています。人が後から確かめる前提の設計で、全部を信じて流すのではなく、怪しいものだけ人が見る、という回し方と相性が良い形です。</p>
+
+      <h2>2つのモデルと料金</h2>
+      <p>大きい方が27B（270億パラメータ）のClairic、小さく速い方が9B（90億パラメータ）のClairic-flashです。どちらもCloudflareのWorkers AIで使え、重みはHugging Faceでオープンに公開されました。自前で動かすことも、借りて使うことも選べます。</p>
+      <p>料金は入力トークンだけにかかる形で、100万入力トークンあたりClairicが0.24ドル、Clairic-flashが0.10ドルです。2026年12月1日までは割引で、Clairicも0.10ドルで試せると発表されています。出力トークンには課金しない、という割り切りも明記されています。</p>
+
+      <h2>速さと正確さは、自社評価として読む</h2>
+      <p>Cloudflareの遅延テストでは、どちらのモデルも全ケースで応答が1秒未満でした。画像の読み取りでは、自社の内部ベンチマークで誤りが207件から0件に減った、とも発表しています。</p>
+      <p>ただし、ここは割り引いて読む必要があります。公開された抜き出しのベンチマークはまだ無く、数字はCloudflare自身の内部評価です。同社自身も「方向を見る目安として受け取ってほしい」と書いています。良し悪しは、自分の現場の書類で試して確かめるのが確実です。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、今回の発表を「何でもできる大きなモデル」から「仕事ごとに専用の小さなモデル」への流れとして見ています。</p>
+      <p>書類の読み取りのような、形が決まっていて件数が多い仕事は、専用モデルの得意分野です。速く、安く、しかも根拠の位置まで返ってくるなら、人が確かめる手間まで含めた計算が成り立ちます。オープンに公開されたことで、自社の環境で試したり、調整したりする道も開けました。</p>
+      <p>もう1つ参考になるのが、発表の正直さです。自社評価であること、目安として読んでほしいことを、発表側が自分で書いています。AIの数字を読むときは、誰が測った数字なのかを添えて伝える。この姿勢は、私たちがニュースを伝えるときにも守りたい点です。</p>
+
+      <h2>まとめ</h2>
+      <p>Clairicは、書類や画像、PDFから項目を抜き出すことに絞った専用モデルで、今回オープンに公開されました。大きなモデルに全部を任せるのではなく、決まった仕事は専用モデルに任せ、人は根拠を見て確かめる。その分け方が、小さな現場の書類仕事を軽くする現実的な道筋です。数字はいずれもCloudflareの発表に基づくため、導入を考える場合は、まず自分の書類で小さく試すところから始めるのがおすすめです。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。速度・正確さ・料金の数字はいずれもCloudflareの発表に基づき、正確さの数字は同社の内部評価です。公開ベンチマークはまだ無い旨も発表で述べられています。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Cloudflare公式ブログ「An updated Clairic and Clairic-flash are now open-weight, from the new Workers AI Superintelligence team」（2026年11月18日）<br>
+      <a href="https://blog.cloudflare.com/open-clairic/" target="_blank" rel="noopener">https://blog.cloudflare.com/open-clairic/</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
