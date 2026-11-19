@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>作って終わりじゃなく、直し続ける — Google Labsが「Stitch Loop」を発表、公開後も働く製品改善エージェント | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Google Labsが2026年11月18日、公開した製品を直し続けるためのエージェント「Stitch Loop」を公式ブログで発表しました。コードと実際の利用指標につないで、直すべき点を見つけ、修正案とプルリクエストまで用意します。最初から入っている改善の輪はセキュリティ、速さ、使いやすさの3つで、連携は180を超えます。直すかどうかを決めるのは最後まで人で、何も人の承認なしには取り込まれません。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="作って終わりじゃなく、直し続ける — Google Labsが「Stitch Loop」を発表、公開後も働く製品改善エージェント">
+  <meta property="og:description" content="Google Labsが2026年11月18日、公開した製品を直し続けるためのエージェント「Stitch Loop」を公式ブログで発表しました。コードと実際の利用指標につないで、直すべき点を見つけ、修正案とプルリクエストまで用意します。最初から入っている改善の輪はセキュリティ、速さ、使いやすさの3つで、連携は180を超えます。直すかどうかを決めるのは最後まで人で、何も人の承認なしには取り込まれません。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-19-stitch-loop.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.18</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>作って終わりじゃなく、直し続ける — Google Labsが「Stitch Loop」を発表、公開後も働く製品改善エージェント</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>AIで作る速さが上がるほど、目立つようになってきたのが「作った後の手入れ」です。弱いところを直す、表示を速くする、申し込みで離れてしまう場所を見つける。地味ですが、製品の出来を決めるのはこの部分です。Google Labsは2026年11月18日、この公開後の仕事を続けて担うエージェント「Stitch Loop」を公式ブログで発表しました。コードベースと実際の利用指標につないで、直すべき点を見つけ、目標に届くまで24時間体制で働き続ける、という位置づけです。</p>
+
+      <h2>何をする仕組みか</h2>
+      <p>使い始めは、GitHubと、製品の文脈をつなぐところからです。ログ、利用者の動き、寄せられた声などを、180を超える連携や、独自のMCPサーバー、ローカルからの取り込みで渡します。その材料をもとに、狙う成果に向けて改善の輪を回し続けます。</p>
+      <p>進み方は4つの段階です。まず、製品の証拠に基づいて改善の機会を挙げる。次に、利点と弱み、範囲まで添えた解決案を出す。方向を選ぶと、隔離された環境でコードを書き、GitHubのプルリクエストを開く。プルリクエストには、作業の様子のスクリーンショットや動画が付く場合もあります。最後に、実際の製品データを見ながら結果を振り返り、良い結果も悪い結果も次に生かします。目標に届いた後も見守り続け、指標が下がれば気づけるようにする、と説明されています。</p>
+
+      <h2>最初から入っている3つの輪</h2>
+      <p>用意された改善の輪は、セキュリティ、表示の速さ（レイテンシ）、使いやすさ（アクセシビリティ）の3つです。自分で輪を足すこともでき、例として購入までの完了率の改善が挙げられています。</p>
+      <p>中でも力を入れているのがセキュリティです。速く作る小さなチームほど、手が回りにくい部分です。Stitch Loopのセキュリティの輪は、Gemini 4 Carbonのサイバーセキュリティ能力と、コードの安全性を自律的に高めるGoogle DeepMindのエージェント「CodeMender」を組み合わせ、事故になる前に弱いところを探します。見つけた問題は証拠と一緒に示し、修正案のプルリクエストを開きます。</p>
+
+      <h2>最後に決めるのは人</h2>
+      <p>この発表で一番大事なのは、速さよりも歯止めの置き方です。Googleははっきりと「最後に決めるのはあなたです。プルリクエストを確認するまで、何も取り込まれません」と書いています。エージェントは提案し、作り、振り返るところまでを担いますが、製品に入れるかどうかの判断は人が持ち続けます。</p>
+      <p>ほかの道具とのつながりも用意されています。Google Antigravityのようなコーディングエージェントから、Stitch Loopが持つ製品の文脈を取り出して使えます。Slackでは @stitch と呼びかけて、その日の気づきのまとめを受け取ったり、新しい輪を作ったりできます。</p>
+      <p>提供は実験としての開始です。待ちリストは全世界の利用者向けに開かれ、対象のGoogle AI Ultra利用者が優先されます。料金や一般提供の時期は、発表では示されていません。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、今回の発表を「作るAI」から「育てるAI」への移り変わりとして見ています。</p>
+      <p>小さなチームの現場では、新しい機能を作る時間は取れても、公開後の点検と改善に同じだけの時間を回すのは難しいのが実情です。弱いところの点検、表示の速さ、使いやすさという、後回しになりやすい仕事を輪として常時回す発想は、その弱い部分に直接効きます。</p>
+      <p>もう1つ参考になるのが、任せ方です。提案から作成、振り返りまでを任せながら、取り込む判断だけは人の手に残す。この線の引き方は、AIエージェントを現場に入れるときの基本形です。任せる範囲を広げるほど、「どこで人が確認するか」を先に決めておくことが、安心して速く回す条件になります。</p>
+
+      <h2>まとめ</h2>
+      <p>Stitch Loopは、公開した製品を直し続けるための、Google Labsの新しい実験です。コードと実際の指標につないで改善案とプルリクエストまで用意し、最後の承認は人が行います。作る速さの次に問われるのは、作った後をどう育てるかです。小さなチームほど、点検と改善を仕組みとして持てるかどうかが、製品の差になっていきます。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。連携数や仕組みの説明はGoogleの発表に基づきます。Stitch Loopは実験段階で、待ちリストへの登録が始まったところです。料金や一般提供の時期は発表で示されていません。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Google公式ブログ「Stitch Loop: Continuous product optimization for teams」（2026年11月18日）<br>
+      <a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-loop/" target="_blank" rel="noopener">https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-loop/</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
