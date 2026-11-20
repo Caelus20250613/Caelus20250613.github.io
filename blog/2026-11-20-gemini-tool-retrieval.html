@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>道具は、必要なときだけ出す — GoogleがGemini APIに「Tool Retrieval」をプレビュー公開、道具の説明書は使うときだけ読み込む | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Googleは2026年11月19日、Gemini APIのInteractions API向けに「Tool Retrieval」を公式ブログで発表し、プレビュー提供を始めました。AIエージェントが数十から数百の道具につながると、道具ごとの詳しい説明書を毎回すべて送ることで入力トークンが膨らみ、遅くなり、道具の選び間違いも増えます。新機能では名前と短い説明だけを常に見せ、詳しい説明書は必要なときだけ読み込みます。追加料金はなく、対応はGemini 3.6以降です。節約幅の実測数字は発表で示されていません。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="道具は、必要なときだけ出す — GoogleがGemini APIに「Tool Retrieval」をプレビュー公開、道具の説明書は使うときだけ読み込む">
+  <meta property="og:description" content="Googleは2026年11月19日、Gemini APIのInteractions API向けに「Tool Retrieval」を公式ブログで発表し、プレビュー提供を始めました。AIエージェントが数十から数百の道具につながると、道具ごとの詳しい説明書を毎回すべて送ることで入力トークンが膨らみ、遅くなり、道具の選び間違いも増えます。新機能では名前と短い説明だけを常に見せ、詳しい説明書は必要なときだけ読み込みます。追加料金はなく、対応はGemini 3.6以降です。節約幅の実測数字は発表で示されていません。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-20-gemini-tool-retrieval.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.18</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>道具は、必要なときだけ出す — GoogleがGemini APIに「Tool Retrieval」をプレビュー公開、道具の説明書は使うときだけ読み込む</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>AIエージェントは、つなぐ道具（ツール）が増えるほど便利になります。返金をする、予定を入れる、在庫を調べる。けれど道具が増えると、別の問題が出てきます。道具1つひとつには「どういう引数で呼ぶか」という詳しい説明書（パラメータのスキーマ）があり、それを毎回の依頼に全部つけて送ると、文章が膨らんでいくのです。Googleは2026年11月19日、この無駄を減らす仕組み「Tool Retrieval」をGemini APIで発表し、Interactions API向けにプレビュー提供を始めました。</p>
+
+      <h2>何が問題だったのか</h2>
+      <p>Googleの説明では、エージェントが数十から数百の道具につながると、すべての詳しい説明書を毎回送ることが積み重なります。入力トークンの数が膨らみ、応答が遅くなり、候補が増えるほど道具の選び間違いも増える、という3つの負担です。</p>
+      <p>道具が多いことは強みのはずなのに、その道具の多さ自体が重さになっていました。</p>
+
+      <h2>仕組みは「名前だけ見せて、使うときに開く」</h2>
+      <p>Tool Retrievalでは、道具の詳しい説明書を手元に待機させておき、必要なときだけ読み込みます。使い方は2つです。依頼に「tool_search」という道具を加え、後回しにしたい道具に「defer_loading: true」という指定を付けます。</p>
+      <p>モデルからは、その道具の名前と短い説明だけが見えます。何ができる道具があるかは分かる一方で、詳しい説明書は文脈の外に置かれます。モデルがその道具を使いたくなったら、名前で呼び出し、APIが詳しい説明書を読み込み、モデルがその道具を実行する。ここまでが1回の依頼の中で進みます。</p>
+      <p>発表の例では、壊れて届いた注文への40ドルの返金を扱う窓口エージェントが、返金用の道具を名前で探し、説明書が読み込まれてから実行する流れが示されています。探した、読み込んだ、実行した、という3つの段取りは記録にも残り、どの道具を候補にしたか後から確かめられます。</p>
+
+      <h2>細かい工夫も3つある</h2>
+      <p>1つ目は、検索のための索引を自分で作ったり置いたりしなくてよい点です。検索はGemini側のサーバーで動き、コードの変更は新しい道具の追加と、後回しにする道具への指定だけ、と説明されています。よく使う道具は最初から読み込んだままにし、たまにしか使わない長い列の道具を後回しにする、という使い分けが想定されています。</p>
+      <p>2つ目は、会話の頭の部分をためて再利用する仕組み（プレフィックス・キャッシュ）との相性です。後回しの説明書は文脈の頭に入らないため、ためた部分が会話の途中で変わりにくくなります。</p>
+      <p>3つ目は、外部の道具サーバー（MCPサーバー）とも組み合わせられる点です。MCPサーバー側の道具もまとめて後回しにでき、大きなサーバーの道具を1つずつ並べなくてよくなります。自分の道具台帳や検索の仕組みを持っている場合は、自分側で検索する方式も選べます。その場合は往復が1回増えますが、会話の途中で新しい道具を見せることもできます。</p>
+
+      <h2>料金と対応モデル</h2>
+      <p>Tool Retrieval自体に別料金はありません。入力と出力のトークンは、使うモデルの通常料金で計算されます。ただし、tool_searchを有効にすると小さな固定分の入力トークンが加わり、読み込んだ説明書はその後の会話でも入力として数えられます。得になるのは、最後まで読み込まなかった説明書の量が、読み込んだ量を上回るときで、Google自身も「自分の利用実態に合わせて測ってほしい」と書いています。</p>
+      <p>対応するのはGemini 3.6以降のモデルで、Gemini 4の全モデルを含みます。提供場所はInteractions APIで、現在はプレビューです。</p>
+
+      <h2>数字がない、という読み方</h2>
+      <p>今回の発表には、トークンが何割減った、どれだけ速くなった、といった実測の数字がありません。これは弱点でもありますが、読み方としては正直な面もあります。節約幅は、道具の数と、実際にどれだけの道具が使われるかで大きく変わるからです。道具が数個しかない小さなエージェントでは、固定分の追加のほうが重くなる場合もありえます。発表の数字がない部分は、ないものとして読むのがちょうどいい発表です。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、今回の発表を「全部を最初から渡さない」という設計の考え方として見ています。</p>
+      <p>エージェントに仕事を任せるとき、つい「必要なものは全部、先に渡しておこう」と考えがちです。けれど渡す量が増えるほど、費用も時間もかかり、肝心の選び間違いも増える。名前と短い説明だけを目次として見せ、詳しくは必要なときに開く。この目次の考え方は、道具の数が増えたエージェントほど効きます。</p>
+      <p>もう1つ参考になるのは、目次に載せる「短い説明」の書き方です。モデルは名前と説明だけを見て、どの道具を探すか決めます。つまり道具の説明文の分かりやすさが、そのまま仕事の正確さに響きます。道具を増やす前に、1つひとつの説明が第三者に伝わる言葉になっているかを見直すことが、先にやるべき整備だと言えます。</p>
+
+      <h2>まとめ</h2>
+      <p>Tool Retrievalは、Gemini APIのプレビュー機能として、道具の詳しい説明書を使うときだけ読み込めるようにしました。追加料金はなく、対応はGemini 3.6以降です。一方で、節約幅の実測数字は発表されておらず、得かどうかは道具の数と使い方次第です。道具が増えて重くなってきたエージェントがあるなら、まず目次だけを渡す形にできないか、という見直しの材料として読むのがちょうどいい発表です。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。仕組みや料金、対応モデルはGoogleの発表に基づきます。節約幅や速さの実測数字は発表で示されていないため、本記事にも載せていません。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Google公式ブログ「Gemini API tool retrieval for efficient agent scaling」（2026年11月19日）<br>
+      <a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/" target="_blank" rel="noopener">https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
