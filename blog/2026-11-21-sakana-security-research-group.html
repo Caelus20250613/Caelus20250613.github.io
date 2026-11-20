@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>守りは、上流で作る — Sakana AIがセキュリティ専門の研究グループを設立、欠陥は出てから直すのではなく作らない | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Sakana AIは2026年11月20日、AIを使った集合的なサイバー防御と、AIシステム自体の安全性とセキュリティを研究する独立した研究開発チーム「Security Research Group」の設立を発表しました。事業とは切り離し、公益を目的に、研究成果や再現可能なベンチマーク、実践的なガイドラインを公開し、政府・産業界・学術界と連携します。背景には、脆弱性の届出が増え続け、見つける速さに直す速さが追いつかない現状があります。発表が重心を置くのは、公開後に欠陥を追うのではなく、設計と構築の段階で欠陥を作らないことです。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="守りは、上流で作る — Sakana AIがセキュリティ専門の研究グループを設立、欠陥は出てから直すのではなく作らない">
+  <meta property="og:description" content="Sakana AIは2026年11月20日、AIを使った集合的なサイバー防御と、AIシステム自体の安全性とセキュリティを研究する独立した研究開発チーム「Security Research Group」の設立を発表しました。事業とは切り離し、公益を目的に、研究成果や再現可能なベンチマーク、実践的なガイドラインを公開し、政府・産業界・学術界と連携します。背景には、脆弱性の届出が増え続け、見つける速さに直す速さが追いつかない現状があります。発表が重心を置くのは、公開後に欠陥を追うのではなく、設計と構築の段階で欠陥を作らないことです。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-21-sakana-security-research-group.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1><a href="../index.html">Caelus Partners</a></h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.18</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>守りは、上流で作る — Sakana AIがセキュリティ専門の研究グループを設立、欠陥は出てから直すのではなく作らない</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>AIがソフトウェアの欠陥を見つける力は、日に日に高まっています。見つかる欠陥が増えるのは、見方によっては良いことです。隠れていた問題が見えるようになった、とも言えます。けれど、見つけた欠陥を直すのは人と組織の仕事で、そちらの速さはなかなか上がりません。Sakana AIは2026年11月20日、このずれに向き合うための独立した研究開発チーム「Security Research Group」の設立を発表しました。</p>
+
+      <h2>何が起きているのか</h2>
+      <p>発表が引く数字は、米国立標準技術研究所（NIST）の報告です。それによれば、公開された脆弱性に付けられる識別番号CVEの登録申請は、2020年から2025年にかけて263％増え、2026年の初めには前年同期を3割近く上回りました。日本語で脆弱性情報を提供するJVN iPediaでも、直近の四半期の登録件数は前年同期のほぼ2倍に達した、とされています。</p>
+      <p>この増加にAIがどこまで関わっているのかは、まだはっきりしていません。発表自身も、AIによる発見の支援に加えて、積み残し案件の解消といった事務的な要因が挙げられていることを紹介しています。数字を「AIのせいで増えた」と断定はできない、という読み方が正確です。</p>
+      <p>現場では、すでに負担が表れています。NISTは古い記録を定常的に分析するのをやめ、実際に悪用が確認された欠陥から優先して扱う方針に切り替えました。日本の金融当局も、金融機関に対し、経営トップが直接関与する経営課題として対応するよう求めています。攻撃する側でも、AIエージェントを使って多数の標的に同時に侵入を試みる動きがあり、AIシステム自体も探りの対象になりつつあります。</p>
+
+      <h2>速く直すだけでは足りない</h2>
+      <p>対応の優先順位づけや修正を速くすることは必要です。ただ、発表は「すでに運用しているシステムに修正を当て続けるだけでは、全体のリスクを十分に下げられない」と指摘します。</p>
+      <p>根拠として挙げられるのは、米サイバーセキュリティ・インフラストラクチャ安全保障庁（CISA）による2会計年度分のレビューです。多くの攻撃者は高度な手法ではなく、よく知られた単純な弱点を突いており、なかでも入力値の検証漏れとメモリ安全性の欠陥が、最も確実な侵入口になっている。AIで欠陥を見つける速さが上がっても、同じ弱点が作り込まれ続ける限り、直す仕事は増える一方だ、というのが発表の見立てです。</p>
+      <p>だからこそ、重心は上流にあります。公開後に欠陥を追いかけるのではなく、設計や構築の段階で、欠陥をそもそも作らない、あるいはその場で取り除く。日本政府の対策方針も、ソフトウェアベンダーにセキュア・バイ・デザインの原則の適用を求める方向で、発表はこれと重なる考え方を示しています。</p>
+
+      <h2>研究グループがやること</h2>
+      <p>Security Research Groupは、Sakana AIの事業活動とは切り離された組織として、公共の利益に資することを使命とします。研究成果や再現可能なベンチマーク、実践的なガイドラインを公開しながら、政府や産業界、学術界と連携して研究開発に取り組みます。</p>
+      <p>率いるのは、Chief of Security Researchの梅谷晃宏氏と、共同創業者兼CEOのDavid Ha氏です。運営の指針として、研究を製品の宣伝とは切り離すベンダー中立、悪用可能な攻撃素材は公開せず発見した脆弱性は適切な調整機関を通じて報告する責任ある開示、そして政策と現場の実務をつなぐ橋渡し役を目指すこと、が挙げられています。なお、研究成果の公開方針そのものは今後策定するとされており、現時点では原則の段階です。</p>
+
+      <h2>研究は3つの方向</h2>
+      <p>1つ目は「設計による予防」です。システムに求められる品質を、作る前にどう定義し、動いている間もどう確かめ続けるか。特定の種類の欠陥を、構造的に攻撃に使えなくするにはどう設計するか。自動で直す場合に、その修正の安全性をどう確かめ、問題があればすぐ元に戻せるようにするか。</p>
+      <p>2つ目は「AIエージェントによる集合的な防御」です。攻撃が組織を越えて同時に来るのに、防御はいまも組織単位にとどまっています。各組織に置かれた防御エージェントが連携し、ある組織で観測された攻撃が全体の防御にすぐ反映される仕組みが想定されています。一方で、何をどのような同意のもとで共有するのか、共有された情報の信頼性をどう担保するのか、エージェントが動いたとき誰が責任を負うのか、といった問いに答えはまだ出ていません。</p>
+      <p>3つ目は「AIシステム自体を守ること」で、まず防御側のエージェントから始めます。欠陥の優先順位づけや修正を担うエージェントは、システムへの特権的なアクセス権を持ちます。各エージェントの権限を担当業務の範囲にどう限定するか、行動の根拠を後からどう検証できるようにするか、防御のために作った道具の転用をどう防ぐか、が論点です。</p>
+      <p>土台にある研究として、専門化したモデルを協調させるFugu-Cyberも紹介されています。サイバー分野のベンチマークCyberGymで86.9％、CTI-REALMで72.1％という数字はSakana AI自身の報告で、発表も「ベンチマークの結果が実際の企業環境にそのまま当てはまるとは限らず、その差を測ることも研究課題」と述べています。数字は発表元の主張として読むのがちょうどいい位置づけです。</p>
+
+      <h2>セキュリティは「当たり前品質」</h2>
+      <p>発表で印象に残るのは、セキュリティを品質の問題として捉え直す提案です。品質管理で使われる狩野モデルでは、備わっていても意識されず、欠けたときにだけ強い不満を生むものを「当たり前品質」と呼びます。安全性がその典型で、セキュリティも同じです。当たり前として明示的には求められにくいため、品質の定義から抜け落ちやすい。だからこそ、最後に検査するのではなく、最初から品質の要求として作り込む必要がある、という考え方です。</p>
+      <p>日本の事情も率直に挙げられています。運用を外部のベンダーに委ねている組織が多いこと、古いシステムと不十分な資産の把握という技術的負債、IT人員を短期間に大きく増やせないこと。この条件では、人を増やして対応する進め方では追いつかず、欠陥が生まれる仕組みそのものを見直すべきだ、と発表は述べます。</p>
+
+      <h2>CLPの見方</h2>
+      <p>私たちは、この発表を「AIを守りに使う話」である以上に、「任せる仕組みの作り方の話」として読んでいます。</p>
+      <p>小さな現場がAIエージェントを業務に入れるときにも、上流で決めておけることはあります。エージェントに渡す権限を担当業務の範囲に絞ること。何をしたかを後から確かめられるよう記録を残すこと。自動で直したり送ったりする前に、人の確認をどこに置くかを決めておくこと。どれも、発表が研究課題として挙げた論点と地続きです。</p>
+      <p>もう1つ参考になるのは、欠陥の話を「見つけて直す速さ」だけで語らない姿勢です。同じ種類の弱点が繰り返し作り込まれているなら、速く直す仕組みを足す前に、作る段階の決めごとを見直すほうが効きます。これはセキュリティに限らず、業務アプリの設計でも同じです。</p>
+
+      <h2>まとめ</h2>
+      <p>Sakana AIのSecurity Research Groupは、脆弱性が増え続ける時代に、守りの重心を公開後の対応から設計と構築の上流へ移すことを掲げて始動しました。集合的な防御と、AI自体を守る研究を、公益目的で公開しながら進める方針です。具体的な成果や公開方針はこれからですが、「セキュリティは後付けの検査ではなく、最初から作り込む品質」という考え方は、AIを業務に入れるすべての現場に当てはまります。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。脆弱性の件数や増え方は、発表が紹介するNIST等の報告に基づきます。Fugu-Cyberのベンチマーク数字はSakana AIの報告であり、実際の企業環境への当てはまりは発表でも未検証とされています。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Sakana AI公式発表「Introducing Sakana AI's Security Research Group」（2026年11月20日）<br>
+      <a href="https://sakana.ai/security-research-group/" target="_blank" rel="noopener">https://sakana.ai/security-research-group/</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
