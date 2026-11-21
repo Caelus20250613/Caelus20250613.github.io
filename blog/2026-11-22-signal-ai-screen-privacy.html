@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>画面を読むAIから、会話を守る — SignalがOS組み込みAIエージェントの画面読み取りを既定で制限し、開発者が外せる仕組みを求める | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Signalは公式ブログで、スマートフォンのOSに組み込まれた最新のAIエージェントがSignalのデータを読み取って保存する可能性を制限すると発表しました。iOS 27ではアプリ内のスクリーンショットを防ぎ、AndroidではAIアシスタントが画面データを読もうとする動きを検知したときに同様の対策を取ります。背景にあるのは、GoogleのGeminiやAppleのSiri AIのように、画面に表示された情報を読み取って動くAIがOSの深いところに入ってきたことです。暗号化で守ってきたはずの会話が、画面に表示された瞬間にAI側へ渡ってしまう。Signalは、この対策だけでは不十分だと正直に述べ、OSを作る側に、開発者がAIのデータアクセスからアプリを外せる分かりやすい仕組みと、AIの動き方についての正確な文書を求めています。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="画面を読むAIから、会話を守る — SignalがOS組み込みAIエージェントの画面読み取りを既定で制限し、開発者が外せる仕組みを求める">
+  <meta property="og:description" content="Signalは公式ブログで、スマートフォンのOSに組み込まれた最新のAIエージェントがSignalのデータを読み取って保存する可能性を制限すると発表しました。iOS 27ではアプリ内のスクリーンショットを防ぎ、AndroidではAIアシスタントが画面データを読もうとする動きを検知したときに同様の対策を取ります。背景にあるのは、GoogleのGeminiやAppleのSiri AIのように、画面に表示された情報を読み取って動くAIがOSの深いところに入ってきたことです。暗号化で守ってきたはずの会話が、画面に表示された瞬間にAI側へ渡ってしまう。Signalは、この対策だけでは不十分だと正直に述べ、OSを作る側に、開発者がAIのデータアクセスからアプリを外せる分かりやすい仕組みと、AIの動き方についての正確な文書を求めています。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-22-signal-ai-screen-privacy.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>画面を読むAIから、会話を守る — SignalがOS組み込みAIエージェントの画面読み取りを既定で制限し、開発者が外せる仕組みを求める</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.22</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>画面を読むAIから、会話を守る — SignalがOS組み込みAIエージェントの画面読み取りを既定で制限し、開発者が外せる仕組みを求める</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>メッセージアプリのプライバシーは、長く「通信の途中を暗号化すること」で守られてきました。送る側と受け取る側の間では誰にも読めない。それが前提でした。ところが、スマートフォンのOS自体にAIエージェントが組み込まれるようになると、別の入口が開きます。画面に表示された会話を、AIがそのまま読み取る入口です。Signalは公式ブログで、この入口をふさぐ対策を発表しました。</p>
+      <h2>何が起きたのか</h2>
+      <p>Signalは、モバイルOSに組み込まれた最新のAIエージェントが、Signalのデータを読み取って保存する可能性を制限すると発表しました。</p>
+      <p>具体的には、iOS 27ではアプリ内のスクリーンショットを防ぎます。Androidでは、AIアシスタントが画面データを読もうとする動きを検知できる場合に、同様の対策を取ります。スクリーンショットを取りたい人は、アプリの設定でこの保護を外すこともできます。ただし、その場合は自分の内容だけでなく、会話の相手の内容もAIエージェントにさらされる可能性があり、プライバシーの保証が崩れる、とSignalは注意しています。</p>
+      <p>似た対策は初めてではありません。昨年、Windowsでは、MicrosoftのRecall AIがSignalのメッセージのスクリーンショットを既定で撮って保存しないよう、スクリーンショットを防ぐ対策をすでに取った、と発表は述べています。</p>
+      <h2>なぜ画面が問題になるのか</h2>
+      <p>発表が背景として挙げるのは、OSへのAIの組み込み方です。GoogleはGeminiと結びついたエージェント機能を、AppleはSiri AIの画面認識を、それぞれOSの深いところに組み込んでいます。</p>
+      <p>こうしたAIが利用者の情報を得る方法は、画面に表示された情報を読み取ることです。その結果、Signalのデータが読み取られ、AIエージェントが質問に答えたり用事を済ませたりするために使える状態になります。</p>
+      <p>Signalが守ってきた暗号化は、通信の途中を守る仕組みです。ところが、画面に表示されたあとの情報が読み取られ、端末内のデータベースや外部のサーバーに保存されれば、その先はSignalの管理の外にあります。会話の参加者全員のプライバシーが危うくなる、というのが発表の指摘です。OSを作るApple、Google、Microsoftの3社は、アプリが動く環境そのものを決める存在であり、その環境がプライバシーにとって厳しい方向に変わっている、とSignalは述べています。</p>
+      <h2>対策は、完全ではない</h2>
+      <p>Signalは、自分たちの対策が不完全であることもはっきり書いています。</p>
+      <p>スクリーンショットを防いでも、端末の中にすでに保存されているファイルをAIが読み取るような、別の経路までは防げません。また、開発者がAIのデータアクセスを検知して防げる場面でも、アプリ本来の使い勝手を大きく損なわずに制限する簡単な方法は、OS側から提供されていない、としています。そのため、現時点ではmacOS向けにこの保護を実装できていない、とも述べています。</p>
+      <p>もう1つの課題は、情報の不足です。AIエージェントが実際にどのように動くのかについての文書が乏しく、Signalはここ数か月、AndroidとiOSで実際に何が起きているのかを調べるために多くの開発時間を使ってきた、と明かしています。</p>
+      <h2>SignalがOS側に求めること</h2>
+      <p>発表の後半は、対策の報告であると同時に、OSを作る側への要望です。求めているのは大きく2つです。</p>
+      <p>1つ目は、開発者が自分のアプリをAIのデータアクセスと処理から外せる、簡単で分かりやすく文書化された方法です。対象には、画面の読み取りだけでなく、ファイルへのアクセス、通知、各種の仕組みが含まれます。しかも、アプリ本来の役立ち方を損なわずに外せることが条件です。</p>
+      <p>2つ目は、AIエージェントがどのように動き、データにどうアクセスしてどう処理するのかについての、より良い文書と技術仕様です。</p>
+      <p>あわせて、サードパーティのAIエージェントが、設定のときに利用者が渡しがちな深い権限、たとえば本来は利用者を助けるためのアクセシビリティ設定を使って、アプリのデータにアクセスすることを防ぐ道具も必要だ、としています。</p>
+      <h2>CLPの見方</h2>
+      <p>私たちは、この発表を「便利さと、渡す範囲は別々に決める」という話として読んでいます。</p>
+      <p>AIエージェントに仕事を頼むとき、画面を読む権限は強力です。表示されているものは何でも読めるからです。だからこそ、どのアプリをAIに読ませてよいか、どのアプリは読ませないかを、アプリ側と利用者側の両方が選べることが大切になります。選ぶ方法が分かりにくかったり、選ぶとアプリが使いにくくなったりするようでは、実質的には選べないのと同じです。</p>
+      <p>小さな現場でも同じ考え方が使えます。AIに任せる前に、読ませてよい情報と読ませない情報を先に分けておくこと。便利な連携を入れるときほど、渡す範囲を最初に決めておくこと。Signalの発表は、その線引きをOSの側にも用意してほしい、という訴えです。</p>
+      <h2>まとめ</h2>
+      <p>Signalは、OS組み込みのAIエージェントによる画面読み取りから会話を守るため、iOS 27とAndroidでスクリーンショットを防ぐ対策を発表しました。同時に、その対策だけではファイル経由の読み取りまで防げず、macOSでは実装できていないことも正直に示しています。求めているのは、開発者がAIのデータアクセスからアプリを外せる仕組みと、AIの動き方についての正確な文書です。暗号化だけでは守り切れない時代に、画面という新しい入口をどう扱うか。その問いが、アプリを作る側にも使う側にも投げかけられています。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。対策の内容、対象のOSや機能、対策の限界はいずれもSignalの発表に基づきます。発表の日付は2026年11月20日として報道されています。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Signal公式ブログ「Signal is Serious About Protecting Your Privacy」<br>
+      <a href="https://signal.org/blog/protecting-your-privacy/" target="_blank" rel="noopener">https://signal.org/blog/protecting-your-privacy/</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
