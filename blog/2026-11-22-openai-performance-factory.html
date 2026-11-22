@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>直すまで、AIが回す — OpenAIのPerformance Factory、CodexがChatGPTの遅さを3か月で1,700件超調査し、原因特定は600件超 | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="OpenAIは公式記事で、ChatGPTの性能が落ちたときに原因を探して直すまでの流れを、Codexエージェントが自動で回す仕組み「Performance Factory」を紹介しました。性能アラートが鳴るとタスクが起き、エージェントが遅くなった理由を調べ、直し方を提案し、エンジニアが確認して公開したあと、別のエージェントが元に戻ったかを確かめます。最初の仕組みであるRegression Workflowは、3か月余りで1,700件を超える調査を追い、600件を超えるケースで原因を特定しました。1日あたり17件の自動調査です。原因の提案100件を人が見直したところ、正確と判定されたのは70パーセントでした。いずれもOpenAIの発表に基づく数字です。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="直すまで、AIが回す — OpenAIのPerformance Factory、CodexがChatGPTの遅さを3か月で1,700件超調査し、原因特定は600件超">
+  <meta property="og:description" content="OpenAIは公式記事で、ChatGPTの性能が落ちたときに原因を探して直すまでの流れを、Codexエージェントが自動で回す仕組み「Performance Factory」を紹介しました。性能アラートが鳴るとタスクが起き、エージェントが遅くなった理由を調べ、直し方を提案し、エンジニアが確認して公開したあと、別のエージェントが元に戻ったかを確かめます。最初の仕組みであるRegression Workflowは、3か月余りで1,700件を超える調査を追い、600件を超えるケースで原因を特定しました。1日あたり17件の自動調査です。原因の提案100件を人が見直したところ、正確と判定されたのは70パーセントでした。いずれもOpenAIの発表に基づく数字です。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-22-openai-performance-factory.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>直すまで、AIが回す — OpenAIのPerformance Factory、CodexがChatGPTの遅さを3か月で1,700件超調査し、原因特定は600件超</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.22</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>直すまで、AIが回す — OpenAIのPerformance Factory、CodexがChatGPTの遅さを3か月で1,700件超調査し、原因特定は600件超</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>大きなサービスが少し遅くなる。そのたびに、人がログとグラフを追い、原因を探してきました。ところが、AIエージェントがコードを書く速さで開発が進むようになると、遅くなる場所も同じ速さで増えていきます。OpenAIは公式記事で、従来のやり方では追いつかなくなったと述べ、その答えとして作った仕組み「Performance Factory」を紹介しました。性能の問題を、探すところから直して確かめるところまで、Codexエージェントが回す仕組みです。</p>
+      <h2>何が起きたのか</h2>
+      <p>Performance Factoryは、クラウドで動く自律的な仕組みで、CodexとOpenAIのモデルを使って性能の後退を見つけて直します。エンジニアは、繰り返し起きる仕事の流れ（ワークフロー）を定義し、担当するCodexエージェントへの指示を書きます。</p>
+      <p>最初のワークフローはRegression Workflowです。性能アラートが鳴るとタスクが起き、エージェントが遅くなった理由を調べ、見つけたことをタスクに記録し、エンジニアが確認するための直し方を提案します。公開したあとは、別のエージェントが同じタスクを引き継ぎ、性能が元の水準に戻ったかを確かめます。調べるところから、直し方を書くところ、回復を確かめるところまで、性能の後退を直す流れ全体を自動化した、と記事は述べています。</p>
+      <p>実績として示されているのは、3か月余りで1,700件を超える調査を追い、600件を超えるケースで原因を特定したという数字です。1日あたり17件の自動調査にあたります。いずれもOpenAIの発表に基づく数字です。</p>
+      <h2>仕組みは4つの部品</h2>
+      <p>Performance Factoryは4つの部品でできています。</p>
+      <p>1つ目は、設定できるワークフローを持つタスク管理です。エンジニアは設定ファイルと、エージェントが各段階で何をするかを書いたMarkdownの指示でワークフローを定義します。タスクがどの状態をたどるか、どの段階でエンジニアが必要かも、ここで決めます。</p>
+      <p>2つ目は、割り振りの輪（ディスパッチループ）です。次に進める状態になったタスクを定期的に確かめ、その段階の指示でCodexのターンを始めてエージェントに割り振ります。</p>
+      <p>3つ目は、クラウドでCodexを動かすための社内APIです。エージェントはOpenAIのネットワークの中で動き、コードの置き場所や、エンジニアが使う観測の道具（指標、ログ、たどり跡、CPUの記録、メモリの状態）を使えます。エージェントは専用の身分で動くため、権限の範囲を絞れ、どの行動が性能エージェントによるものかも分かります。</p>
+      <p>4つ目は、購読（サブスクリプション）です。人の確認や公開を待つ間、エージェントを動かし続ける必要はありません。GitHubのレビューコメントや公開の完了といった変化が起きたら知らせるよう登録しておき、変化が来たらタスクが再び進める状態になります。</p>
+      <h2>原因探しと、反論役</h2>
+      <p>原因を探すエージェントは、どの指標が悪くなったか、いつから変わり始めたか、どの種類の依頼が影響を受けたかから始めます。性能チームの調べ方をまとめた共有スキル「perf-forensics」が、使う道具と進め方をCodexに渡します。性能チームはもともと30を超える性能の道具を積み上げてきた、と記事は述べています。</p>
+      <p>工夫は、反論役を別に置いたことです。初期のエージェントは、最初に見つけたもっともらしい説明で止まってしまい、あとで間違いと分かることがありました。そこで、提案された診断を否定しようとする別のCodexセッションを加えました。反論役は前提を確かめ直し、反対の場合を試します。たとえば、ある公開が遅さの原因なら、公開に触れていない似た依頼は健全なままだったか、といった確かめ方です。</p>
+      <p>記事が挙げる実例では、画像のダウンロードの失敗を原因とした診断に対し、反論役が、ファイルを探す社内サービスはすでに回復しているのに画像の依頼だけ失敗し続けていることに気づき、診断では続いている失敗を説明できないとして、調査を差し戻しました。</p>
+      <p>正確さの数字も正直に示されています。原因の提案100件を人が見直したところ、正確と判定されたのは70パーセントで、残りの30パーセントはさらに詰める必要があるか、因果を十分に示せていませんでした。これはOpenAI自身による判定です。</p>
+      <h2>直す方が難しい</h2>
+      <p>原因が反論役を通ると、ワークフローはCodexに直し方を作らせ、プルリクエストを開かせます。エンジニアがその内容を確認し、取り込むかどうかを決めます。公開したあとはエージェントが性能の回復を確かめ、戻っていればタスクを完了にし、一部だけ戻っていれば元の後退は完了にして残りの遅さで新しいタスクを開き、改善がなければ記録して調査に戻します。</p>
+      <p>記事は、原因を見つけることより、直し方を正しく作る方が難しかった、と率直に書いています。エージェントの提案が必要以上に複雑だったり、新しい問題を持ち込んだりする例があったためです。直し方にも反論役の確認を加えました。また、キャッシュを足すような直し方は速くなる一方で古いデータを出すおそれがあり、こうした判断はサービスを知るエンジニアの案内が役立つ、としています。</p>
+      <p>今後については、アラートが鳴る前に遅さや改善の余地を見つける、より先回りの使い方や、知っている兆候をワークフローにして全サービスで定期的に回す使い方を進めている、と記事は述べています。料金や外部への提供については、記事では示されていません。</p>
+      <h2>CLPの見方</h2>
+      <p>私たちは、この発表を「任せる単位は、1回の作業ではなく、状態を持った流れにする」という話として読んでいます。</p>
+      <p>参考になる点は3つあります。1つ目は、仕事をタスクとして残し、状態と見つけたことをエージェントの外に置くことです。そうすれば、別のエージェントや人が途中から引き継げます。2つ目は、調べる役と疑う役を分けることです。最初のもっともらしい説明で止まらない仕組みは、小さな自動化でもそのまま使えます。3つ目は、最後の判断は人に残すことです。直し方を取り込むかどうかはエンジニアが決める。この線引きがあるから、自動で回す範囲を広げられます。</p>
+      <p>小さな現場でいきなり工場は作れません。けれど、繰り返し起きる確認作業を「起きたら調べ、反対の見方で確かめ、人が決め、結果を確認する」という流れに書き直すことは、今日からでも始められます。</p>
+      <h2>まとめ</h2>
+      <p>OpenAIのPerformance Factoryは、ChatGPTの性能の後退を、検知から原因の特定、直し方の提案、人の確認、回復の確認まで、Codexエージェントがタスクとして回す仕組みです。3か月余りで1,700件を超える調査と600件を超える原因の特定という実績が示される一方で、原因の提案の正確さは100件の見直しで70パーセント、直し方を作る方が難しいことも、発表の中で正直に書かれています。任せる範囲を広げるほど、疑う役と人の判断を流れの中に組み込むことが大切になる。その実例として読める発表です。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。1,700件超・600件超・1日17件・70パーセントなどの数字はいずれもOpenAIの発表に基づきます。70パーセントは原因の提案100件をOpenAI自身が見直した判定です。発表の日付は2026年11月19日として報道されています。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>OpenAI公式記事「How OpenAI's Performance Factory keeps ChatGPT fast」<br>
+      <a href="https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/" target="_blank" rel="noopener">https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
