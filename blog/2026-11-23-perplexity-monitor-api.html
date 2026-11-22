@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>探すから、見張るへ — PerplexityのMonitor API、Webの変化を定期的に確かめ、目的に合うものだけをWebhookで知らせる | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Perplexityは公式ブログで、Webの変化を定期的に見張るための「Monitor API」を発表しました。話題全体の新しい動きを追う方法と、料金ページや変更履歴など決まったページ（最大10件）の変化を追う方法があり、ページの場合は最初に基準を保存し、次回以降は変わった部分の文章の差分が返ります。結果は「Decider」が関連性・出典の確かさ・新しい情報かどうか・鮮度の4点で確かめ、しきい値を満たしたものだけが確信度のスコア付きでWebhookに届きます。料金は、Webの見張りが成功した実行1,000回あたり1ドル、ページの見張りが取得したURL1,000件あたり1ドルです。いずれもPerplexityの発表に基づきます。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="探すから、見張るへ — PerplexityのMonitor API、Webの変化を定期的に確かめ、目的に合うものだけをWebhookで知らせる">
+  <meta property="og:description" content="Perplexityは公式ブログで、Webの変化を定期的に見張るための「Monitor API」を発表しました。話題全体の新しい動きを追う方法と、料金ページや変更履歴など決まったページ（最大10件）の変化を追う方法があり、ページの場合は最初に基準を保存し、次回以降は変わった部分の文章の差分が返ります。結果は「Decider」が関連性・出典の確かさ・新しい情報かどうか・鮮度の4点で確かめ、しきい値を満たしたものだけが確信度のスコア付きでWebhookに届きます。料金は、Webの見張りが成功した実行1,000回あたり1ドル、ページの見張りが取得したURL1,000件あたり1ドルです。いずれもPerplexityの発表に基づきます。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-23-perplexity-monitor-api.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>探すから、見張るへ — PerplexityのMonitor API、Webの変化を定期的に確かめ、目的に合うものだけをWebhookで知らせる</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.23</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>探すから、見張るへ — PerplexityのMonitor API、Webの変化を定期的に確かめ、目的に合うものだけをWebhookで知らせる</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>Webは毎秒変わります。取引先が資金調達を発表したとき、使っているAPIに互換性を壊す変更が入ったとき、競合が料金ページを書き換えたとき。知りたいのは「今どうなっているか」だけではなく、「いつ、何が変わったか」です。これまでは多くのチームが、定期的に検索を回し、重複を取り除き、変化を見つけるための仕組みを自分たちで作ってきました。件数が少ないうちは回せても、話題やページが何百にもなると維持が難しくなります。Perplexityは公式ブログで、その見張りの仕事をまとめて引き受ける「Monitor API」を発表しました。</p>
+      <h2>何が起きたのか</h2>
+      <p>Monitor APIは、大規模なWebの見張りのための仕組みです。話題全体の新しい動きを見張ることも、決まったページの変化を追うこともできます。決められた間隔で確かめに行き、目的に合う更新が見つかったときだけ、Webhookで知らせます。</p>
+      <p>見張りは、普段の言葉で定義できます。各Monitorには検索の問い、またはページの一覧を持たせ、任意で「目的」も言葉で指定します。たとえば、AIインフラ分野の新しい資金調達を見つける、といった指定です。目的は、あとから作り直さなくても更新できます。何を「合う」とみなすかが変わったら、目的を書き換えるだけで済みます。</p>
+      <p>提供はすでに始まっており、APIとAPIコンソールから使えます。使う鍵は、Search、Context、Agent APIと同じAPIキーです。</p>
+      <h2>仕組みは、2つの見張り方と4つの確かめ</h2>
+      <p>見張り方は2通りです。</p>
+      <p>1つ目は、Web全体の見張りです。話題や会社、問いについて新しい動きを追い、Perplexity SearchをWebとニュースの結果に対して回します。</p>
+      <p>2つ目は、ページの見張りです。料金ページ、変更履歴、方針のページなど、指定したページを最大10件まで追います。最初の確認で基準を保存し、次回以降は変わった部分について、文章の差分が返ります。</p>
+      <p>見つけた結果は、そのまま届くわけではありません。「Decider」が、指定された目的に照らして1件ずつ確かめます。Webの見張りでは、関連性、出典の確かさ、新しい情報かどうか、鮮度の4つの確認をすべて通り、しきい値を満たしたものだけが送られます。しきい値は確認ごとに調整でき、更新には確信度のスコアが付きます。ページの変化については、その変化が目的にとって意味があるかどうかを確かめます。</p>
+      <p>回す間隔は、15分ごと、1時間ごと、毎日、毎週といった固定の間隔か、cron形式の指定が選べます。各回の実行は前回の続きから始まり、回をまたいだ重複の取り除きはMonitor側が行います。知らせは署名付きのWebhookで届き、一時的な失敗には自動で再送されます。一時停止や再開、その場での実行も、APIやコンソールからできます。</p>
+      <h2>数字と、確かめ方への注意</h2>
+      <p>料金は分かりやすい形です。Webの見張りは、成功した実行1,000回あたり1ドル。ページの見張りは、1回の実行で複数のページを取得できるため、取得したURL1,000件あたり1ドルです。1回とは、予定された確認、またはその場で実行した確認を指します。いずれもPerplexityの発表に基づく料金です。</p>
+      <p>性能についての発表もあります。Perplexityは、実際のSearch APIの問いから取った60の話題で、他のSearch API提供元と比べる試験を行ったとしています。各Monitorが8時間、新しい情報を見張り、別のモデルが結果の関連性と公開のタイミングを確かめたところ、最も新しく関連性の高い結果を、最も幅広い話題で届けたのはPerplexityだった、というのが同社の説明です。これはPerplexity自身の評価であり、比べた提供元の名前は発表では示されていません。その前提で読む必要があります。</p>
+      <h2>使い方の例</h2>
+      <p>発表が挙げる使い方は、大きく4つです。</p>
+      <p>営業の現場では、資金調達の発表や幹部の採用、製品の発表を見張り、取引先の調査や顧客管理の更新、タイミングのよい連絡につなげます。競合の調査では、料金、製品の発表、変更履歴の動きを追い、競合のまとめを更新します。規制の見張りでは、規制当局の発表や案内のページを見張り、変化を要約して担当チームへ回します。株式の調査では、決算の発表や見通しの変更などを追って要約する使い方が挙げられています。いずれも、変化があったときにだけ人が動き出す形です。</p>
+      <h2>CLPの見方</h2>
+      <p>私たちは、この発表を「検索は、聞いたときに答える道具から、変わったときに知らせる見張り役へ変わり始めた」という話として読んでいます。</p>
+      <p>参考になる点は3つあります。1つ目は、見張りの面倒な部分、つまり定期実行、重複の取り除き、差分の作成、届かなかったときの再送までを、まとめて部品として買えることです。これまで小さな現場でも自前で作ってきた部分です。2つ目は、知らせる前に「目的に合うか」を確かめる段があることです。変化を全部知らせるだけでは、知らせが多すぎて読まれなくなります。3つ目は、目的を言葉で書いて、あとから書き換えられることです。何を見張るかは、運用しながら育てるものだからです。</p>
+      <p>小さな現場で、いきなり大規模な見張りは要りません。けれど、競合の料金ページ、仕入れ先や取引先の案内ページ、行政の案内ページといった「変わったらすぐ知りたいページ」は、どの現場にも数件はあります。そこから始めるのが現実的です。</p>
+      <h2>まとめ</h2>
+      <p>PerplexityのMonitor APIは、Web全体の新しい動きと、決まったページの変化を、定期的に見張るための仕組みです。結果はDeciderが4つの観点で確かめ、目的に合うものだけがWebhookで届きます。料金は実行1,000回あたり1ドル、または取得したURL1,000件あたり1ドルです。定期検索と重複除きを自前で作る時代から、見張りを部品として使う時代へ。その転換を示す発表として読めます。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。料金（1,000回あたり1ドル／1,000件あたり1ドル）、ページ指定の上限（10件）、60の話題での比較結果などの数字や説明はいずれもPerplexityの発表に基づきます。比較結果は同社自身の評価で、比べた提供元の名前は発表では示されていません。発表の日付は2026年11月16日として報道されています。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Perplexity公式ブログ「Introducing Perplexity's Monitor API」<br>
+      <a href="https://www.perplexity.ai/hub/blog/introducing-perplexitys-monitor-api" target="_blank" rel="noopener">https://www.perplexity.ai/hub/blog/introducing-perplexitys-monitor-api</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
