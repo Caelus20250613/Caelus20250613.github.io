@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>速さと賢さ、両取りへ — GoogleのGemini 4 Neon、最上位に迫る力と抑えた処理コストで、複雑な仕事を速く終わらせる | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Googleは公式ブログで、新モデル「Gemini 4 Neon」を発表しました。複雑なソフトウエア開発、知識労働、科学分野の仕事を速く終わらせることを狙い、Artificial Analysisの知能指標ではxhigh設定で61点・全体3位と紹介されています。料金は入力100万トークンあたり3ドル、出力100万トークンあたり15ドルで、文脈の長さは100万トークンです。既定のhigh設定では、Gemini 4 Carbonより処理1件あたりのコストが32％低いとGoogleは説明しています。提供はGemini API（Google AI Studio）、Gemini for business、Google AntigravityとGeminiアプリの有料プラン向けに始まっています。いずれもGoogleの発表に基づきます。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="速さと賢さ、両取りへ — GoogleのGemini 4 Neon、最上位に迫る力と抑えた処理コストで、複雑な仕事を速く終わらせる">
+  <meta property="og:description" content="Googleは公式ブログで、新モデル「Gemini 4 Neon」を発表しました。複雑なソフトウエア開発、知識労働、科学分野の仕事を速く終わらせることを狙い、Artificial Analysisの知能指標ではxhigh設定で61点・全体3位と紹介されています。料金は入力100万トークンあたり3ドル、出力100万トークンあたり15ドルで、文脈の長さは100万トークンです。既定のhigh設定では、Gemini 4 Carbonより処理1件あたりのコストが32％低いとGoogleは説明しています。提供はGemini API（Google AI Studio）、Gemini for business、Google AntigravityとGeminiアプリの有料プラン向けに始まっています。いずれもGoogleの発表に基づきます。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-23-gemini-4-neon.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>速さと賢さ、両取りへ — GoogleのGemini 4 Neon、最上位に迫る力と抑えた処理コストで、複雑な仕事を速く終わらせる</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.23</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>速さと賢さ、両取りへ — GoogleのGemini 4 Neon、最上位に迫る力と抑えた処理コストで、複雑な仕事を速く終わらせる</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>大きなモデルは賢いけれど、遅くて高い。小さなモデルは速いけれど、複雑な仕事では力不足。その間で、現場はいつも「賢さと速さと値段」の釣り合いを探してきました。Googleは公式ブログで、その中間に置く新しいモデル「Gemini 4 Neon」を発表しました。位置づけは明確です。最難関の長期プロジェクトはGemini 4 Carbon、日常の速い実行はGemini 4 Hydrogen、そしてNeonは、複雑で回数の多い仕事を、深さと効率の両方でこなす役です。</p>
+      <h2>何が起きたのか</h2>
+      <p>Neonは、複雑なソフトウエア開発、知識労働、科学分野の仕事で、仕事の最後まで速くたどり着くことを狙ったモデルです。表計算、PDF、図表、音声、動画といった企業の仕事に散らばる入力を、100万トークンの文脈の中でまとめて読み、構造のある成果物に変えられるとGoogleは説明しています。</p>
+      <p>料金は、入力100万トークンあたり3ドル、出力100万トークンあたり15ドルです。キャッシュされた入力は100万トークンあたり0.15ドルで、通常の入力料金から95％割り引かれます。文脈の長さは100万トークンです。</p>
+      <p>提供はすでに始まっています。開発者はGoogle AI StudioのGemini API（有料枠）で使えます。企業向けにはGemini for business（APIまたはモデルの選択肢）で、Google AI ProとUltraの契約者はGoogle AntigravityとGeminiアプリでも選べます。いずれもGoogleの発表に基づきます。</p>
+      <h2>力の目安と、読み方への注意</h2>
+      <p>Googleが挙げる目安はいくつかあります。Artificial Analysisの知能指標では、xhighの思考設定で61点を取り、全体で3位、近い規模のモデルの中では先頭に立つとしています。Vals Indexでは2位（70.9％）で、法務リサーチと税務エージェントの評価では1位と紹介されています。開発者向けでは、Artificial Analysisのコーディングエージェント指標で全体1位（58.6）、Terminal-Bench 4.1では65.2％とされています。</p>
+      <p>コスト面では、既定のhigh設定で、高い知能指標のスコアを保ちながら、Gemini 4 Carbonより処理1件あたりのコストが32％低いとGoogleは説明しています。最上位の競合モデルと比べても、1件あたりのコストがおよそ50％から80％低い場面がある、というのが同社の説明です。</p>
+      <p>これらの数字は、Googleの発表と、発表が引用する外部評価に基づくものです。評価の設定や比べる相手によって順位は変わります。また、作り話のような誤りの割合が、Google Antigravityでの社内テストで過去最も低かったという説明も、Google自身の社内測定である前提で読む必要があります。</p>
+      <h2>仕事の進め方で工夫された点</h2>
+      <p>発表で目立つのは、点数よりも「仕事の進め方」の説明です。Neonは、途中で人が直しを入れたときに素直に合わせる力で、Agent Arena Indexで2位と紹介されています。長い作業では、無駄なファイルの読み直しを減らし、進み具合を伝えながら進め、文脈が長くなっても圧縮を安定して扱うと説明されています。</p>
+      <p>思考の深さは4段階から選べます。仕事の重さに合わせて、賢さと使うトークンの量を調整できる形です。サイバーセキュリティ向けには、Neon for cyberが、Fairwind Programの信頼できる防御担当者向けに数日以内に提供を始めるとされています。</p>
+      <h2>CLPの見方</h2>
+      <p>私たちは、この発表を「一番賢いモデルを選ぶ時代から、仕事ごとに釣り合いのよいモデルを選ぶ時代へ」という話として読んでいます。</p>
+      <p>参考になる点は3つあります。1つ目は、家族の中で役割が言葉で分けられていることです。最難関はCarbon、日常の速さはHydrogen、その中間の複雑で回数の多い仕事はNeon。現場でも、仕事の重さで使い分ける考え方はそのまま使えます。2つ目は、途中で直しを入れたときに合わせる力や、進み具合を伝える力が、点数と同じ並びで紹介されていることです。長く任せる仕事ほど、途中で直せるかどうかが効きます。3つ目は、思考の深さを段階で選べることです。全部の仕事に一番深い思考は要りません。深さと値段を仕事ごとに決める運用が、現実的です。</p>
+      <p>小さな現場では、まず「回数が多くて、そこそこ複雑な仕事」から試すのが合っています。資料の読み比べ、表の整理、文章の下書きと直し。そうした仕事で、速さと仕上がりの釣り合いを見るのが先です。</p>
+      <h2>まとめ</h2>
+      <p>Gemini 4 Neonは、GoogleのGemini 4家族の中で、深さと効率の釣り合いを取る位置のモデルです。料金は入力100万トークンあたり3ドル、出力100万トークンあたり15ドル、文脈は100万トークン。知能指標61点・全体3位という目安はGoogleの発表に基づくもので、Carbonより1件あたり32％低いコストという説明も同社の発表です。一番賢いモデルを全部に使うのではなく、仕事の重さで選ぶ。その選択肢がまた1つ、具体的な形で増えました。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。料金（入力100万トークンあたり3ドル／出力100万トークンあたり15ドル／キャッシュ入力0.15ドル）、文脈の長さ（100万トークン）、知能指標の点数と順位、コストの比較などの数字はいずれもGoogleの発表に基づきます。コスト比較はGoogleの説明、誤りの割合の改善はGoogleの社内テストに基づくものである旨を本文に明記しています。発表日は2026年11月18日です。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Google公式ブログ「Introducing Gemini 4 Neon」<br>
+      <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/" target="_blank" rel="noopener">https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
