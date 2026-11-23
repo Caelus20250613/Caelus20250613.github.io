@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>買い物は、探す場所から済ませる場所へ — GoogleのConnected Apps、検索とGeminiの中で注文や税の試算まで進められるように | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Googleは公式ブログで、米国向けに新しいConnected Appsを、検索とGeminiアプリを通じて提供し始めると発表しました。食料品ではAlbertsons、Safeway、Shaw's、Targetで注文を作って会計まで進められ、その仕組みはUniversal Commerce Protocolで動くとしています。お金の分野では、Geminiアプリで提供中のExperianが検索にも広がり、信用情報の確認や個人ローン探しに使え、H&R Blockでは税金の計算と還付の見込みを検索から確かめられます。家の困りごと向けのAngiとThumbtackは、今後数週間で検索とつなげられるようになるとしています。いずれもGoogleの発表に基づき、対象は米国です。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="買い物は、探す場所から済ませる場所へ — GoogleのConnected Apps、検索とGeminiの中で注文や税の試算まで進められるように">
+  <meta property="og:description" content="Googleは公式ブログで、米国向けに新しいConnected Appsを、検索とGeminiアプリを通じて提供し始めると発表しました。食料品ではAlbertsons、Safeway、Shaw's、Targetで注文を作って会計まで進められ、その仕組みはUniversal Commerce Protocolで動くとしています。お金の分野では、Geminiアプリで提供中のExperianが検索にも広がり、信用情報の確認や個人ローン探しに使え、H&R Blockでは税金の計算と還付の見込みを検索から確かめられます。家の困りごと向けのAngiとThumbtackは、今後数週間で検索とつなげられるようになるとしています。いずれもGoogleの発表に基づき、対象は米国です。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-24-google-connected-apps.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>買い物は、探す場所から済ませる場所へ — GoogleのConnected Apps、検索とGeminiの中で注文や税の試算まで進められるように</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.24</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>買い物は、探す場所から済ませる場所へ — GoogleのConnected Apps、検索とGeminiの中で注文や税の試算まで進められるように</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>これまで検索は、店やサービスを「探す場所」でした。見つけたあとは、相手のサイトやアプリへ移って、注文や手続きを進めるのが普通でした。Googleは公式ブログで、その境目をなくす動きを発表しました。米国向けの新しいConnected Apps（つながるアプリ）です。検索とGeminiアプリの中から、食料品の注文や税金の試算まで進められるようにするとしています。</p>
+      <h2>何が起きたのか</h2>
+      <p>食料品では、Albertsons、Safeway、Shaw's、Targetが対象です。休日の集まりの前菜の準備や、感謝祭向けの買い物といった年末の用事を例に、注文を作って会計まで進めやすくするとGoogleは説明しています。その仕組みはUniversal Commerce Protocolで動くとしています。</p>
+      <p>お金の分野では2つあります。ExperianはすでにGeminiアプリで提供中で、今回、検索にも広がります。米国の利用者が信用情報（クレジットレーティング）を確認したり、個人ローンを探したりする手伝いをするとしています。もう1つのH&amp;R Blockでは、税金の計算と還付の見込みを、検索から直接確かめられるとしています。</p>
+      <p>家の困りごと向けは、これからです。今後数週間で、AngiとThumbtackのアカウントを検索とつなげられるようになるとしています。水漏れする蛇口の修理や、来客前の飾り付けといった仕事で、地元の専門業者を探しやすくする狙いです。</p>
+      <p>対象はいずれも米国で、料金や利用条件の数字は発表で示されていません。日本で使えるかどうかも、発表では触れられていません。そのためこの記事でも、対象と時期は発表の範囲だけに絞って紹介します。AngiとThumbtackは「今後数週間」とされている段階で、すでに使えるとは発表されていません。</p>
+      <h2>何が変わるのか</h2>
+      <p>ポイントは、探す場所と済ませる場所が近づくことです。利用者は、検索の画面を離れずに注文や試算まで進められます。店やサービスを提供する側から見ると、お客さんと出会う場所が、自分のお店のサイトだけでなく、検索やAIアプリの中にも広がることになります。</p>
+      <p>もう1つは、買い物だけでなく、信用情報の確認、税金の試算、家の修理の依頼まで、年末に重なりやすい用事が並べて示されていることです。どれも「調べるだけ」で終わらず、その先の行動まで同じ場所で進める形がそろっています。</p>
+      <h2>CLPの見方</h2>
+      <p>私たちは、この発表を「お客さんは、店の入口ではなく、探している途中で出会う」という話として読んでいます。</p>
+      <p>参考になる点は3つあります。1つ目は、出会いの場所の変化です。検索やAIアプリの中で注文まで進む流れが広がれば、小さなお店でも、探されている途中で正しく情報が出ることがこれまで以上に効いてきます。2つ目は、共通の仕組みでつながる形です。買い物の会計はUniversal Commerce Protocolで動くとされ、相手ごとに別々の作り方ではなく、共通の決まりでつなぐ方向が示されています。3つ目は、段階の違いを正直に読むことです。食料品とお金の分野は提供が始まる段階、家の困りごと向けは今後数週間の段階と、発表の中でも進み具合が分かれています。新しい連携の話は、この段階の違いまで含めて見る必要があります。</p>
+      <p>小さな現場では、まず自分のお店やサービスの情報が、検索で探されたときに正しく、迷わず出てくるかを確かめるのが先です。その土台があって初めて、こうした新しい出会いの場所が活きてきます。</p>
+      <h2>まとめ</h2>
+      <p>Googleの新しいConnected Appsは、米国向けに、検索とGeminiアプリの中で食料品の注文や税金の試算まで進められるようにする取り組みです。食料品はAlbertsons、Safeway、Shaw's、Target、お金の分野はExperianとH&amp;R Block、家の困りごと向けのAngiとThumbtackは今後数週間とされています。探す場所が、済ませる場所にもなっていく。その流れが、年末の身近な用事から具体的に示されました。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。対象地域（米国）、対象の店やサービス、提供の段階（提供開始／今後数週間）はいずれもGoogleの発表に基づきます。料金や利用条件、日本での提供については発表で示されていないため掲載していません。発表日は2026年11月20日です。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Google公式ブログ「Get your year-end tasks done with new Connected Apps」<br>
+      <a href="https://blog.google/products-and-platforms/products/search/connected-apps-holiday-errands/" target="_blank" rel="noopener">https://blog.google/products-and-platforms/products/search/connected-apps-holiday-errands/</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
