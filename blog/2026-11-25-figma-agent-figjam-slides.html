@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>会議のメモが、そのまま資料になる — Figmaのエージェント、FigJamとSlidesで正式提供 | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Figmaは公式ブログで、同社のエージェントがFigJamとFigma Slidesで正式提供（一般提供）になったと発表しました。対象はすべての有料プランで、両方の製品で一部のコネクタと添付ファイルに対応します。FigJamでは付箋をテーマごとにまとめたり、話し合いの内容を仕様書の下書き（Spec）にしたりでき、Slidesでは原稿や資料からスライドの構成案と初稿を作ったり、表計算の画面からグラフを作ったりできます。会議の準備と後片付け、資料づくりの最初のひと手間をAIに任せる形です。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="会議のメモが、そのまま資料になる — Figmaのエージェント、FigJamとSlidesで正式提供">
+  <meta property="og:description" content="Figmaは公式ブログで、同社のエージェントがFigJamとFigma Slidesで正式提供（一般提供）になったと発表しました。対象はすべての有料プランで、両方の製品で一部のコネクタと添付ファイルに対応します。FigJamでは付箋をテーマごとにまとめたり、話し合いの内容を仕様書の下書き（Spec）にしたりでき、Slidesでは原稿や資料からスライドの構成案と初稿を作ったり、表計算の画面からグラフを作ったりできます。会議の準備と後片付け、資料づくりの最初のひと手間をAIに任せる形です。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-25-figma-agent-figjam-slides.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>会議のメモが、そのまま資料になる — Figmaのエージェント、FigJamとSlidesで正式提供</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.25</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>会議のメモが、そのまま資料になる — Figmaのエージェント、FigJamとSlidesで正式提供</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>会議が終わったあとの仕事は、地味に重いものです。付箋やメモを読み返して整理し、決まったことと宿題を書き出し、それを報告用のスライドに作り直す。Figmaは公式ブログで、同社のエージェント（AIの助手）が、ホワイトボードのFigJamとプレゼン資料のFigma Slidesで正式提供になったと発表しました。</p>
+      <h2>何が起きたのか</h2>
+      <p>対象はすべての有料プランで、両方の製品とも一部のコネクタと添付ファイルに対応します。コネクタでNotionやGoogle Driveなどの資料を取り込み、画面の画像などのファイルを添付して、エージェントに整理や下書きを頼める形です。</p>
+      <p>FigJam側でできることとして挙がっているのは、ブレインストーミング用のボードの用意、調査やデータからのジャーニーマップ作り、付箋をテーマごとに分けること、やることを担当者と期限つきの表にまとめることなどです。話し合いのあとは、付箋とコメントを選んでまとめさせると、決まったこと・次にやること・まだ決まっていないことを入れた仕様書の下書き（Spec）が、ボード上に文書として作られます。元の意見と並べて置けるので、あとから「なぜそう決めたか」をたどれます。</p>
+      <p>Slides側では、相手に合わせて資料を作り替えたり、文章を短くしたり、話の流れへの意見を求めたり、発表者ノートから発表時間の目安を出したりできます。原稿や仕様書を渡すと、まずスライドの構成案を作り、確認してから「Generate deck」でスライドの初稿を生成します。表計算の画面の画像を渡して棒グラフを作らせることもでき、目盛りの正確さはエージェントが担うと説明されています。</p>
+      <p>発表の中で紹介されている使い方も、どちらも「最初から作る」のではなく「集めて、まとめて、初稿まで持っていく」使い方です。デザインの検討会の前に過去の意見や競合の例を集めて要約する、検討会のあとの大量の付箋を仕様書の初稿にする、といった具合です。</p>
+      <h2>何が変わるのか</h2>
+      <p>ポイントは、AIの入り口が「文章を書く画面」から「会議と資料の現場」に広がったことです。これまでAIに頼む作業は、チャット画面に文章で頼む形が中心でした。今回は、付箋が貼られたボードや、作りかけのスライドそのものが作業場所になります。</p>
+      <p>もう1つは、順番です。エージェントが作るのはあくまで初稿で、構成案を確認してから生成する流れが用意されています。会議の整理も、元の付箋と並べて残ります。「AIがまとめた結果だけが残る」のではなく、「元の意見を見ながら直せる」形です。</p>
+      <h2>CLPの見方</h2>
+      <p>私たちは、この発表を「会議のあとの片付けこそ、AIに任せやすい」という話として読んでいます。</p>
+      <p>参考になる点は3つあります。1つ目は、任せる対象が「考える仕事」ではなく「集める・並べる・初稿にする仕事」だということです。付箋の分類や、決まったことの書き出しは、判断そのものではなく整理の作業で、任せても確かめやすい部分です。2つ目は、初稿と元の材料が同じ場所に残ることです。あとから誰が見ても、元の意見とまとめを見比べられます。3つ目は、構成案を人が確認してから作る順番です。いきなり完成品を出すのではなく、途中で止まれる形になっています。</p>
+      <p>小さな現場の会議でも、終わったあとの「メモを清書して、宿題を表にして、資料に直す」は毎回起きます。そこを初稿までAIに任せて、人は決めることと確かめることに時間を使う。その分け方は、道具が何であっても使える考え方です。</p>
+      <h2>まとめ</h2>
+      <p>Figmaのエージェントは、FigJamとFigma Slidesで正式提供となり、すべての有料プランで使えるようになりました。会議の材料を集めて整理し、仕様書やスライドの初稿まで作る。考えるのは人、片付けるのはAI。その役割分担が、ふだんの会議の道具の中に入ってきました。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。対象プラン（すべての有料プラン）、対応するコネクタと添付ファイルの範囲、各機能の内容はいずれもFigmaの発表に基づきます。発表日は2026年11月23日です。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Figma公式ブログ「The Figma Agent Is Now Available in FigJam and Slides」<br>
+      <a href="https://www.figma.com/blog/introducing-figma-agent-in-figjam-and-slides/" target="_blank" rel="noopener">https://www.figma.com/blog/introducing-figma-agent-in-figjam-and-slides/</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
