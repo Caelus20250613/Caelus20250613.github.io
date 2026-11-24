@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>直すのはAI、決めるのはチームのルール — AnthropicのClaude Ship、プルリクエストの確認・修正・承認をチームの方針で進める | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Anthropicは公式記事で、Claude Shipをベータとして提供開始したと発表しました。プルリクエストを確認するCode Review（正式版）に、失敗したチェックや競合、レビューへの指摘を直すPR Stewardと、チームがリポジトリに置いた承認方針ファイルに沿って承認を判断するClaude Approvals（いずれもベータ）を組み合わせた仕組みです。PR Stewardは承認もマージもしない設計で、直すたびに何を変えたかと戻し方をコメントします。Claude Codeチームでは、レビューを工程の一つとして使った期間に、マージされたプルリクエストが2倍超になり、差し戻しの割合は40％超下がったとAnthropicは紹介しています。対象はClaude TeamとEnterpriseプランで、GitHubのリポジトリが対象です。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="直すのはAI、決めるのはチームのルール — AnthropicのClaude Ship、プルリクエストの確認・修正・承認をチームの方針で進める">
+  <meta property="og:description" content="Anthropicは公式記事で、Claude Shipをベータとして提供開始したと発表しました。プルリクエストを確認するCode Review（正式版）に、失敗したチェックや競合、レビューへの指摘を直すPR Stewardと、チームがリポジトリに置いた承認方針ファイルに沿って承認を判断するClaude Approvals（いずれもベータ）を組み合わせた仕組みです。PR Stewardは承認もマージもしない設計で、直すたびに何を変えたかと戻し方をコメントします。Claude Codeチームでは、レビューを工程の一つとして使った期間に、マージされたプルリクエストが2倍超になり、差し戻しの割合は40％超下がったとAnthropicは紹介しています。対象はClaude TeamとEnterpriseプランで、GitHubのリポジトリが対象です。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-24-claude-ship.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>直すのはAI、決めるのはチームのルール — AnthropicのClaude Ship、プルリクエストの確認・修正・承認をチームの方針で進める</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.24</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>直すのはAI、決めるのはチームのルール — AnthropicのClaude Ship、プルリクエストの確認・修正・承認をチームの方針で進める</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>コードの変更を提案するプルリクエストは、出してからが手間です。レビューが返ってくれば作業を止めて直し、自動チェックが失敗すれば直し直し、最後に承認してくれる人を探します。Anthropicは公式記事で、その一連の流れをAIに任せる仕組み「Claude Ship」をベータとして提供開始したと発表しました。</p>
+      <h2>何が起きたのか</h2>
+      <p>Claude Shipは3つの担当でできています。1つ目はCode Reviewで、すでに正式版です。プルリクエストをコードベースと照らして複数の観点で深く確認し、見つけたことを検証して分類し、プルリクエストへ投稿します。確認の深さはQuick、Standard、Deepからリポジトリごとに選べます。</p>
+      <p>2つ目は、新しくベータになったPR Stewardです。失敗した自動チェック（CI）、変更同士の競合、Code Reviewや他のレビュー道具、チームメンバーからの指摘に対応して、プルリクエストを「緑（通過の状態）」に保つ働きをします。大事なのは、PR Stewardは承認もマージもしないよう設計されていることです。直す専門で、決めることはしません。直すたびに、何を変えたかと、どう戻せるかをコメントします。開発者はコメントで指示を出したり、止めたりもできます。</p>
+      <p>3つ目もベータのClaude Approvalsです。チームがリポジトリに置いた「承認方針」のファイルに沿って判断します。方針が許す日常的な変更はClaudeが自分で承認し、場面によっては人による深い確認を求めます。Anthropicはこれを「賢くなったCODEOWNERSファイルのようなもの」と説明しています。判断にはCode Reviewの結果や、チームが自然な言葉で書いた分類の決まりも使えます。</p>
+      <p>使い方の入口は2つあります。開発者はClaude Codeの新しいコマンド「/ship」で、自分の変更を送り出し、プルリクエストを開いて確認と修正まで進められます。管理者はリポジトリごとに有効にして、チーム全体のプルリクエストに自動で働かせることもできます。有効にする場所、確認の深さ、支出の上限は管理者が決め、既存のブランチ保護や必須チェックとも一緒に使えます。</p>
+      <p>対象はClaude TeamとEnterpriseプランで、GitHubのリポジトリです。利用はトークン単位の課金で、入れることで組織の費用が増える場合があるとAnthropicは明記しています。データ保持ゼロ（Zero Data Retention）の組織、HIPAA構成、顧客管理の暗号鍵を使う組織では使えません。対象のEnterprise組織は、期限までに申し込めば少なくとも10,000ドル分のClaude Shipクレジットを受け取れる案内もありますが、条件が付くとされています。</p>
+      <p>効果として紹介されている数字は、Anthropic自身のClaude Codeチームの話です。Claudeのレビューを、より広い工程の中の一層として使った期間に、マージされたプルリクエストは6月から9月にかけて2倍超になり、差し戻し（revert）の割合は40％超下がったとしています。これはAnthropicの発表に基づく自社チームの結果で、どのチームでも同じ結果になるとは発表されていません。</p>
+      <h2>何が変わるのか</h2>
+      <p>ポイントは、「書く速さ」だけでなく「出してからの速さ」までAIが担い始めたことです。これまでAIの担当はコードを書くところが中心でした。今回は、確認する、直す、承認の判断をする、という出荷までの流れ全体が対象になっています。</p>
+      <p>もう1つ大事なのは、任せ方です。直す担当（PR Steward）は決めない。決める担当（Claude Approvals）は、チームがファイルに書いた方針の範囲でだけ決める。しかもAnthropicは、多くの利用者にはまず「観察だけのモード（observe-only）」で有効にし、信頼が育ってから本当に承認させる形を勧めています。任せる範囲を、チームのルールとして先に書く設計です。</p>
+      <h2>CLPの見方</h2>
+      <p>私たちは、この発表を「AIに任せるかどうかではなく、どこまで任せるかをルールで決める」という話として読んでいます。</p>
+      <p>参考になる点は3つあります。1つ目は、直す担当と決める担当を分けていることです。直すAIがそのまま承認まですると歯止めが利きません。役割を分けることで、速さと歯止めを両立させています。2つ目は、承認の決まりをリポジトリの中のファイルとして置くことです。設定画面の中ではなく、コードと同じ場所で見直せる形になっています。3つ目は、観察だけのモードから始める進め方です。いきなり本番の承認を任せず、「もし任せたらどう判断したか」を先に見てから広げる。これはAIに仕事を任せる他の場面でも使える進め方です。</p>
+      <p>小さな現場では、まず「日常的な変更とは何か」「人が必ず見る変更とは何か」を言葉にして書き出すところから始めるのが現実的です。その線引きが書ければ、AIに任せる範囲も自然と決まってきます。</p>
+      <h2>まとめ</h2>
+      <p>AnthropicのClaude Shipは、プルリクエストの確認・修正・承認を、チームの方針に沿ってAIが進める仕組みで、ベータとして提供が始まりました。Code Reviewは正式版、PR StewardとClaude Approvalsはベータです。直すのはAI、でも決めるのはチームのルール。その線引きの作り方が、これからのAIの任せ方の見本になりそうです。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。対象プラン（Team／Enterprise）、対象（GitHub）、各機能の段階（正式版／ベータ）、料金の扱いはいずれもAnthropicの発表に基づきます。マージ数と差し戻しの数字は、Anthropicが紹介する自社Claude Codeチームの結果で、発表元の主張として掲載しています。発表日は2026年11月23日です。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Anthropic（Claude）公式記事「Introducing Claude Ship」<br>
+      <a href="https://claude.com/resources/articles/introducing-claude-ship" target="_blank" rel="noopener">https://claude.com/resources/articles/introducing-claude-ship</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
