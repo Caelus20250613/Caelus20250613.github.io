@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>作った道具が、そのままアプリになる — Claudeの「Install as app」、MacとWindowsでベータ提供 | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Anthropicは公式記事で、Claudeで作った成果物（アーティファクト）を、MacとWindowsのデスクトップアプリとして入れられる新機能「Install as app」のベータ提供を始めたと発表しました。入れたアプリは独自のアイコンを持ち、Claudeとは別の窓で開きます。梱包や署名は不要で、APIキーも要りません。権限は3段階からアプリごとに選べ、許可はその版だけに効き、更新のたびに聞き直されます。毎日使う小さな道具を、チャットの外へ出して常駐させる形です。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="作った道具が、そのままアプリになる — Claudeの「Install as app」、MacとWindowsでベータ提供">
+  <meta property="og:description" content="Anthropicは公式記事で、Claudeで作った成果物（アーティファクト）を、MacとWindowsのデスクトップアプリとして入れられる新機能「Install as app」のベータ提供を始めたと発表しました。入れたアプリは独自のアイコンを持ち、Claudeとは別の窓で開きます。梱包や署名は不要で、APIキーも要りません。権限は3段階からアプリごとに選べ、許可はその版だけに効き、更新のたびに聞き直されます。毎日使う小さな道具を、チャットの外へ出して常駐させる形です。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-25-claude-install-as-app.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>作った道具が、そのままアプリになる — Claudeの「Install as app」、MacとWindowsでベータ提供</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.25</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>作った道具が、そのままアプリになる — Claudeの「Install as app」、MacとWindowsでベータ提供</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>AIとのチャットで作った小さな道具は便利でも、使うたびにチャットを開き直す手間がありました。Anthropicは公式記事で、Claudeで作った成果物（アーティファクト）を、そのままデスクトップアプリとして入れられる新機能「Install as app」のベータ提供を、MacとWindows向けに始めたと発表しました。</p>
+      <h2>何が起きたのか</h2>
+      <p>入れたアプリは独自のアイコンを持ち、Claudeとは別の窓で開きます。他の人と共有もできます。アプリはClaudeと連携先（コネクタ）を使え、元の成果物を直すと自動で更新されます。アプリからClaudeへの依頼は、契約プランの利用枠を消費します。</p>
+      <p>できることとして挙がっているのは、通知を送ることや、メニューバー（Windowsではシステムトレイ）に項目を置くことです。Anthropicの社員が作った例として、レイヤー対応の画像編集アプリ、ファイル管理アプリ、フォルダの決まりでファイルを整理するアプリ、Claudeが手伝うターミナル、パソコンの状態を見るメニューバーのアプリの5つが紹介されています。</p>
+      <p>始め方は、Claudeに作りたい道具を伝えて成果物として試し、共有メニューから「Install as app」を選ぶだけです。梱包（パッケージング）や署名は不要で、Claudeのアカウントで動くためAPIキーや別のログインも要りません。対象はすべてのプランでベータ提供が始まっています。ただし、使うにはネット接続とClaudeへのログインが必要で、Claude DocsやSlides、Sheetsなど入れられない成果物もあります。Teamでは最初から使え（全権限は切れた状態）、Enterpriseでは所有者が有効にするまで使えません。HIPAA対応の組織とハイブリッド配置では使えないとされています。</p>
+      <h2>権限は3段階、許可は版ごとに聞き直す</h2>
+      <p>目を引くのは権限の設計です。段階は3つあります。標準では、アプリはブラウザの中でできることだけができます。次の段階では、最前面に残る窓や全体のショートカット、通知など、Claudeが細かく管理できる機能をアプリが求められます。最後の「コンピュータへの全権限」では、プログラムの実行や、ファイルの読み書き・削除を、その都度聞かずに行えます。</p>
+      <p>許可は、その版のアプリにだけ効きます。自分で直した場合も含め、更新のたびにClaudeが聞き直します。全権限を与えられるのは、自分が作ったアプリか、TeamとEnterpriseでは同じ組織の人が作ったアプリだけです。Anthropicは入れる前にアプリを審査しないため、信頼できるアプリにだけ全権限を与えるよう呼びかけています。</p>
+      <h2>CLPの見方</h2>
+      <p>私たちは、この発表を「AIで作った道具が、試作品から日用品になる境目」の話として読んでいます。</p>
+      <p>参考になる点は3つあります。1つ目は、配るまでの手間が消えたことです。梱包も署名もAPIキーもなしに、作った道具を同僚のパソコンで動く形にできます。2つ目は、更新の仕組みです。元の成果物を直せばアプリ側も自動で直るので、小さな道具を直しながら育てる運用と相性がよい形です。3つ目は、権限の聞き方です。許可を版ごとに区切り、更新のたびに聞き直す。全権限は作った本人と組織の中だけに限る。「便利だから全部渡す」ではなく「必要な分だけ渡し、変わったら聞き直す」という線引きが、最初から組み込まれています。</p>
+      <p>小さな現場の道具は、たいてい「毎日開く小さな確認画面」です。それがチャットの中にあるうちは、開く手間が続く理由になります。デスクトップに置けて、通知で知らせてくれる形になれば、道具は日常の側に移ります。そのとき大事になるのは、作る速さよりも、権限の渡し方です。</p>
+      <h2>まとめ</h2>
+      <p>Claudeの「Install as app」で、作った成果物をMacとWindowsのアプリとして入れられるようになりました（ベータ提供、すべてのプラン）。梱包も署名もAPIキーも不要で、権限は3段階から選び、許可は更新のたびに聞き直されます。作ることと使うことの間の距離が、また一段縮まりました。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。対象プラン（すべてのプランでベータ提供）、入れられない成果物の範囲、権限の段階と管理の仕様はいずれもAnthropicの発表に基づきます。公開日は2026年11月24日です。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Anthropic（Claude）公式記事「Turn artifacts into Mac and Windows apps」<br>
+      <a href="https://claude.com/resources/articles/install-as-app" target="_blank" rel="noopener">https://claude.com/resources/articles/install-as-app</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
