@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>月末の作業は、下ごしらえからAIへ — Excelの11月更新、会計スキルと8つの新機能 | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Microsoftは公式のExcelブログで、2026年11月の更新8項目をまとめました。目玉は、残高と取引の照合や仕訳の下書きをCopilotが担う会計スキルで、経理の人は確認と判断に集中できる形です。ほかに、頼むだけでピボットテーブルをまとめる機能、読み取り専用の表でもCopilotに聞ける変更、数式エラーの説明カードなどがあります。ただし提供の段階は機能ごとに違い、会計スキルはFrontierプログラム向け、ピボットのまとめはInsiders向けの提供中です。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="月末の作業は、下ごしらえからAIへ — Excelの11月更新、会計スキルと8つの新機能">
+  <meta property="og:description" content="Microsoftは公式のExcelブログで、2026年11月の更新8項目をまとめました。目玉は、残高と取引の照合や仕訳の下書きをCopilotが担う会計スキルで、経理の人は確認と判断に集中できる形です。ほかに、頼むだけでピボットテーブルをまとめる機能、読み取り専用の表でもCopilotに聞ける変更、数式エラーの説明カードなどがあります。ただし提供の段階は機能ごとに違い、会計スキルはFrontierプログラム向け、ピボットのまとめはInsiders向けの提供中です。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-26-excel-november-2026-copilot.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>月末の作業は、下ごしらえからAIへ — Excelの11月更新、会計スキルと8つの新機能</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.26</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>月末の作業は、下ごしらえからAIへ — Excelの11月更新、会計スキルと8つの新機能</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>月末の経理作業は、取引を突き合わせ、仕訳を起票し、数字のずれを探す、地味で時間のかかる作業の積み重ねです。Microsoftは公式のExcelブログで2026年11月の更新をまとめ、その筆頭に、こうした下ごしらえをCopilotに任せる「会計スキル」を置きました。更新は全部で8項目あります。ただし、すべてが今すぐ全員に届くわけではなく、提供の段階は機能ごとに違います。</p>
+      <h2>会計スキルは、照合と仕訳の下書きまで</h2>
+      <p>新しい会計スキルでは、Copilotが残高と取引を比べて帳簿の照合を行い、確認すべき調整項目を用意します。仕訳は、発生計上、振替、配賦、反対仕訳、定例の仕訳まで下書きでき、必要な入力がそろっているか、貸借が合っているかも確認します。報告の場面では、計画と実績の差を分析し、主な要因を特定して、何が変わり、なぜ変わったかを説明する報告の下書きも作ります。</p>
+      <p>Microsoftの言い方は明確で、Copilotが担うのは下ごしらえで、人の仕事は確認と判断です。数字を確定させる役割までAIに渡す話ではありません。この会計スキルは、ExcelのCopilotとCoworkで、Frontierプログラムを通じて提供されます。</p>
+      <h2>頼むだけで、ピボットテーブルをまとめる</h2>
+      <p>日付や数値の範囲でピボットテーブルのデータをまとめる作業も、頼むだけでできるようになります。たとえば日ごとの売上を月ごとにまとめる、といった頼み方で、元のデータは変えません。この機能は、Windows、Mac、Web版のExcelで、Insiders向けに提供が進んでいる段階です。</p>
+      <h2>読み取り専用でも聞ける、エラーは理由まで</h2>
+      <p>共有された読み取り専用の表でも、Copilotに質問できるようになりました。データが何を示しているか、目立つ数字はどれか、といったことを、編集権限がなくても聞けます。Windows、Mac、Web版へ提供が進んでいます。</p>
+      <p>数式のエラーでは、セルのエラー表示にマウスを合わせると、エラーの意味、考えられる原因、直し方を説明するカードが出るようになりました。計算の手順を表示する操作もあり、対応するエラーではCopilotに診断と修正を頼むこともできます。こちらはWindows版のバージョン2611以降へ提供が進んでいます。</p>
+      <h2>残りの更新と、モデルの選択肢</h2>
+      <p>このほか、Copilotの変更をまとめて確認できる表示（Insiders向け）、iPhoneでCopilotに作業を任せたまま離れてもクラウドで作業が続き、終わると知らせる機能、Copilotアプリの中で表計算のファイルを作れる機能（一般提供）があります。</p>
+      <p>使うモデルの選択肢も増えました。GPT-6.2 SolがExcelのCopilotのモデル選択で使えるようになり、Frontierプログラムでは、従量課金が有効な場合にGPT-6.2 Astra、GPT-6 Astra、Claude Fable 5.2、Claude Fable 5.1も選べます。従量課金のモデルは、管理者が有効にし、クレジットを割り当てた場合だけ表示されます。</p>
+      <h2>CLPの見方</h2>
+      <p>私たちは、この更新を「AIに任せる範囲が、文章作りから、数字の下ごしらえへ広がった」という話として読んでいます。</p>
+      <p>参考になる点は3つあります。1つ目は、役割の分け方です。照合と下書きはAI、確認と判断は人、という線引きが発表の中ではっきりしています。2つ目は、段階の見方です。8項目あっても、一般提供、提供中、Insiders向け、Frontier向けと段階がばらばらです。「発表された」と「自分の環境で使える」は別物として、使う前に段階を確認する習慣が要ります。3つ目は、小さな改善の積み重ねです。読み取り専用でも聞ける、エラーに理由が出る、といった変更は地味ですが、毎日の表計算のつまずきを減らします。大きな新機能だけでなく、こうした小さな変更から取り入れるのが現実的です。</p>
+      <h2>まとめ</h2>
+      <p>Excelの11月更新は8項目で、中心は会計スキルによる経理の下ごしらえの肩代わりです。ピボットテーブルのまとめ、読み取り専用での質問、エラーの説明カードなど、日々の作業を軽くする変更も並びました。一方で、提供の段階は機能ごとに違います。発表の見出しだけで判断せず、自分の環境で使える段階かどうかまで確認してから取り入れる。それが今回の更新の読み方です。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。各機能の提供段階（Frontierプログラム向け、Insiders向け、提供中、一般提供）はMicrosoftの発表に基づきます。会計スキルは下書きと下ごしらえを担うもので、数字の確認と判断は人が行う前提で発表されています。公開日は2026年11月25日です。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Microsoft Excelブログ「What's New in Excel (November 2026)」<br>
+      <a href="https://techcommunity.microsoft.com/blog/excelblog/whats-new-in-excel-november-2026/4573867" target="_blank" rel="noopener">https://techcommunity.microsoft.com/blog/excelblog/whats-new-in-excel-november-2026/4573867</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
