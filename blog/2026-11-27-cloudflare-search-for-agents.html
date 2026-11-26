@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>サイトの中身は、AIが探せるように — Cloudflare「Search for Agents」、トグル1つで自社サイトにエージェント向け検索 | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Cloudflareは公式ブログで「Search for Agents」を発表しました。ダッシュボードのトグルを入れるだけで、自社サイトの内容を自動で索引化し、自社ドメインの下にAIエージェント向けの検索窓口を開く仕組みです。検索結果は生成された答えではなく、元の内容をMarkdownで返す形で、エージェントはページを1枚ずつ巡回せずに必要な情報へたどり着けます。無料プランを含む全顧客が対象で、利用はAI Searchの料金体系に従います。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="サイトの中身は、AIが探せるように — Cloudflare「Search for Agents」、トグル1つで自社サイトにエージェント向け検索">
+  <meta property="og:description" content="Cloudflareは公式ブログで「Search for Agents」を発表しました。ダッシュボードのトグルを入れるだけで、自社サイトの内容を自動で索引化し、自社ドメインの下にAIエージェント向けの検索窓口を開く仕組みです。検索結果は生成された答えではなく、元の内容をMarkdownで返す形で、エージェントはページを1枚ずつ巡回せずに必要な情報へたどり着けます。無料プランを含む全顧客が対象で、利用はAI Searchの料金体系に従います。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-27-cloudflare-search-for-agents.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>サイトの中身は、AIが探せるように — Cloudflare「Search for Agents」、トグル1つで自社サイトにエージェント向け検索</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.27</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>サイトの中身は、AIが探せるように — Cloudflare「Search for Agents」、トグル1つで自社サイトにエージェント向け検索</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>Webサイトを探すのは、もう人だけではありません。AIエージェントがサイトを訪れ、必要な情報を探す場面が増えています。Cloudflareは公式ブログで「Search for Agents」を発表しました。自社サイトの内容をエージェントが探せるようにする仕組みで、設定はダッシュボードのトグル1つから始まります。</p>
+      <h2>トグルを入れると、索引と検索窓口ができる</h2>
+      <p>これまでCloudflareのAI Searchで自社サイトを検索対象にするには、索引の作成と設定、検索窓口を自社ドメインで出すための連携作業を自分で行う必要がありました。Search for Agentsは、その一式をトグルにまとめました。</p>
+      <p>ダッシュボードのQuick Actions、またはAPIから有効にすると、CloudflareがAI Searchの窓口を自動で作り、サイトの内容の巡回と索引化を始め、検索を自社ドメインの下で見つけられる形で公開します。索引は初期設定で作られますが、再ランキングの有効化やキャッシュの設定などは後から変えられます。</p>
+      <p>対象は、無料プラン（上限あり）を含む全顧客です。利用はAI Searchの料金体系に従い、内容の取り込み、索引の保管、検索への応答が含まれ、Workersの無料・有料プランそれぞれの含まれる利用量と上限の範囲で扱われます。</p>
+      <h2>エージェントは、窓口を自分で見つける</h2>
+      <p>検索窓口があっても、エージェントが気づかなければ使われません。そこでSearch for Agentsは、サイトの全ページのhead部分に、検索窓口の場所と使い方を示すメタ情報を自動で載せます。Markdown for Agentsも有効な場合は、Markdownで返されるページの先頭にも同じ情報が入ります。</p>
+      <p>エージェントはこの案内を見て、自社ドメインの /.well-known/search という窓口へ、キーワードや自然な言葉で問い合わせます。窓口の利用は、そのドメインのボット管理、AI Crawl Control、WAFの設定に従います。つまり、開くかどうかだけでなく、どこまで開くかはサイト側の設定で決められます。</p>
+      <h2>返ってくるのは答えではなく、元の内容</h2>
+      <p>この検索窓口が返すのは、生成された答えではなく、索引から取り出した元の内容をMarkdownにしたものです。Cloudflareの説明では、エージェント側にはすでにAIモデルと利用者との会話があるため、必要なのは別のモデルが作った答えではなく、サイトにある関連情報そのものだ、という考え方です。</p>
+      <p>問い合わせの方法は、通常のGETに加えて、新しいHTTPのQUERYメソッドにも対応します。QUERYは2026年6月にRFC 10008として公開されたIETFの提案標準で、検索条件を本文に書いて安全に送れる方法です。プレーンテキストでもJSONでも送れます。</p>
+      <h2>開発者向け文書では、すでに稼働中</h2>
+      <p>Cloudflareは自社の開発者向け文書でSearch for Agentsを先行して有効にしています。発表では、エージェントがトップページで検索窓口を見つけ、質問を送って数秒で正しい答えにたどり着いた様子と、同じ作業の中で窓口を何度も再利用する様子が紹介されています。窓口は通常のAI Searchの仕組みでもあるため、公開REST APIやMCPの窓口、人向けにサイトへ埋め込む検索としても使えます。</p>
+      <h2>CLPの見方</h2>
+      <p>私たちは、この発表を「サイトの読み手に、エージェントが本格的に加わった」という話として読んでいます。</p>
+      <p>参考になる点は3つあります。1つ目は、探し方をサイト側が用意する発想です。エージェントに1枚ずつ巡回させるのではなく、索引と窓口を用意して「ここを探して」と案内する形は、情報の正確さと探す速さの両方に効きます。2つ目は、返すものが元の内容である点です。答えを作るのは利用者側のエージェントで、サイト側は材料を正確に渡す役割に徹しています。3つ目は、開き方を自分で決められる点です。ボット管理やAI Crawl Controlの設定がそのまま効くため、全開か全閉かではなく、範囲を決めて開けます。小さな会社のサイトでも、料金と上限を確認したうえで、まずは自社の案内ページから試せる形です。</p>
+      <h2>まとめ</h2>
+      <p>Search for Agentsは、トグル1つで自社サイトにエージェント向けの検索窓口を開く仕組みです。索引は自動で作られ、窓口は全ページで案内され、返ってくるのは生成された答えではなく元の内容です。人向けのページを整えることに加えて、エージェント向けに「探せる形」で情報を置く。サイトの作り方は、そこまで広がり始めています。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。提供範囲（無料プランを含む全顧客、上限あり）、料金の扱い（AI Searchの料金体系に従う）、QUERYメソッドの位置づけ（RFC 10008、IETF提案標準）は、いずれもCloudflareの発表に基づきます。公開日は2026年11月25日です。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Cloudflare公式ブログ「Introducing Search for Agents」<br>
+      <a href="https://blog.cloudflare.com/search-for-agents/" target="_blank" rel="noopener">https://blog.cloudflare.com/search-for-agents/</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
