@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C96BB0F4M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7C96BB0F4M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>道具に、使い方も一緒に — Anthropic、MCPサーバーが「スキル」も届けられるように | 合同会社カエルスパートナーズ</title>
+  <meta name="description" content="Anthropicは2026年11月24日、Model Context Protocol（MCP）の更新を発表しました。MCPサーバーが道具（ツール）と一緒に、手順やコツをまとめた「スキル」もClaudeへ届けられる「Skills over MCP」が公開ベータになり、長い仕事を任せるTasksと、途中で人に確認するElicitationが正式提供になりました。ファイルの受け渡しは近日提供とされています。">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="合同会社カエルスパートナーズ">
+  <meta property="og:title" content="道具に、使い方も一緒に — Anthropic、MCPサーバーが「スキル」も届けられるように">
+  <meta property="og:description" content="Anthropicは2026年11月24日、Model Context Protocol（MCP）の更新を発表しました。MCPサーバーが道具（ツール）と一緒に、手順やコツをまとめた「スキル」もClaudeへ届けられる「Skills over MCP」が公開ベータになり、長い仕事を任せるTasksと、途中で人に確認するElicitationが正式提供になりました。ファイルの受け渡しは近日提供とされています。">
+  <meta property="og:url" content="https://caelus20250613.github.io/blog/2026-11-28-anthropic-mcp-skills.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 共通設定（既存の下層ページ news.html 等と同系） */
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #3b82f6;
+      --text-color: #333;
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+      --chip-bg: #e0f2fe;
+      --chip-text: #075985;
+      --cream: #faf6ee;
+    }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background: var(--bg-light); }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ヘッダー（既存下層ページと同一構造） */
+    header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+    header .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); margin: 0; }
+    header nav ul { display: flex; gap: 20px; }
+    header nav a:hover { color: var(--accent-color); }
+    @media (max-width: 768px) { header nav ul { display: none; } }
+
+    /* 記事本文 */
+    .article-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 0; }
+    .back-link { font-size: 0.9rem; color: #64748b; }
+    .back-link:hover { color: var(--accent-color); }
+    .article-card { background: var(--white); border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 48px 52px; margin-top: 20px; }
+    @media (max-width: 600px) { .article-card { padding: 32px 22px; } }
+    .post-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-size: 0.85rem; }
+    .post-date { color: #64748b; font-weight: 500; }
+    .cat-chip { background: var(--chip-bg); color: var(--chip-text); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: 0.8rem; }
+    .article-card h1 { font-size: 1.9rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 36px; }
+    @media (max-width: 600px) { .article-card h1 { font-size: 1.45rem; } }
+    .article-body h2 { font-size: 1.3rem; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 12px; margin: 44px 0 16px; line-height: 1.5; }
+    .article-body p { margin: 0 0 20px; }
+    .article-body a { color: var(--accent-color); text-decoration: underline; }
+    .source-box { background: var(--cream); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 24px; margin-top: 44px; font-size: 0.9rem; }
+    .source-box .source-title { font-weight: 700; color: var(--primary-color); margin-bottom: 6px; }
+    .source-box a { color: var(--accent-color); text-decoration: underline; word-break: break-all; }
+    .article-cta { text-align: center; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+    .article-cta a { display: inline-block; background: var(--accent-color); color: var(--white); font-weight: 700; padding: 12px 32px; border-radius: 6px; }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* フッター（既存下層ページと同一構造） */
+    footer { background: var(--primary-color); color: #94a3b8; padding: 30px 0; font-size: 0.9rem; margin-top: 80px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer a { color: #cbd5e1; }
+    footer a:hover { color: var(--white); }
+    .footer-nav a { margin-right: 15px; }
+    .copyright { text-align: center; margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>道具に、使い方も一緒に — Anthropic、MCPサーバーが「スキル」も届けられるように</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">会社概要</a></li>
+        <li><a href="../business.html">事業内容</a></li>
+        <li><a href="../apps.html">アプリ紹介</a></li>
+        <li><a href="../media.html">メディア</a></li>
+        <li><a href="../news.html">お知らせ</a></li>
+        <li><a href="./index.html" style="color: var(--accent-color);">ブログ</a></li>
+        <li><a href="../contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="article-wrap">
+  <a class="back-link" href="./index.html"><i class="fa-solid fa-angle-left"></i> ブログ一覧へ戻る</a>
+
+  <article class="article-card">
+    <div class="post-meta">
+      <span class="post-date">2026.11.28</span>
+      <span class="cat-chip">AIニュース</span>
+    </div>
+    <h1>道具に、使い方も一緒に — Anthropic、MCPサーバーが「スキル」も届けられるように</h1>
+
+    <div class="article-body">
+      <h2>導入</h2>
+      <p>AIに道具を渡しても、使い方が分からなければ仕事は進みません。Anthropicは2026年11月24日、AIエージェントと外部の仕組みをつなぐ規格、Model Context Protocol（MCP）の更新を発表しました。今回の中心は、道具と一緒に「使い方」も届ける仕組みです。</p>
+      <h2>道具と一緒に、手順も届ける</h2>
+      <p>これまでMCPサーバーの道具は、名前と説明で「何ができるか」を伝えるのが中心でした。実際の仕事の手順や、場面ごとのコツまでは伝わりません。</p>
+      <p>新しく公開ベータになったSkills over MCPでは、サーバーが道具と一緒にスキルを公開できます。スキルには、進め方のコツ、手順の流れ、アカウントや組織に合わせた進め方の手引きなどを入れられます。Claudeはスキルを必要なときだけ読み込むため、文脈の使い方を抑えられます。スキルはサーバーと一緒に更新されるので、利用者が別に何かを入れる必要はありません。</p>
+      <p>例として、Shopifyは店舗の作り方と更新を最後まで手伝うこと、HubSpotは利用者の導入と設定を手伝うこと、Atlassianは組織の情報をもとに分析を手伝うことが挙げられています。Cartaの株式発行の手伝いは近日提供とされています。</p>
+      <p>提供の段階はプランで異なります。Skills over MCPはClaudeとClaude Codeで公開ベータで、Pro、Max、Ultraでは最初から有効、Teamでは管理者が有効にすると使え、Enterpriseは近日提供とされています。</p>
+      <h2>長い仕事は任せて、確認は途中で</h2>
+      <p>Tasksは、時間のかかる作業をサーバー側で進める仕組みです。これまでは道具の処理が終わるまでClaudeは次へ進めませんでしたが、Tasksでは作業を任せている間にClaudeが別の仕事を続け、結果ができたら受け取れます。例としてZoomInfoの、より深い企業と担当者の調査が挙げられています。</p>
+      <p>Elicitationは、処理の途中で人に確認する仕組みです。お金を使う、データを消すといった大事な操作の前に、サーバーがフォームやリンクで利用者に聞き、答えを受けてから続きを進めます。例として、Supabaseが有料プロジェクトの作成や消去を伴うSQLの前に費用を確認すること、Railwayがサービス削除のような操作の前に聞くこと、GitHubがリポジトリ削除の前に名前の入力を求めることが挙げられています。</p>
+      <p>TasksとElicitationはClaudeとClaude Codeで正式提供となり、Pro、Max、Ultraで使え、TeamとEnterpriseへは順次広がるとされています。</p>
+      <p>さらにFile Uploadsでは、Claudeが文字だけでなく、PDFや表計算、画像といったファイルをサーバーへ渡せるようになります。文脈の中を通さずに送る作りで、こちらは近日提供とされています。</p>
+      <h2>土台の数字</h2>
+      <p>Anthropicによると、MCPのSDKは月間7億回超ダウンロードされ、Claude向けのMCPコネクタは1万を超えています。また、道具の定義を必要なときだけ読み込む仕組みでは、複数のサーバーを使う場面で文脈の使用量を85％超減らせる場合があるとしています。これらはいずれもAnthropicの発表に基づく数字です。</p>
+      <p>今回の各機能はMCPの開かれた規格と拡張の一部で、対応したサーバーはClaude以外の対応クライアントでも使えるとされています。料金は今回の発表では示されていないため、本記事では触れていません。</p>
+      <h2>CLPの見方</h2>
+      <p>私たちは、この発表の見どころは「つなぐ」から「任せられる」への一歩にあると読んでいます。</p>
+      <p>1つ目は、使い方まで一緒に届くことです。道具の作り手が手順も渡せば、導入のたびに使い方を教え直す手間が減ります。2つ目は、確認の場所です。大事な操作の前に人が止めて確かめる流れが規格側に入ったことで、任せる範囲を広げやすくなります。3つ目は、段階の違いです。スキルは公開ベータ、ファイルの受け渡しは近日提供と、全部が同じ段階ではありません。使う前に、自分のプランで何が有効かを確認するのが先です。</p>
+      <h2>まとめ</h2>
+      <p>MCPサーバーが道具と一緒にスキルも届けられるようになり、長い仕事を任せるTasksと、途中で確認するElicitationが正式提供になりました。AIエージェントは、つながるだけでなく、手順を学び、任され、確認しながら働く形へ進んでいます。</p>
+      <p style="font-size: 0.85rem; color: #64748b;">※ 本記事はニュースの一般的な解説です。SDKの月間ダウンロード7億回超、MCPコネクタ1万超、文脈の使用量85％超減はいずれもAnthropicの発表に基づく数字です。各機能の提供段階（公開ベータ／正式提供／近日提供）とプランごとの有効化の条件も同社の発表に基づきます。料金は発表で示されていないため不掲載です。公開日は2026年11月24日です。</p>
+      
+    </div>
+
+    <div class="source-box">
+      <div class="source-title">出典</div>
+      <div>Anthropic（Claude）公式記事「MCP servers can now ship skills, run tasks, and more with Claude」<br>
+      <a href="https://claude.com/resources/articles/skills-over-mcp-tasks-and-more" target="_blank" rel="noopener">https://claude.com/resources/articles/skills-over-mcp-tasks-and-more</a></div>
+  
+    </div>
+
+    <div class="article-cta">
+      <p>AI活用・アプリ開発のご相談は、お気軽にお問い合わせください。</p>
+      <a href="../contact.html">お問い合わせはこちら</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <strong style="color: #fff;">Caelus Partners</strong><br>
+        合同会社カエルスパートナーズ
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">会社概要</a>
+        <a href="../business.html">事業内容</a>
+        <a href="../apps.html">アプリ紹介</a>
+        <a href="../media.html">メディア</a>
+        <a href="../news.html">お知らせ</a>
+        <a href="./index.html">ブログ</a>
+        <a href="../contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Caelus Partners LLC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
